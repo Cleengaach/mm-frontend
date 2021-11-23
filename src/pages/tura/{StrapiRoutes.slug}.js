@@ -1,5 +1,5 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 import Moment from "react-moment"
 import Layout from "../../components/layout"
@@ -7,13 +7,27 @@ import Markdown from "react-markdown"
 
 export const query = graphql`
   query ArticleQuery($slug: String!) {
-    strapiArticle(slug: { eq: $slug }) {
+    strapiRoutes(slug: { eq: $slug }) {
       strapiId
+      RouteLength
+      itineration
+      klesanie
+      route_path {
+        id
+        farba
+        time
+        point {
+          id
+          slug
+          title
+        }
+      }
       title
+      stupanie
       description
-      content
-      published_at
-      image {
+      date
+      TotalTime
+      thumbnail {
         localFile {
           publicURL
           childImageSharp {
@@ -21,29 +35,18 @@ export const query = graphql`
           }
         }
       }
-      author {
-        name
-        picture {
-          localFile {
-            childImageSharp {
-              gatsbyImageData(width: 30)
-            }
-          }
-        }
-      }
     }
   }
 `
-
 const Article = ({ data }) => {
-  const article = data.strapiArticle
+  const article = data.strapiRoutes
   const seo = {
     metaTitle: article.title,
     metaDescription: article.description,
-    shareImage: article.image,
+    shareImage: article.thumbnail,
     article: true,
   }
-
+  const path = data.strapiRoutes.route_path
   return (
     <Layout seo={seo}>
       <div>
@@ -53,7 +56,7 @@ const Article = ({ data }) => {
               gridArea: "1/1",
             }}
             alt={`Picture for ${article.title} article`}
-            image={article.image.localFile.childImageSharp.gatsbyImageData}
+            image={article.thumbnail.localFile.childImageSharp.gatsbyImageData}
             layout="fullWidth"
           />
           <div
@@ -71,34 +74,27 @@ const Article = ({ data }) => {
         </div>
         <div className="uk-section">
           <div className="uk-container uk-container-small">
-            <Markdown children={article.content} escapeHtml={false} />
+            <Markdown children={article.description} escapeHtml={false} />
 
             <hr className="uk-divider-small" />
 
-            <div className="uk-grid-small uk-flex-left" data-uk-grid="true">
-              <div>
-                {article.author.picture && (
-                  <GatsbyImage
-                    image={
-                      article.author.picture.localFile.childImageSharp
-                        .gatsbyImageData
-                    }
-                    alt={`Picture of ${article.author.name}`}
-                    style={{ borderRadius: "50%" }}
-                  />
-                )}
-              </div>
-              <div className="uk-width-expand">
-                <p className="uk-margin-remove-bottom">
-                  By {article.author.name}
-                </p>
-                <p className="uk-text-meta uk-margin-remove-top">
-                  <Moment format="MMM Do YYYY">{article.published_at}</Moment>
-                </p>
-              </div>
-            </div>
           </div>
         </div>
+        <div className="uk-section">
+          <Moment format="MMM Do YYYY">{article.date}</Moment>
+        </div>
+        <div className="uk-section">
+          pocet opakovani - {article.itineration}
+        </div>
+        <ul>
+          {path.map((pathItem, i) => {
+            return (
+              <li key={pathItem.id}>
+                <Link to={`/hribik/${pathItem.point.slug}`}>{pathItem.point.title}</Link> - {pathItem.farba} / {pathItem.time}
+              </li>
+            );
+          })}
+        </ul>
       </div>
     </Layout>
   )

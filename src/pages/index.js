@@ -12,7 +12,7 @@ const IndexPage = () => {
       <div className="uk-section">
         <div className="uk-container uk-container-large">
           <h1>{data.strapiHomepage.hero.title}</h1>
-          <ArticlesComponent articles={data.allStrapiArticle.edges} />
+          <ArticlesComponent articles={data.allStrapiRoutes.edges} />
         </div>
       </div>
     </Layout>
@@ -31,6 +31,27 @@ const query = graphql`
         shareImage {
           localFile {
             publicURL
+          }
+        }
+      }
+    }
+    allStrapiRoutes {
+      edges {
+        node {
+          strapiId
+          slug
+          title
+          TotalTime
+          RouteLength
+          route_path {
+            time
+          }
+          thumbnail {
+            localFile {
+              childImageSharp {
+                gatsbyImageData(width: 660)
+              }
+            }
           }
         }
       }
