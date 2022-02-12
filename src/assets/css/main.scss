@@ -1,0 +1,38 @@
+body {
+  background-color: rgb(13, 20, 13);
+  min-height      : 100vh;
+  color           : white;
+  font-size       : 15px;
+  position        : relative;
+  margin          : 0;
+  font-family: 'Epilogue', sans-serif;
+
+  &::after {
+    content          : '';
+    background-image : radial-gradient(rgba(185, 241, 165, 1) 0%, rgba(185, 241, 165, 0.5) 25%, rgba(185, 241, 165, 0) 70%);
+    background-repeat: no-repeat;
+    background-size  : 100% 100%;
+    width            : 70vw;
+    height           : 70vw;
+    display          : block;
+    position         : absolute;
+    top              : 0;
+    left             : 0;
+    transform        : translate(-50%, -50%);
+    z-index          : 1;
+    opacity          : 0.3;
+  }
+}
+
+main {
+  position   : relative;
+  z-index    : 2;
+  margin-left: 250px;
+}
+
+.tour-wrap {
+  display              : grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap                  : 2rem;
+  padding              : 2rem
+}

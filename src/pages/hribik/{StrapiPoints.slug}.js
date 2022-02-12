@@ -8,26 +8,21 @@ import Markdown from "react-markdown"
 export const query = graphql`
   query PointsQuery($slug: String!) {
     strapiPoints(slug: { eq: $slug }) {
-      altitude
-      description
       strapiId
       title
-      longitude
-      latitude
-      points {
-        slug
-        title
-        thumbnail {
-          localFile {
-            childImageSharp {
-              gatsbyImageData(width: 600)
-            }
-          }
-        }
+      slug
+      nextPoint {
+        farba
         id
+        time
+        point {
+          title
+          slug
+        }
       }
-      thumbnail {
+      image {
         localFile {
+          publicURL
           childImageSharp {
             gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
           }
@@ -40,10 +35,11 @@ export const query = graphql`
           id
           title
           slug
-          thumbnail {
+          image {
             localFile {
+              publicURL
               childImageSharp {
-                gatsbyImageData(width: 660)
+                gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
               }
             }
           }
@@ -61,7 +57,7 @@ const Article = ({ data }) => {
     shareImage: article.thumbnail,
     article: true,
   }
-  const points = data.strapiPoints.points
+  const points = data.strapiPoints.nextPoint 
 
   const routes = data.allStrapiRoutes.edges
    const uniqueTags = [];
@@ -82,7 +78,7 @@ const Article = ({ data }) => {
               gridArea: "1/1",
             }}
             alt={`Picture for ${article.title} article`}
-            image={article.thumbnail.localFile.childImageSharp.gatsbyImageData}
+            image={article.image.localFile.childImageSharp.gatsbyImageData}
             layout="fullWidth"
           />
           <div
@@ -119,7 +115,7 @@ const Article = ({ data }) => {
           {points.map((pointItem, i) => {
             return (
               <li key={pointItem.id}>
-                <Link to={`/hribik/${pointItem.slug}`}>{pointItem.title}</Link>
+                <Link to={`/hribik/${pointItem.point.slug}`}>{pointItem.point.title}</Link>
               </li>
             );
           })}

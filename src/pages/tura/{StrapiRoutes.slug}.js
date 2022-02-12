@@ -1,9 +1,10 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import { graphql, Link } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 import Moment from "react-moment"
 import Layout from "../../components/layout"
 import Markdown from "react-markdown"
+import { MapContainer, TileLayer, Marker, Popup, GeoJSON } from 'react-leaflet'
 
 export const query = graphql`
   query ArticleQuery($slug: String!) {
@@ -22,12 +23,15 @@ export const query = graphql`
           title
         }
       }
+      map {
+        url
+      }
       title
       stupanie
       description
       date
       TotalTime
-      thumbnail {
+      image {
         localFile {
           publicURL
           childImageSharp {
@@ -47,6 +51,40 @@ const Article = ({ data }) => {
     article: true,
   }
   const path = data.strapiRoutes.route_path
+
+  var map = ''
+  if (data.strapiRoutes.map !== null) {
+    map = data.strapiRoutes.map.url
+    var maplat = "";
+    var maplon = "";
+    path.forEach((element, i) => {
+      if (i === 1) {
+        maplat = element.point.latitude
+        maplon = element.point.longitude
+      }
+    });
+  }
+  console.log(map,'map')
+
+
+  const [starsCount, setStarsCount] = useState(0)
+  const [geoJsonKey, setGeoJsonKey] = useState("initialKey123abc")
+
+  useEffect(() => {
+    // get data from GitHub api
+    const newKey = "makeKey(10)"
+    console.log(newKey,'key')
+    setGeoJsonKey(newKey)
+
+    fetch(map)
+      .then(response => response.json()) // parse JSON from request
+      .then(resultData => {
+        setStarsCount(resultData.features)
+      }) // set data for the number of stars
+  }, [])
+
+  let newDate = new Date().getTime()
+
   return (
     <Layout seo={seo}>
       <div>
@@ -56,7 +94,7 @@ const Article = ({ data }) => {
               gridArea: "1/1",
             }}
             alt={`Picture for ${article.title} article`}
-            image={article.thumbnail.localFile.childImageSharp.gatsbyImageData}
+            image={article.image.localFile.childImageSharp.gatsbyImageData}
             layout="fullWidth"
           />
           <div
@@ -86,6 +124,15 @@ const Article = ({ data }) => {
         <div className="uk-section">
           pocet opakovani - {article.itineration}
         </div>
+
+        <MapContainer center={[48.33708, 18.09879]} zoom={14} scrollWheelZoom={true} style={{ height: "400px" }}>
+          <TileLayer
+            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          />
+          <GeoJSON key={newDate} data={starsCount} />
+        </MapContainer>
+
         <ul>
           {path.map((pathItem, i) => {
             return (

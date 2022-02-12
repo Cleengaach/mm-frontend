@@ -5,7 +5,7 @@ const Articles = ({ articles }) => {
 
   return (
 
-        <div>
+        <div className="tour-wrap">
           {articles.map((article, i) => {
             return (
               <Card

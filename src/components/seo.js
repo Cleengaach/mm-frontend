@@ -84,13 +84,8 @@ const SEO = ({ seo = {} }) => {
         },
         {
           rel: "stylesheet",
-          href: "https://fonts.googleapis.com/css?family=Staatliches",
-        },
-        {
-          rel: "stylesheet",
-          href:
-            "https://cdn.jsdelivr.net/npm/uikit@3.2.3/dist/css/uikit.min.css",
-        },
+          href: "https://fonts.googleapis.com/css2?family=Epilogue:wght@300;400;500;600;700;800&display=swap",
+        }
       ]}
       script={[
         {
@@ -138,11 +133,7 @@ const query = graphql`
       defaultSeo {
         metaTitle
         metaDescription
-        shareImage {
-          localFile {
-            publicURL
-          }
-        }
+
       }
     }
   }
