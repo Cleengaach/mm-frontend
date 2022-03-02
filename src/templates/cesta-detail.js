@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from "react"
-import { Link, graphql } from "gatsby"
+import React from "react"
+import { graphql } from "gatsby"
 import Layout from "../components/layout"
-import Seo from "../components/seo"
 import "../assets/css/detail.scss";
-import { MapContainer, TileLayer, Marker, Popup, GeoJSON } from 'react-leaflet'
-import Moment from "react-moment"
 import ArticlesComponent from "../components/articles";
+import DetailItem from "../components/detail/detail-item";
+import DetailPoints from "../components/detail/detail-points";
+import DetailChartnew from "../components/detail/detail-chartnew";
+import MapWrap from "../components/detail/mapWrap";
+import Levels from "../components/detail/levels";
+import Photogallery from "../components/photogallery";
 
 
 export const query = graphql`
@@ -15,6 +18,7 @@ export const query = graphql`
       RouteLength
       itineration
       level
+      tourType
       route_path {
         id
         farba
@@ -25,11 +29,31 @@ export const query = graphql`
           title
           north
           east
+          image {
+            localFile {
+              childImageSharp {
+                gatsbyImageData
+              }
+            }
+          }
         }
       }
       map {
         url
       }
+      mapJson {
+        features {
+          type
+          geometry {
+            coordinates
+            type
+          }
+          properties {
+            name
+          }
+        }
+        type
+      } 
       mountain {
         title
       }
@@ -48,7 +72,26 @@ export const query = graphql`
           }
         }
       }
+      photogallery {
+        name
+        localFile {
+          publicURL
+          childImageSharp {
+            gatsbyImageData(height: 400, placeholder: BLURRED)
+          }
+        }
+      }
     }
+    thumbnails: strapiRoutes(slug: {eq: $slug}) {
+      photogallery {
+            localFile {
+              publicURL
+              childImageSharp {
+                gatsbyImageData(layout: FIXED, placeholder: BLURRED)
+              }
+            }
+          }
+      }
     allStrapiRoutes(filter: {RouteLength: {gte: $RouteLengthMin, lte: $RouteLengthMax}, slug: {ne: $slug}}) {
       edges {
         node {
@@ -83,40 +126,6 @@ export const query = graphql`
 `
 
 const UsingDSG = ({ data }) => {
-  const podobne = data.allStrapiRoutes.edges
-
-  const [starsCount, setStarsCount] = useState(0)
-  const [geoJsonKey, setGeoJsonKey] = useState("initialKey123abc")
-  const path = data.strapiRoutes.route_path
-
-  var map = ''
-  if (data.strapiRoutes.map !== null) {
-    map = data.strapiRoutes.map.url
-    var maplat = "";
-    var maplon = "";
-    path.forEach((element, i) => {
-      if (i === 1) {
-        maplat = element.point.north
-        maplon = element.point.east
-      }
-    });
-  }
-
-  useEffect(() => {
-    // get data from GitHub api
-    const newKey = "makeKey(10)"
-    console.log(newKey, 'key')
-    setGeoJsonKey(newKey)
-
-    fetch(map)
-      .then(response => response.json()) // parse JSON from request
-      .then(resultData => {
-        setStarsCount(resultData.features)
-      }) // set data for the number of stars
-  }, [])
-
-  let newDate = new Date().getTime()
-
 
   return (
     <Layout>
@@ -139,105 +148,44 @@ const UsingDSG = ({ data }) => {
           <div className="tour_basic">
 
             <div className="tour_basic--collumn">
+              <DetailItem label={'dĺžka'} data={data.strapiRoutes.RouteLength} metric={'km'} />
 
-              <div className="tour_basic_item">
-                <small>
-                  dĺžka
-                </small>
-                <b>
-                  {data.strapiRoutes.RouteLength}
-                </b>
-                <span>
-                  km
-                </span>
-              </div>
-
-              <div className="tour_basic_item">
-                <small>
-                  čas
-                </small>
-                <b>
-                  {data.strapiRoutes.TotalTime}
-                </b>
-                <span>
-                  h
-                </span>
-              </div>
-
+              <DetailItem label={'čas'} data={data.strapiRoutes.TotalTime} metric={'h'} />
             </div>
 
             <div className="tour_basic--collumn">
+              <DetailItem label={'stúpanie'} data={data.strapiRoutes.stupanie} metric={'m'} />
 
-              <div className="tour_basic_item">
-
-                <small>
-                  stúpanie
-                </small>
-                <b>
-                  {data.strapiRoutes.stupanie}
-                </b>
-                <span>
-                  m
-                </span>
-              </div>
-
-              <div className="tour_basic_item">
-                <small>
-                  klesanie
-                </small>
-                <b>
-                  {data.strapiRoutes.klesanie}
-                </b>
-                <span>
-                  m
-                </span>
-              </div>
-
+              <DetailItem label={'klesanie'} data={data.strapiRoutes.klesanie} metric={'m'} />
             </div>
 
             <div className="tour_basic--collumn">
+              <DetailItem label={'pohorie'} data={data.strapiRoutes.mountain.title} metric={''} />
 
-              <div className="tour_basic_item">
-                <small>
-                  pohorie
-                </small>
-                <span>
-                  {data.strapiRoutes.mountain.title}
-                </span>
-              </div>
-
-              <div className="tour_basic_item">
-                <small>
-                  kraj
-                </small>
-                <span>
-                  {data.strapiRoutes.mountain.title}
-                </span>
-              </div>
-
+              <DetailItem label={'kraj'} data={data.strapiRoutes.mountain.title} metric={''} />
             </div>
 
           </div>
 
-          <p>{data.strapiRoutes.RouteLength}</p>
-        </div>
-        <div className="tour_detail_map">
-          <MapContainer center={[maplat, maplon]} zoom={14} scrollWheelZoom={true} style={{ height: "100%" }}>
-            <TileLayer
-              attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            />
-            <GeoJSON key={newDate} data={starsCount} />
-          </MapContainer>
+          <Levels level={data.strapiRoutes.level} tourType={data.strapiRoutes.tourType} />
 
+          <Photogallery data={data.strapiRoutes.photogallery} thumb={data.thumbnails.photogallery} />
+          <DetailChartnew children={data.strapiRoutes.mapJson.features} length={data.strapiRoutes.RouteLength} />
+
+          <div className="tour_mapWrap_mobile">
+            <MapWrap data={data.strapiRoutes.mapJson} />
+          </div>
+          <DetailPoints data={data.strapiRoutes.route_path} />
+
+        </div>
+        <div className="tour_mapWrap_desktop">
+          <MapWrap data={data.strapiRoutes.mapJson} />
         </div>
       </div>
       <div>
-        {podobne.map((item, i) => {
-          return (
-            <ArticlesComponent articles={data.allStrapiRoutes.edges} />
-          );
-        })}
+
+        <ArticlesComponent articles={data.allStrapiRoutes.edges} />
+
       </div>
     </Layout>
   )

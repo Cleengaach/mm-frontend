@@ -1,6 +1,7 @@
 .tour_detail {
     display              : grid;
-    grid-template-columns: 1fr 1fr;
+    width                : calc(100% - 4rem);
+    grid-template-columns: 50% 50%;
     gap                  : 4rem;
 
     h1 {
@@ -33,18 +34,6 @@
     margin-top: 3rem;
 }
 
-.tour_detail_map {
-    position: sticky;
-    top     : 0;
-    left    : 0;
-    padding : 3rem;
-    height  : calc(100vh - 6rem);
-
-    >div {
-        border-radius: 10px;
-        overflow     : hidden;
-    }
-}
 
 .tour_basic {
     display              : grid;
@@ -52,28 +41,15 @@
 }
 
 .tour_basic--collumn {
-    text-align: center;
-    display: grid;
+    text-align       : center;
+    display          : grid;
     grid-auto-columns: 1fr;
 }
 
-.tour_basic_item {
-    margin: 1rem;
-    small {
-        display    : block;
-        margin     : 0 auto 0.5rem auto;
-        font-size  : 0.75rem;
-        opacity    : 0.75;
-        font-weight: 300;
-    }
+.tour_mapWrap_mobile {
+    display: none;
+}
 
-    b {
-        font-size: 1.2rem;
-        font-weight: 700;
-        display: inline-block;
-        margin-right: 0.25rem;
-    }
-    span {
-        font-size: 2rem 1rem;
-    }
+.tour_mapWrap_desktop {
+    display: block;
 }
