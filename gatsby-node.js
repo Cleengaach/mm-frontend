@@ -48,3 +48,19 @@ exports.onCreateWebpackConfig = ({ actions, plugins, stage }) => {
     })
   }
 }
+exports.onCreateWebpackConfig = ({ stage, rules, loaders, actions }) => {
+  switch (stage) {
+    case 'build-html':
+      actions.setWebpackConfig({
+        module: {
+          rules: [
+            {
+              test: /react-leaflet/,
+              use: [loaders.null()]
+            }
+          ]
+        }
+      });
+      break;
+  }
+};

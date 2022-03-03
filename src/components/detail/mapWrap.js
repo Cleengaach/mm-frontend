@@ -70,9 +70,10 @@ const MapWrap = ({ data }) => {
                     <GeoJSON key={newDate} data={data.features} />
                 </MapContainer>
             </div>
-        )
+        );
+    } else {
+        return null
     }
-    return null
 
 };
 
