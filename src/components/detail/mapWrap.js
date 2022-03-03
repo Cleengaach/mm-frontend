@@ -58,19 +58,22 @@ const MapWrap = ({ data }) => {
         );
     }
 
+    if (typeof window !== 'undefined') {
+        return (
+            <div className={isActive ? mapStyles.tour_detail_map_fullscreen : mapStyles.tour_detail_map}>
+                <FlyToButton text={isActive ? 'zatvorit' : 'zvacsit'} />
+                <MapContainer center={[center.y, center.x]} zoom={zoom} scrollWheelZoom={true} style={{ height: "100%", width: "100%" }} whenCreated={setMap}>
+                    <TileLayer
+                        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    />
+                    <GeoJSON key={newDate} data={data.features} />
+                </MapContainer>
+            </div>
+        )
+    }
+    return null
 
-    return (
-        <div className={isActive ? mapStyles.tour_detail_map_fullscreen : mapStyles.tour_detail_map}>
-            <FlyToButton text={isActive ? 'zatvorit' : 'zvacsit'}/>
-            <MapContainer center={[center.y, center.x]} zoom={zoom} scrollWheelZoom={true} style={{ height: "100%", width: "100%" }} whenCreated={setMap}>
-                <TileLayer
-                    attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                />
-                <GeoJSON key={newDate} data={data.features} />
-            </MapContainer>
-        </div>
-    );
 };
 
 export default MapWrap;
