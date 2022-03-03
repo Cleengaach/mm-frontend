@@ -48,6 +48,7 @@ exports.onCreateWebpackConfig = ({ actions, plugins, stage }) => {
     })
   }
 }
+
 exports.onCreateWebpackConfig = ({ stage, rules, loaders, actions }) => {
   switch (stage) {
     case 'build-html':
