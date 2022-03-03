@@ -172,15 +172,11 @@ const UsingDSG = ({ data }) => {
           <Photogallery data={data.strapiRoutes.photogallery} thumb={data.thumbnails.photogallery} />
           <DetailChartnew children={data.strapiRoutes.mapJson.features} length={data.strapiRoutes.RouteLength} />
 
-          <div className="tour_mapWrap_mobile">
-            <MapWrap data={data.strapiRoutes.mapJson} />
-          </div>
+ 
           <DetailPoints data={data.strapiRoutes.route_path} />
 
         </div>
-        <div className="tour_mapWrap_desktop">
-          <MapWrap data={data.strapiRoutes.mapJson} />
-        </div>
+    
       </div>
       <div>
 
