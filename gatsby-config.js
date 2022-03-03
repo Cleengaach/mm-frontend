@@ -22,9 +22,7 @@ module.exports = {
     {
       resolve: "gatsby-source-strapi",
       options: {
-        apiURL: process.env.DEPLOY_URL
-        ? "https://milionmetrov.herokuapp.com"
-        : "http://localhost:1337",
+        apiURL: process.env.API_URL,
         collectionTypes: ["article", "routes", "points"],
         singleTypes: [`homepage`, `global`],
         queryLimit: 1000,
