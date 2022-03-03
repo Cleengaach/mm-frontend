@@ -169,8 +169,6 @@ const UsingDSG = ({ data }) => {
 
           <Levels level={data.strapiRoutes.level} tourType={data.strapiRoutes.tourType} />
 
-          <Photogallery data={data.strapiRoutes.photogallery} thumb={data.thumbnails.photogallery} />
-          <DetailChartnew children={data.strapiRoutes.mapJson.features} length={data.strapiRoutes.RouteLength} />
 
  
           <DetailPoints data={data.strapiRoutes.route_path} />
