@@ -4,7 +4,7 @@ import Layout from "../components/layout";
 import Seo from "../components/seo";
 import ArticlesComponent from "../components/articles";
 import "../assets/css/main.scss";
-//import "../assets/leaflet/leaflet.css";
+import "../assets/leaflet/leaflet.css";
 
 const IndexPage = () => {
   const data = useStaticQuery(query);

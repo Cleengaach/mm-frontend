@@ -7,6 +7,7 @@ import DetailItem from "../components/detail/detail-item";
 import Levels from "../components/detail/levels";
 import Photogallery from "../components/photogallery";
 import DetailChartnew from "../components/detail/detail-chartnew";
+import MapWrap from "../components/detail/mapWrap";
 
 
 export const query = graphql`
@@ -172,6 +173,10 @@ const UsingDSG = ({ data }) => {
           <DetailChartnew children={data.strapiRoutes.mapJson.features} length={data.strapiRoutes.RouteLength} />
 
 
+        </div>
+
+        <div className="tour_mapWrap_desktop">
+          <MapWrap data={data.strapiRoutes.mapJson} />
         </div>
 
       </div>
