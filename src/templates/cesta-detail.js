@@ -6,6 +6,7 @@ import ArticlesComponent from "../components/articles";
 import DetailItem from "../components/detail/detail-item";
 import Levels from "../components/detail/levels";
 import Photogallery from "../components/photogallery";
+import DetailChartnew from "../components/detail/detail-chartnew";
 
 
 export const query = graphql`
@@ -167,6 +168,8 @@ const UsingDSG = ({ data }) => {
           <Levels level={data.strapiRoutes.level} tourType={data.strapiRoutes.tourType} />
 
           <Photogallery data={data.strapiRoutes.photogallery} thumb={data.thumbnails.photogallery} />
+
+          <DetailChartnew children={data.strapiRoutes.mapJson.features} length={data.strapiRoutes.RouteLength} />
 
 
         </div>
