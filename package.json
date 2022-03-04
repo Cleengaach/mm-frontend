@@ -26,9 +26,11 @@
     "gatsby-source-filesystem": "^4.9.0",
     "gatsby-source-strapi": "^1.0.3",
     "gatsby-transformer-sharp": "^4.9.0",
+    "lightgallery": "^2.4.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
-    "sass": "^1.49.9"
+    "sass": "^1.49.9",
+    "swiper": "^8.0.7"
   }
 }

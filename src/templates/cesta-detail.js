@@ -3,6 +3,9 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import "../assets/css/detail.scss";
 import ArticlesComponent from "../components/articles";
+import DetailItem from "../components/detail/detail-item";
+import Levels from "../components/detail/levels";
+import Photogallery from "../components/photogallery";
 
 
 export const query = graphql`
@@ -139,7 +142,33 @@ const UsingDSG = ({ data }) => {
             Základné info
           </h2>
 
-         
+          <div className="tour_basic">
+
+            <div className="tour_basic--collumn">
+              <DetailItem label={'dĺžka'} data={data.strapiRoutes.RouteLength} metric={'km'} />
+
+              <DetailItem label={'čas'} data={data.strapiRoutes.TotalTime} metric={'h'} />
+            </div>
+
+            <div className="tour_basic--collumn">
+              <DetailItem label={'stúpanie'} data={data.strapiRoutes.stupanie} metric={'m'} />
+
+              <DetailItem label={'klesanie'} data={data.strapiRoutes.klesanie} metric={'m'} />
+            </div>
+
+            <div className="tour_basic--collumn">
+              <DetailItem label={'pohorie'} data={data.strapiRoutes.mountain.title} metric={''} />
+
+              <DetailItem label={'kraj'} data={data.strapiRoutes.mountain.title} metric={''} />
+            </div>
+
+          </div>
+
+          <Levels level={data.strapiRoutes.level} tourType={data.strapiRoutes.tourType} />
+
+          <Photogallery data={data.strapiRoutes.photogallery} thumb={data.thumbnails.photogallery} />
+
+
         </div>
 
       </div>
