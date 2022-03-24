@@ -1,11 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { StaticQuery, graphql } from "gatsby";
-import Seo from "./seo";
-import Nav from "./nav";
+import TopNav from "./topnav";
+import { motion } from "framer-motion";
 
-
-const Layout = ({ children, seo }) => (
+const Layout = ({ children }) => (
   <StaticQuery
     query={graphql`
       query {
@@ -22,10 +21,12 @@ const Layout = ({ children, seo }) => (
         }
       }
     `}
+
     render={(data) => (
       <>
-        <Nav />
-        <main>{children}</main>
+        <TopNav />
+
+          {children}
       </>
     )}
   />

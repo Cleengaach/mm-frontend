@@ -1,9 +1,15 @@
 import React from "react";
-import { Link } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import * as cardStyles from "./card.module.scss";
+import { Link } from "gatsby";
+import { motion } from "framer-motion";
 
-const Card = ({ article }) => {
+
+export const control = ({ triggerName }) => {
+  console.log(triggerName);
+}
+
+const Card = ({ props, article }) => {
   var level = '';
   switch (article.node.level) {
     case 'easy':
@@ -23,8 +29,14 @@ const Card = ({ article }) => {
       break;
   }
 
+
   return (
-    <Link to={`/cesta/${article.node.slug}`} className={cardStyles.tourItem}>
+    <Link
+      to={`/cesta/${article.node.slug}`}
+      //to="/about"
+      className={cardStyles.tourItem}
+    >
+
       <div className={cardStyles.tourLevel}>
         <span>
           {level}
@@ -35,8 +47,8 @@ const Card = ({ article }) => {
           <small id="title">
             {article.node.mountain.title}
           </small>
-          <b id="title">
-            {article.node.title}
+          <b>
+            {article.node.title} 
           </b>
           <span id="subtitle">
             {article.node.subtitle}

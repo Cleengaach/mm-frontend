@@ -1,66 +1,80 @@
 import React from "react";
 import { graphql, useStaticQuery } from "gatsby";
-import Layout from "../components/layout";
 import Seo from "../components/seo";
 import ArticlesComponent from "../components/articles";
 import "../assets/css/main.scss";
 import "../assets/leaflet/leaflet.css";
+import { motion } from "framer-motion"
+import TopNav from "../components/topnav";
 
 const IndexPage = () => {
   const data = useStaticQuery(query);
 
   return (
-    <Layout>
-      <Seo />
-      <ArticlesComponent articles={data.allStrapiRoutes.edges} />
-    </Layout>
+    <>
+      <motion.main
+        initial={{
+          opacity: 0
+        }}
+        animate={
+          { opacity: 1, scale: 1 }
+        }
+        exit={
+          { opacity: 0, scale: 0.95 }
+        }
+        transition={{ duration: 0.3 }}
+      >
+        <Seo />
+        <ArticlesComponent articles={data.allStrapiRoutes.edges} />
+      </motion.main>
+    </>
   );
 };
 
 const query = graphql`
-  query {
+      query {
 
-    allStrapiRoutes {
-      edges {
+        allStrapiRoutes {
+        edges {
         node {
-          strapiId
+        strapiId
           slug
-          title
-          subtitle
-          TotalTime
-          RouteLength
-          level
-          mountain {
-            title
-          }
-          stupanie
-          route_path {
-            time
-          }
-          image {
-            localFile {
-              childImageSharp {
-                gatsbyImageData(
-                  height: 400
-                  placeholder: BLURRED
-                  formats: [AUTO, WEBP, AVIF]
-                  )
+      title
+      subtitle
+      TotalTime
+      RouteLength
+      level
+      mountain {
+        title
+      }
+      stupanie
+      route_path {
+        time
+      }
+      image {
+        localFile {
+        childImageSharp {
+        gatsbyImageData(
+          height: 400
+      placeholder: BLURRED
+      formats: [AUTO, WEBP, AVIF]
+      )
               }
             }
           }
         }
       }
     }
-    allStrapiArticle {
-      edges {
+      allStrapiArticle {
+        edges {
         node {
-          strapiId
+        strapiId
           slug
-          title
-          image {
-            localFile {
-              childImageSharp {
-                gatsbyImageData(width: 660)
+      title
+      image {
+        localFile {
+        childImageSharp {
+        gatsbyImageData(width: 660)
               }
             }
           }
@@ -68,6 +82,6 @@ const query = graphql`
       }
     }
   }
-`;
+      `;
 
 export default IndexPage;

@@ -3,7 +3,7 @@
     top     : 0;
     left    : 0;
     padding : 3rem;
-    height  : calc(100vh - 6rem);
+    height  : calc(100vh - 12rem);
 
     >div {
         border-radius: 10px;
@@ -66,4 +66,21 @@
     top     : 4rem;
     right   : 4rem;
     z-index : 500;
+}
+
+@media only screen and (max-width: 1024px) {
+    .tour_detail_map {
+        position: relative;
+        top     : 0;
+        left    : 0;
+        padding : 0rem;
+        height  : 250px;
+    }
+
+    .tour_detail_map_button {
+        position: absolute;
+        top     : 0.75rem;
+        right   : 0.75rem;
+        z-index : 500;
+    }
 }

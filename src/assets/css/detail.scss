@@ -3,6 +3,8 @@
     width                : calc(100% - 4rem);
     grid-template-columns: 50% 50%;
     gap                  : 4rem;
+    position             : relative;
+    z-index              : 2;
 
     h1 {
         text-align: center;
@@ -52,4 +54,44 @@
 
 .tour_mapWrap_desktop {
     display: block;
+}
+
+.tour_back {
+    position: fixed;
+    top     : 0;
+    left    : 0;
+    bottom  : 0;
+    right   : 0;
+    z-index : 1;
+
+    .gatsby-image-wrapper {
+        position: absolute;
+        width   : 100%;
+        height  : 100%;
+        display : block;
+
+        img {
+            object-fit     : cover;
+            object-position: center;
+            filter         : blur(30px);
+        }
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .tour_detail {
+        display              : grid;
+        width                : 100%;
+        grid-template-columns: 100%;
+        gap                  : 0rem;
+        position             : relative;
+        z-index              : 2;
+    }
+    .tour_mapWrap_mobile {
+        display: block;
+    }
+    
+    .tour_mapWrap_desktop {
+        display: none;
+    }
 }

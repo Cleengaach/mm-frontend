@@ -1,6 +1,5 @@
 import React from "react"
 import { graphql } from "gatsby"
-import Layout from "../components/layout"
 import "../assets/css/detail.scss";
 import ArticlesComponent from "../components/articles";
 import DetailItem from "../components/detail/detail-item";
@@ -8,7 +7,10 @@ import Levels from "../components/detail/levels";
 import Photogallery from "../components/photogallery";
 import DetailChartnew from "../components/detail/detail-chartnew";
 import MapWrap from "../components/detail/mapWrap";
-
+import DetailPoints from "../components/detail/detail-points";
+import Layout from "../components/layout";
+import { motion } from "framer-motion"
+import { GatsbyImage } from "gatsby-plugin-image";
 
 export const query = graphql`
   query CestaQuery($slug: String!, $RouteLengthMax: Float, $RouteLengthMin: Float) {
@@ -123,69 +125,78 @@ export const query = graphql`
     }
   }
 `
-
 const UsingDSG = ({ data }) => {
 
   return (
-    <Layout>
+    <>
+      <motion.main
+        initial={{
+          opacity: 0, x: 200
+        }}
+        animate={
+          { opacity: 1, x: 0 }
+        }
+        exit={
+          { opacity: 0, x: 200 }
+        }
+        transition={{ duration: 0.3 }}
+      >
+        <div className="tour_detail">
+          <div className="tour_detail_content">
+            <h1>
+              <b>
+                {data.strapiRoutes.title}
+              </b>
+              <span>
+                {data.strapiRoutes.subtitle}
+              </span>
+            </h1>
 
-      <div className="tour_detail">
-        <div className="tour_detail_content">
-          <h1>
-            <b>
-              {data.strapiRoutes.title}
-            </b>
-            <span>
-              {data.strapiRoutes.subtitle}
-            </span>
-          </h1>
+            <div className="tour_basic">
 
-          <h2>
-            Základné info
-          </h2>
+              <div className="tour_basic--collumn">
+                <DetailItem label={'dĺžka'} data={data.strapiRoutes.RouteLength} metric={'km'} />
 
-          <div className="tour_basic">
+                <DetailItem label={'stúpanie'} data={data.strapiRoutes.stupanie} metric={'m'} />
+              </div>
 
-            <div className="tour_basic--collumn">
-              <DetailItem label={'dĺžka'} data={data.strapiRoutes.RouteLength} metric={'km'} />
+              <div className="tour_basic--collumn">
+                <DetailItem label={'čas'} data={data.strapiRoutes.TotalTime} metric={'h'} />
 
-              <DetailItem label={'čas'} data={data.strapiRoutes.TotalTime} metric={'h'} />
+                <DetailItem label={'klesanie'} data={data.strapiRoutes.klesanie} metric={'m'} />
+              </div>
+
+              <div className="tour_basic--collumn">
+                <Levels type="type" data={data.strapiRoutes.tourType} />
+
+                <Levels type="level" data={data.strapiRoutes.level} />
+              </div>
+
             </div>
 
-            <div className="tour_basic--collumn">
-              <DetailItem label={'stúpanie'} data={data.strapiRoutes.stupanie} metric={'m'} />
+            <Photogallery data={data.strapiRoutes.photogallery} thumb={data.thumbnails.photogallery} />
 
-              <DetailItem label={'klesanie'} data={data.strapiRoutes.klesanie} metric={'m'} />
+            <div className="tour_mapWrap_mobile">
+              <MapWrap data={data.strapiRoutes.mapJson} />
             </div>
 
-            <div className="tour_basic--collumn">
-              <DetailItem label={'pohorie'} data={data.strapiRoutes.mountain.title} metric={''} />
-
-              <DetailItem label={'kraj'} data={data.strapiRoutes.mountain.title} metric={''} />
-            </div>
+            <DetailChartnew children={data.strapiRoutes.mapJson.features} length={data.strapiRoutes.RouteLength} />
+            <DetailPoints data={data.strapiRoutes.route_path} />
 
           </div>
 
-          <Levels level={data.strapiRoutes.level} tourType={data.strapiRoutes.tourType} />
-
-          <Photogallery data={data.strapiRoutes.photogallery} thumb={data.thumbnails.photogallery} />
-
-          <DetailChartnew children={data.strapiRoutes.mapJson.features} length={data.strapiRoutes.RouteLength} />
-
+          <div className="tour_mapWrap_desktop">
+            <MapWrap data={data.strapiRoutes.mapJson} />
+          </div>
 
         </div>
+        <div>
 
-        <div className="tour_mapWrap_desktop">
-          <MapWrap data={data.strapiRoutes.mapJson} />
+          <ArticlesComponent articles={data.allStrapiRoutes.edges} />
+
         </div>
-
-      </div>
-      <div>
-
-        <ArticlesComponent articles={data.allStrapiRoutes.edges} />
-
-      </div>
-    </Layout>
+      </motion.main>
+    </>
   )
 }
 

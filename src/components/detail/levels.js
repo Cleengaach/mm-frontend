@@ -1,24 +1,19 @@
 import React, { useState } from "react";
-import * as levelStyles from "./detail-level.module.scss";
+import * as detailStyles from "./detail-item.module.scss";
 import Modal from "../modal";
+import { AnimatePresence } from "framer-motion";
 
-const Levels = ({ level, tourType }) => {
-
+const Level = ({ data }) => {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <div className={levelStyles.tour_basic_levels}>
-            <div className={levelStyles.tour_basic_levels_item} onClick={() => setIsOpen(true)}>
-                {level === 'easy' ? 'ľahká' : null}
-                {level === 'medium' ? 'stredná' : null}
-                {level === 'hard' ? 'ťažká' : null}
-                {level === 'ferrata' ? 'ferata' : null}
-                {level === 'guided' ? 's vodcom' : null}
-            </div>
-            <div className={levelStyles.tour_basic_levels_item}>
-                {tourType === 'okruh' ? 'okruh' : null}
-                {tourType === 'tamSpat' ? 'tam a späť' : null}
-                {tourType === 'prechod' ? 'prechod' : null}
+        <div className={detailStyles.tour_basic_item} onClick={() => setIsOpen(true)}>
+            <div  >
+                {data === 'easy' ? 'ľahká' : null}
+                {data === 'medium' ? 'stredná' : null}
+                {data === 'hard' ? 'ťažká' : null}
+                {data === 'ferrata' ? 'ferata' : null}
+                {data === 'guided' ? 's vodcom' : null}
             </div>
             {isOpen &&
                 <Modal setIsOpen={setIsOpen}>
@@ -26,6 +21,27 @@ const Levels = ({ level, tourType }) => {
                 </Modal>
             }
         </div>
+    )
+}
+const Type = ({ data }) => {
+    return (
+        <div className={detailStyles.tour_basic_item}>
+            <div >
+                {data === 'okruh' ? 'okruh' : null}
+                {data === 'tamSpat' ? 'tam a späť' : null}
+                {data === 'prechod' ? 'prechod' : null}
+            </div>
+        </div>
+    )
+}
+
+const Levels = ({ type, data }) => {
+
+    return (
+        <>
+            {type === 'level' ? <Level data={data} /> : null}
+            {type === 'type' ? <Type data={data} /> : null}
+        </>
     );
 };
 

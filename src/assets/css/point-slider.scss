@@ -1,0 +1,84 @@
+.point-slider-wrap {
+    display      : flex;
+    flex-wrap    : nowrap;
+    //overflow-x : auto;
+
+    &::-webkit-scrollbar {
+        // display: none;
+    }
+}
+
+.point-slider-item {
+    aspect-ratio : 4/3;
+    height       : 200px;
+    margin-right : 1rem;
+    border-radius: 6px;
+    position     : relative;
+    display      : flex;
+    align-items  : flex-end;
+}
+
+.point-slider-overlay {
+    position        : absolute;
+    bottom          : 0;
+    left            : 0;
+    width           : 100%;
+    height          : 70%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75));
+    background-image: -moz-linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
+    z-index         : 2;
+}
+
+.point-slider-image {
+    position: absolute;
+    top     : 0;
+    left    : 0;
+    bottom  : 0;
+    right   : 0;
+    z-index : 0;
+
+    &-inner {
+        display      : block;
+        width        : 100%;
+        height       : 100%;
+        border-radius: 6px;
+    }
+}
+
+.point-slider-text {
+    position: relative;
+    padding : 1rem;
+    z-index : 3;
+    width   : 100%;
+}
+
+.point-slider-time {
+    position        : absolute;
+    padding         : 1.25rem 0;
+    background-color: white;
+    color           : black;
+    border-radius   : 6px;
+    right           : 0;
+    top             : 50%;
+    transform       : translate(50%, -50%);
+    z-index         : 4;
+
+    span {
+        width: 100%;
+        padding: 0.5rem;
+        color: white;
+
+        &.red {
+            background-color: red;
+        }
+        &.blue {
+            background-color: blue;
+        }
+        &.yellow {
+            background-color: yellow;
+        }
+        &.green {
+            background-color: green;
+        }
+    }
+}

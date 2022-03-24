@@ -4,7 +4,7 @@ module.exports = {
     title: "mapProject",
   },
   plugins: [
-    `gatsby-plugin-react-helmet`, `gatsby-plugin-sass`,
+    `gatsby-plugin-react-helmet`, `gatsby-plugin-sass`, 'gatsby-plugin-dark-mode', 
     `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -14,7 +14,7 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-source-strapi",
+      resolve: "gatsby-source-strapi", 
       options: {
         apiURL: process.env.API_URL,
         collectionTypes: ["article", "routes", "points"],

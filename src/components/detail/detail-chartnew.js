@@ -57,7 +57,6 @@ const DetailChartnew = ({ children, length }) => {
 
     //labels
     const metres = [0, (length * 0.25).toFixed(2), (length * 0.5).toFixed(2), (length * 0.75).toFixed(2), length];
-    console.log(metres);
 
     const options = {
         maintainAspectRatio: false,

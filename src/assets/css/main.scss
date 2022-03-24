@@ -1,18 +1,37 @@
 body {
-  background-color: #161616;
-  min-height      : 100vh;
-  color           : white;
-  font-size       : 15px;
-  position        : relative;
-  margin          : 0; 
-  font-family: 'Epilogue', sans-serif;
+  --bg        : white;
+  --textNormal: #161616;
+  --textTitle : #161616;
+  --textLink  : rgb(57, 136, 255);
 
 }
 
-main {
+body.dark {
+  --bg        : #161616;
+  --textNormal: white;
+  --textTitle : white;
+  --textLink  : rgb(57, 136, 255);
+}
+
+body {
+  background-color: var(--bg);
+  color           : var(--textNormal);
+
+  min-height : 100vh;
+  font-size  : 15px;
   position   : relative;
-  z-index    : 2;
-  margin-left: 250px;
+  margin     : 0;
+  font-family: 'Epilogue', sans-serif;
+
+  transition: background-color 0.5s ease;
+}
+
+
+main {
+  position : relative;
+  z-index  : 2;
+  max-width: 1440px;
+  margin   : auto;
 }
 
 .tour-wrap {
@@ -21,13 +40,14 @@ main {
   gap                  : 2rem;
   padding              : 2rem
 }
+
 .my-swiper {
   .swiper-slide {
     width: auto;
 
     picture img {
       border-radius: 3px;
-      overflow: hidden;
+      overflow     : hidden;
     }
   }
 }
