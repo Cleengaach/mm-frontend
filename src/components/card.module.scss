@@ -5,6 +5,7 @@
   border-radius  : 5px;
   overflow       : hidden;
   aspect-ratio   : 3/4;
+  width          : 20%;
   color          : white;
   align-items    : flex-end;
   text-decoration: none;
@@ -42,7 +43,7 @@
 .tourText {
   position: relative;
   z-index : 3;
-  width: 100%;
+  width   : 100%;
 }
 
 .tourText b {
@@ -115,4 +116,27 @@
   z-index         : 3;
   font-size       : 0.6rem;
   font-weight     : 600;
+}
+
+@media only screen and (max-width: 1024px) {
+  .tourItem {
+    width          : 23%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .tourItem {
+    width          : 30%;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .tourItem {
+    width          : 47%;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .tourItem {
+    width          : 97%;
+  }
 }
