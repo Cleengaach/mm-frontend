@@ -66,10 +66,7 @@ export const query = graphql`
         localFile {
           publicURL
           childImageSharp {
-            gatsbyImageData(
-              width: 1920
-              placeholder: BLURRED
-              )
+            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
           }
         }
       }
@@ -191,8 +188,8 @@ const UsingDSG = ({ data }) => {
               </div>
             </div>
             <div className="tour_detail_content_column">
-
-              <Tabs map={data.strapiRoutes.mapJson} chart={data.strapiRoutes.mapJson.features} length={data.strapiRoutes.RouteLength} points={data.strapiRoutes.route_path} />
+              
+              <Tabs map={data.strapiRoutes.mapJson} chart={data.strapiRoutes.mapJson.features} length={data.strapiRoutes.RouteLength} points={data.strapiRoutes.route_path}/>
             </div>
 
           </div>
