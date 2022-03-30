@@ -1,9 +1,9 @@
+
 .tour_detail_map {
-    position: sticky;
-    top     : 0;
-    left    : 0;
-    padding : 3rem;
-    height  : calc(100vh - 12rem);
+    display: block;
+    padding: 0rem;
+    height : 400px;
+    width  : 100%;
 
     >div {
         border-radius: 10px;
@@ -13,40 +13,7 @@
 
 .tour_detail_map_fullscreen {
     position: fixed;
-    top     : 0;
-    left    : 0;
-    right   : 0;
-    bottom  : 0;
-    padding : 0rem;
-    height  : 100%;
-    width   : 100%;
-    z-index : 10;
-
-    >div {
-        border-radius: 0px;
-        overflow     : hidden;
-    }
-}
-
-.tour_detail_map_mobile {
-    display : none;
-    position: fixed;
-    top     : 0;
-    left    : 0;
-    right   : 0;
-    bottom  : 0;
-    padding : 0rem;
-    height  : 100%;
-    width   : 100%;
-
-    >div {
-        border-radius: 0px;
-        overflow     : hidden;
-    }
-}
-
-.tour_detail_map_fullscreen {
-    position: fixed;
+    z-index : 1900;
     top     : 0;
     left    : 0;
     right   : 0;

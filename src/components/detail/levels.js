@@ -7,20 +7,25 @@ const Level = ({ data }) => {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <div className={detailStyles.tour_basic_item} onClick={() => setIsOpen(true)}>
-            <div  >
-                {data === 'easy' ? 'ľahká' : null}
-                {data === 'medium' ? 'stredná' : null}
-                {data === 'hard' ? 'ťažká' : null}
-                {data === 'ferrata' ? 'ferata' : null}
-                {data === 'guided' ? 's vodcom' : null}
+        <>
+            <div className={detailStyles.tour_basic_item} onClick={() => setIsOpen(true)}>
+                <div  >
+                    {data === 'easy' ? 'ľahká' : null}
+                    {data === 'medium' ? 'stredná' : null}
+                    {data === 'hard' ? 'ťažká' : null}
+                    {data === 'ferrata' ? 'ferata' : null}
+                    {data === 'guided' ? 's vodcom' : null}
+                </div>
+
             </div>
-            {isOpen &&
-                <Modal setIsOpen={setIsOpen}>
-                    <h3>nieco sadfsa</h3>
-                </Modal>
-            }
-        </div>
+            <AnimatePresence>
+                {isOpen &&
+                    <Modal setIsOpen={setIsOpen}>
+                        <h3>nieco sadfsa</h3>
+                    </Modal>
+                }
+            </AnimatePresence>
+        </>
     )
 }
 const Type = ({ data }) => {

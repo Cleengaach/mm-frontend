@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { MapContainer, TileLayer, GeoJSON } from 'react-leaflet'
 import * as mapStyles from "./mapWrap.module.scss";
+import { motion } from "framer-motion";
+import { NavContext } from "../../context/NavProvider";
 
 const MapWrap = ({ data }) => {
 
@@ -54,11 +56,22 @@ const MapWrap = ({ data }) => {
 
     const [isActive, setActive] = useState(false);
     const [map, setMap] = useState(null);
+    const { show, setShow } = useContext(NavContext);
 
     function FlyToButton(children) {
         const onClick = () => {
+            if (!isActive) {
+                map.scrollWheelZoom.enable();
+            } else {
+                map.scrollWheelZoom.disable();
+            }
             setActive(!isActive);
-            setTimeout(function () { map.invalidateSize() }, 1);
+            setShow(!show);
+            setTimeout(
+                function () {
+                    map.invalidateSize();
+
+                }, 1);
         };
         return (
             <button onClick={onClick} className={mapStyles.tour_detail_map_button} >
@@ -67,19 +80,21 @@ const MapWrap = ({ data }) => {
         );
     }
 
+
     return (
-        <div className={isActive ? mapStyles.tour_detail_map_fullscreen : mapStyles.tour_detail_map}>
+        <motion.div layout transition={100}
+            className={isActive ? mapStyles.tour_detail_map_fullscreen : mapStyles.tour_detail_map}>
             <FlyToButton text={isActive ? 'zatvorit' : 'zvacsit'} />
             {useHasMounted && (
-            <MapContainer center={[center.y, center.x]} zoom={zoom} scrollWheelZoom={true} style={{ height: "100%", width: "100%" }} whenCreated={setMap}>
-                <TileLayer
-                    attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                />
-                <GeoJSON key={newDate} data={data.features} />
-            </MapContainer>
+                <MapContainer center={[center.y, center.x]} zoom={zoom} scrollWheelZoom={false} style={{ height: "100%", width: "100%" }} whenCreated={setMap}>
+                    <TileLayer
+                        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    />
+                    <GeoJSON key={newDate} data={data.features} />
+                </MapContainer>
             )}
-        </div>
+        </motion.div>
     );
 
 };

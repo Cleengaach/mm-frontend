@@ -1,9 +1,14 @@
 body {
   --bg        : white;
-  --textNormal: #161616;
-  --textTitle : #161616;
+  --textNormal: #262626;
+  --textTitle : #262626;
   --textLink  : rgb(57, 136, 255);
-
+  --back-image: #161616;
+  --black-20  : rgba(22, 22, 22, 0.2);
+  --black-50  : rgba(22, 22, 22, 0.5);
+  --white-20  : rgba(255, 255, 255, 0.2);
+  --white-50  : rgba(255, 255, 255, 0.5);
+  font-size   : 15px;
 }
 
 body.dark {
@@ -28,8 +33,6 @@ body {
 
 
 main {
-  position : relative;
-  z-index  : 2;
   max-width: 1440px;
   margin   : auto;
 }
@@ -52,7 +55,15 @@ main {
   }
 }
 
+.lg-backdrop.in {
+  opacity: 0.85 !important;
+}
+
 @media only screen and (max-width: 1024px) {
+  body {
+    font-size: 13px;
+  }
+
   .tour-wrap {
     gap: 1rem;
   }

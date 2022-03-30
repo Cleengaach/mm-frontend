@@ -13,12 +13,6 @@ import 'lightgallery/css/lg-thumbnail.css';
 
 import "../assets/css/detail-gallery.scss";
 
-import { Navigation, Pagination } from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
 
 const Photogallery = ({ data, thumb }) => {
 
@@ -27,7 +21,7 @@ const Photogallery = ({ data, thumb }) => {
 
     var newArr = [];
     for (var i = 0; i < thumb.length; i++) {
-        newArr = newArr.concat({ 'src': thumb[i].localFile.publicURL, 'exThumb': thumb[i].localFile.publicURL,'thumb': thumb[i].localFile.publicURL, 'id': i });
+        newArr = newArr.concat({ 'src': thumb[i].localFile.publicURL, 'exThumb': thumb[i].localFile.publicURL, 'thumb': thumb[i].localFile.publicURL, 'id': i });
     }
     const [items, setItems] = useState(newArr);
 
@@ -41,6 +35,29 @@ const Photogallery = ({ data, thumb }) => {
         }
     }, []);
 
+    const Count = ({ loop, photo }) => {
+
+        const imgHide = data.length - 4;
+        let showMore = false;
+        if (imgHide > 0) {
+            showMore = true;
+        }
+
+        if (loop < 4) {
+            return (
+                <div className="tour_mapWrap_gallery_item" key={loop} onClick={openGallery(loop)}>
+                    {loop === 3 && showMore === true ? <span className="showMore">+{imgHide}</span> : null}
+                    <GatsbyImage
+                        image={photo.localFile.childImageSharp.gatsbyImageData}
+                        alt={photo.name}
+                        placeholder="blurred"
+                    />
+                </div>
+            );
+        } else {
+            return null;
+        }
+    }
 
     return (
         <div className="tour_mapWrap_gallery">
@@ -54,27 +71,12 @@ const Photogallery = ({ data, thumb }) => {
                 plugins={[lgThumbnail, lgZoom]}
             ></LightGallery>
 
-            <Swiper
-                slidesPerView={"auto"}
-                spaceBetween={3}
-                navigation={true}
-                pagination={{ clickable: true }}
-                modules={[Navigation, Pagination]}
-            >
-                {data.map((photo, i) => {
-                    return (
-                        <SwiperSlide key={i}>
-                                <GatsbyImage
-                                    onClick={openGallery(i)}
-                                    image={photo.localFile.childImageSharp.gatsbyImageData}
-                                    alt={photo.name}
-                                    placeholder="blurred"
-                                />
-                        </SwiperSlide>
-                    );
-                })}
-            </Swiper>
-         </div>
+            {data.map((photo, i) => {
+                return (
+                    <Count loop={i} key={i} photo={photo} />
+                );
+            })}
+        </div>
 
     );
 };

@@ -5,11 +5,10 @@ import ArticlesComponent from "../components/articles";
 import "../assets/css/main.scss";
 import "../assets/leaflet/leaflet.css";
 import { motion } from "framer-motion"
-import TopNav from "../components/topnav";
 
 const IndexPage = () => {
   const data = useStaticQuery(query);
-
+  
   return (
     <>
       <motion.main

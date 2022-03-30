@@ -1,9 +1,57 @@
 .tour_mapWrap_gallery {
-    margin   : 3rem auto;
-    width    : 100%;
-    max-width: 800px;
+    margin-left: auto;
+    display    : flex;
 
-    .swiper-slide {
-        width: fit-content;
+    &_item {
+        position: relative;
+        margin  : 0.25rem;
+    }
+
+    .showMore {
+        position        : absolute;
+        top             : 0;
+        left            : 0;
+        width           : 100px;
+        height          : 100px;
+        border-radius   : 6px;
+        overflow        : hidden;
+        display         : flex;
+        align-items     : center;
+        justify-content : center;
+        font-size       : 1.5rem;
+        z-index         : 2;
+        background-color: var(--black-50);
+    }
+
+    .gatsby-image-wrapper {
+        width        : 100px;
+        height       : 100px;
+        flex-shrink  : 0;
+        border-radius: 6px;
+        overflow     : hidden;
+        cursor       : pointer;
+
+        img {
+            object-position: center;
+        }
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .tour_mapWrap_gallery {
+        margin: auto;
+
+        .showMore {
+            position        : absolute;
+            top             : 0;
+            left            : 0;
+            width           : 70px;
+            height          : 70px;
+        }
+
+        .gatsby-image-wrapper {
+            width      : 70px;
+            height     : 70px;
+        }
     }
 }
