@@ -62,8 +62,10 @@ const MapWrap = ({ data }) => {
         const onClick = () => {
             if (!isActive) {
                 map.scrollWheelZoom.enable();
+                map.dragging.enable();
             } else {
                 map.scrollWheelZoom.disable();
+                map.dragging.disable();
             }
             setActive(!isActive);
             setShow(!show);
@@ -86,7 +88,7 @@ const MapWrap = ({ data }) => {
             className={isActive ? mapStyles.tour_detail_map_fullscreen : mapStyles.tour_detail_map}>
             <FlyToButton text={isActive ? 'zatvorit' : 'zvacsit'} />
             {useHasMounted && (
-                <MapContainer center={[center.y, center.x]} zoom={zoom} scrollWheelZoom={false} style={{ height: "100%", width: "100%" }} whenCreated={setMap}>
+                <MapContainer center={[center.y, center.x]} zoom={zoom} scrollWheelZoom={false} dragging={false} style={{ height: "100%", width: "100%" }} whenCreated={setMap}>
                     <TileLayer
                         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

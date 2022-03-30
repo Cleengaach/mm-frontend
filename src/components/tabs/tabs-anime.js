@@ -14,12 +14,10 @@ const variants = {
     };
   },
   center: {
-    zIndex: 1,
     opacity: 1
   },
   exit: (direction) => {
     return {
-      zIndex: 0,
       opacity: 0
     };
   }

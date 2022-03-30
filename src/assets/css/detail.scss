@@ -41,6 +41,8 @@
     grid-template-rows   : auto;
     grid-template-columns: 1fr 1fr;
     gap                  : 4rem;
+    position             : relative;
+    z-index              : 4;
 }
 
 
@@ -113,7 +115,7 @@
 
 
     &_back {
-        position: absolute;
+        position: absolute !important;
         z-index : -2;
         top     : 0;
         left    : 0;
@@ -167,13 +169,13 @@
 
         h1 {
             text-align: center;
-    
+
             b {
-                font-size  : 2rem;
+                font-size: 2rem;
             }
-    
+
             span {
-                font-size  : 1rem;
+                font-size: 1rem;
             }
         }
     }
