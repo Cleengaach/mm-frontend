@@ -59,13 +59,13 @@ module.exports = {
         short_name: `Milionmetrov`,
         start_url: `/`,
         background_color: `#161616`,
-        theme_color: `#ffffff`,
+        theme_color: `#006837`,
         display: `standalone`,
         icon: `src/assets/images/mm-icon.svg`, // This path is relative to the root of the site.
       },
-    }
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    `gatsby-plugin-offline`
   ],
 };
