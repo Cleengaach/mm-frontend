@@ -51,6 +51,18 @@ module.exports = {
           include: /\.inline\.svg$/
         }
       }
+    },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Milión metrov`,
+        short_name: `Milionmetrov`,
+        start_url: `/`,
+        background_color: `#161616`,
+        theme_color: `#ffffff`,
+        display: `standalone`,
+        icon: `src/assets/images/mm-icon.svg`, // This path is relative to the root of the site.
+      },
     }
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline

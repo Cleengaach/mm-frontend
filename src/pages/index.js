@@ -22,8 +22,11 @@ const IndexPage = () => {
           { opacity: 0, scale: 0.95 }
         }
         transition={{ duration: 0.3 }}
+        className="home_main"
       >
         <Seo />
+        <ArticlesComponent articles={data.allStrapiRoutes.edges} />
+        <ArticlesComponent articles={data.allStrapiRoutes.edges} />
         <ArticlesComponent articles={data.allStrapiRoutes.edges} />
       </motion.main>
     </>

@@ -69,6 +69,7 @@ const Photogallery = ({ data, thumb }) => {
                 speed={500}
                 thumbnail={true}
                 plugins={[lgThumbnail, lgZoom]}
+                mobileSettings={true}
             ></LightGallery>
 
             {data.map((photo, i) => {

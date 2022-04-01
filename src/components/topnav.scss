@@ -15,8 +15,13 @@
     transition      : all 350ms ease-out;
 
     &.hide {
-       transform: translateY(-100%);
+        transform : translateY(-100%);
         transition: all 150ms ease-out;
+    }
+
+    .logo {
+        height: 32px;
+        fill  : white;
     }
 }
 
@@ -73,6 +78,19 @@
 }
 
 
-@media only screen and (max-width: 1024px) {
-    
+@media only screen and (max-width: 768px) {
+    .nav {
+        padding: 0.75rem 0.25rem;
+        width  : calc(100% - 0.5rem);
+
+        .logo {
+            height: 24px;
+        }
+    }
+
+    .themeToggle {
+        height : 1.35rem;
+        width  : 1.35rem;
+        padding: 0.3rem;
+    }
 }

@@ -1,10 +1,10 @@
 import React, { useState, useContext } from "react";
 import { Link } from "gatsby";
-import { StaticImage } from "gatsby-plugin-image"
-import "./topnav.scss"; 
+import "./topnav.scss";
 import { MdLightMode, MdDarkMode } from 'react-icons/md';
 import { IconContext } from "react-icons";
 import { ThemeToggler } from 'gatsby-plugin-dark-mode'
+import Logo from '../assets/images/mm-logo.inline.svg'
 
 import { NavContext } from "../context/NavProvider";
 
@@ -22,7 +22,7 @@ const TopNav = () => {
       <Link
         to="/"
       >
-        <StaticImage src="../assets/images/logo-mm.svg" alt="Milión metrov" className="logo" />
+        <Logo className="logo" />
       </Link>
 
       <ThemeToggler >

@@ -1,20 +1,32 @@
 import React from "react";
 import Card from "./card";
+import "../assets/css/swiper-article.scss" 
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
 
 const Articles = ({ articles }) => {
 
   return (
-
-        <div className="tour-wrap">
-          {articles.map((article, i) => {
-            return (
-              <Card
-                article={article}
-                key={article.node.slug}
-              />
-            );
-          })}
-        </div>
+    <Swiper
+      spaceBetween={10}
+      slidesPerView={"auto"}
+      className="swiper_article"
+    >
+      {articles.map((article, i) => {
+        return (
+          <SwiperSlide>
+            <Card
+              article={article}
+              key={article.node.slug}
+            />
+          </SwiperSlide>
+        );
+      })}
+    </Swiper>
 
   );
 };
