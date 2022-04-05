@@ -8,7 +8,7 @@ import { motion } from "framer-motion"
 
 const IndexPage = () => {
   const data = useStaticQuery(query);
-  
+
   return (
     <>
       <motion.main
@@ -57,26 +57,10 @@ const query = graphql`
         localFile {
         childImageSharp {
         gatsbyImageData(
-          height: 400
+          width: 300
       placeholder: BLURRED
       formats: [AUTO, WEBP, AVIF]
       )
-              }
-            }
-          }
-        }
-      }
-    }
-      allStrapiArticle {
-        edges {
-        node {
-        strapiId
-          slug
-      title
-      image {
-        localFile {
-        childImageSharp {
-        gatsbyImageData(width: 660)
               }
             }
           }

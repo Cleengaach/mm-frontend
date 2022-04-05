@@ -59,7 +59,7 @@ module.exports = {
         short_name: `Milionmetrov`,
         start_url: `/`,
         background_color: `#161616`,
-        theme_color: `#006837`,
+        theme_color: `#161616`,
         display: `standalone`,
         icon: `src/assets/images/mm-icon.svg`, // This path is relative to the root of the site.
       },
