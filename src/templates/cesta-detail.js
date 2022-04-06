@@ -70,6 +70,7 @@ export const query = graphql`
           }
         }
       }
+
       photogallery {
         name
         localFile {
@@ -158,7 +159,7 @@ const UsingDSG = ({ data }) => {
             <GatsbyImage
               image={data.strapiRoutes.image.localFile.childImageSharp.gatsbyImageData}
               alt={`Hero image`}
-              className="tour_detail_header_back"
+              className="tour_detail_header_back--mobile"
               placeholder="blurred"
             />
           </div>

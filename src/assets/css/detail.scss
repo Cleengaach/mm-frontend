@@ -114,7 +114,8 @@
     }
 
 
-    &_back {
+    &_back--desktop,
+    &_back--mobile {
         position: absolute !important;
         z-index : -2;
         top     : 0;
@@ -131,6 +132,10 @@
                 object-position: center;
             }
         }
+    }
+
+    &_back--mobile {
+        display: none;
     }
 }
 
@@ -160,6 +165,16 @@
 
     .tour_mapWrap_desktop {
         display: none;
+    }
+
+    .tour_detail_header {
+        &_back--desktop {
+            display: none;
+        }
+
+        &_back--mobile {
+            display: block;
+        }
     }
 
     .tour_detail_header_title {
