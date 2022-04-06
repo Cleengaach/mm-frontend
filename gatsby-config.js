@@ -4,7 +4,7 @@ module.exports = {
     title: "mapProject",
   },
   plugins: [
-    `gatsby-plugin-react-helmet`, `gatsby-plugin-sass`, 'gatsby-plugin-dark-mode', 
+    `gatsby-plugin-react-helmet`, `gatsby-plugin-sass`, 'gatsby-plugin-dark-mode',
     `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -14,9 +14,11 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-source-strapi", 
+      resolve: "gatsby-source-strapi",
       options: {
-        apiURL: process.env.API_URL,
+        apiURL: process.env.DEPLOY_URL
+          ? "https://YOUR-APP-URL.herokuapp.com"
+          : "http://localhost:1337",
         collectionTypes: ["article", "routes", "points"],
         singleTypes: [`homepage`, `global`],
         queryLimit: 1000,

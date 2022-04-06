@@ -70,6 +70,14 @@ export const query = graphql`
           }
         }
       }
+      HeroImage {
+        localFile {
+          publicURL
+          childImageSharp {
+            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
+          }
+        }
+      }
 
       photogallery {
         name
@@ -162,6 +170,12 @@ const UsingDSG = ({ data }) => {
               className="tour_detail_header_back--mobile"
               placeholder="blurred"
             />
+            {data.strapiRoutes.HeroImage ? <GatsbyImage
+              image={data.strapiRoutes.HeroImage.localFile.childImageSharp.gatsbyImageData}
+              alt={`Hero image`}
+              className="tour_detail_header_back--desktop"
+              placeholder="blurred"
+            /> : null }
           </div>
           <div className="tour_detail_content">
 
@@ -189,8 +203,8 @@ const UsingDSG = ({ data }) => {
               </div>
             </div>
             <div className="tour_detail_content_column">
-              
-              <Tabs map={data.strapiRoutes.mapJson} chart={data.strapiRoutes.mapJson.features} length={data.strapiRoutes.RouteLength} points={data.strapiRoutes.route_path}/>
+
+              <Tabs map={data.strapiRoutes.mapJson} chart={data.strapiRoutes.mapJson.features} length={data.strapiRoutes.RouteLength} points={data.strapiRoutes.route_path} />
             </div>
 
           </div>
