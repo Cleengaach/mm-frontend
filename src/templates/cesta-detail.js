@@ -55,6 +55,9 @@ export const query = graphql`
       mountain {
         title
       }
+      regions {
+        title
+      }
       title
       subtitle
       stupanie
@@ -108,6 +111,7 @@ export const query = graphql`
           subtitle
           TotalTime
           RouteLength
+          level
           mountain {
             title
           }
@@ -147,7 +151,7 @@ const UsingDSG = ({ data }) => {
         exit={
           { opacity: 0 }
         }
-        transition={{ duration: 0.3 }}
+        transition={{ duration: 0.25 }}
       >
         <div className="tour_detail">
           <div className="tour_detail_header">
@@ -175,7 +179,7 @@ const UsingDSG = ({ data }) => {
               alt={`Hero image`}
               className="tour_detail_header_back--desktop"
               placeholder="blurred"
-            /> : null }
+            /> : null}
           </div>
           <div className="tour_detail_content">
 
@@ -204,16 +208,12 @@ const UsingDSG = ({ data }) => {
             </div>
             <div className="tour_detail_content_column">
 
-              <Tabs map={data.strapiRoutes.mapJson} chart={data.strapiRoutes.mapJson.features} length={data.strapiRoutes.RouteLength} points={data.strapiRoutes.route_path} />
+              <Tabs mountain={data.strapiRoutes.mountain} region={data.strapiRoutes.regions} map={data.strapiRoutes.mapJson} chart={data.strapiRoutes.mapJson.features} length={data.strapiRoutes.RouteLength} points={data.strapiRoutes.route_path} />
             </div>
-
           </div>
-
         </div>
-        <div>
-
+        <div className="tour_tips">
           <ArticlesComponent articles={data.allStrapiRoutes.edges} />
-
         </div>
       </motion.main>
     </>

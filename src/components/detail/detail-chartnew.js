@@ -32,6 +32,7 @@ const DetailChartnew = ({ children, length }) => {
         vyska = element.geometry.coordinates;
     });
     var vyskaItem = [];
+    var vyskaPoints = [];
 
     var factor = 2;
     if (vyska.length > 10000) {
@@ -53,6 +54,15 @@ const DetailChartnew = ({ children, length }) => {
             vyskaItem.push(element[2])
         }
     });
+    vyska.forEach((element, i) => {
+        vyskaPoints.push(element[2])
+    });
+    const filtered = vyskaPoints.filter(function (x) {
+        return x !== undefined;
+    });
+
+    const max = Math.round(Math.max(...filtered));
+    const min = Math.round(Math.min(...filtered));
 
 
     //labels
@@ -117,6 +127,16 @@ const DetailChartnew = ({ children, length }) => {
                     )
                 })}
             </ul>
+            <div className='chart-info'>
+                <div className='chart-info-item'>
+                    <small>najnižší bod</small>
+                    <b>{min}</b><span> m.n.m.</span>
+                </div>
+                <div className='chart-info-item'>
+                    <small>najvyšší bod</small>
+                    <b>{max}</b><span> m.n.m.</span>
+                </div>
+            </div>
         </div >
     );
 };

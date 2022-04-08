@@ -2,34 +2,62 @@ import React from "react";
 import { GatsbyImage } from "gatsby-plugin-image";
 import * as cardStyles from "./card.module.scss";
 import { Link } from "gatsby";
-import { motion } from "framer-motion";
+import * as detailStyles from "./detail/detail-item.module.scss";
+import Triangel from '../assets/images/level.inline.svg'
 
-
-export const control = ({ triggerName }) => {
-  console.log(triggerName);
+const Easy = () => {
+  return (
+    <div>
+      <Triangel className={detailStyles.tour_level_easy} />
+      <small>ľahká</small>
+    </div>
+  )
+}
+const Medium = () => {
+  return (
+    <div>
+      <Triangel className={detailStyles.tour_level_medium} />
+      <small>stredná</small>
+    </div>
+  )
+}
+const Hard = () => {
+  return (
+    <div>
+      <Triangel className={detailStyles.tour_level_hard} />
+      <small>ťažká</small>
+    </div>
+  )
+}
+const Ferrata = () => {
+  return (
+    <div>
+      <Triangel className={detailStyles.tour_level_hard} />
+      <small>ferata</small>
+    </div>
+  )
+}
+const Guided = () => {
+  return (
+    <div>
+      <Triangel className={detailStyles.tour_level_hard} />
+      <small>s vodcom</small>
+    </div>
+  )
+}
+const Level = ({level}) => {
+  return (
+    <>
+      {level === 'easy' ? <Easy /> : null}
+      {level === 'medium' ? <Medium /> : null}
+      {level === 'hard' ? <Hard /> : null}
+      {level === 'ferrata' ? <Ferrata /> : null}
+      {level === 'guided' ? <Guided /> : null}
+    </>
+  )
 }
 
-const Card = ({ props, article }) => {
-  var level = '';
-  switch (article.node.level) {
-    case 'easy':
-      level = 'ľahká';
-      break;
-    case 'medium':
-      level = 'stredná';
-      break;
-    case 'hard':
-      level = 'ťažka';
-      break;
-    case 'ferrata':
-      level = 'ferrata';
-      break;
-    case 'guided':
-      level = 's vodcom';
-      break;
-  }
-
-
+const Card = ({ article }) => {
   return (
     <Link
       to={`/cesta/${article.node.slug}`}
@@ -39,7 +67,7 @@ const Card = ({ props, article }) => {
 
       <div className={cardStyles.tourLevel}>
         <span>
-          {level}
+         <Level level={article.node.level} />
         </span>
       </div>
       <div className={cardStyles.tourText}>
@@ -48,7 +76,7 @@ const Card = ({ props, article }) => {
             {article.node.mountain.title}
           </small>
           <b>
-            {article.node.title} 
+            {article.node.title}
           </b>
           <span id="subtitle">
             {article.node.subtitle}

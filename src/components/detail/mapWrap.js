@@ -4,7 +4,7 @@ import * as mapStyles from "./mapWrap.module.scss";
 import { motion } from "framer-motion";
 import { NavContext } from "../../context/NavProvider";
 
-const MapWrap = ({ data }) => {
+const MapWrap = ({ data, region, mountain }) => {
 
     function useHasMounted() {
         const [hasMounted, setHasMounted] = React.useState(false);
@@ -82,21 +82,40 @@ const MapWrap = ({ data }) => {
         );
     }
 
-
     return (
-        <motion.div layout transition={100}
-            className={isActive ? mapStyles.tour_detail_map_fullscreen : mapStyles.tour_detail_map}>
-            <FlyToButton text={isActive ? 'zatvorit' : 'zvacsit'} />
-            {useHasMounted && (
-                <MapContainer center={[center.y, center.x]} zoom={zoom} scrollWheelZoom={false} dragging={false} style={{ height: "100%", width: "100%" }} whenCreated={setMap}>
-                    <TileLayer
-                        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                    />
-                    <GeoJSON key={newDate} data={data.features} />
-                </MapContainer>
-            )}
-        </motion.div>
+        <>
+            <motion.div layout transition={100}
+                className={isActive ? mapStyles.tour_detail_map_fullscreen : mapStyles.tour_detail_map}>
+                <FlyToButton text={isActive ? 'zatvorit' : 'zvacsit'} />
+                {useHasMounted && (
+                    <MapContainer center={[center.y, center.x]} zoom={zoom} scrollWheelZoom={false} dragging={false} style={{ height: "100%", width: "100%" }} whenCreated={setMap}>
+                        <TileLayer
+                            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                        />
+                        <GeoJSON key={newDate} data={data.features} />
+                    </MapContainer>
+                )}
+            </motion.div>
+            <div className={mapStyles.tour_detail_region_wrap}>
+                {region.length > 0 ? <div className={mapStyles.tour_detail_region}>
+                    <small>kraj</small>
+                    {region.map((kraj, i) => {
+                        return (
+                            <b key={i}>
+                                {kraj.title}
+                            </b>
+                        )
+                    })}
+                </div> : null}
+                {mountain && <div className={mapStyles.tour_detail_region}>
+                    <small>pohorie</small>
+                    <b>
+                        {mountain.title}
+                    </b>
+                </div>}
+            </div>
+        </>
     );
 
 };

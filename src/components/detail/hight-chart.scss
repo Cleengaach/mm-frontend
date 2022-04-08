@@ -1,9 +1,9 @@
 #hight-chart {
-    width  : 100%;
+    width    : 100%;
     max-width: 800px;
-    height : 250px;
-    margin : 3rem auto;
-    --color: linear-gradient(rgb(255, 166, 0), rgb(255, 208, 0));
+    height   : 250px;
+    margin   : 3rem auto;
+    --color  : linear-gradient(rgb(255, 166, 0), rgb(255, 208, 0));
 
     --secondary-axes-color: rgba(255, 255, 255, 0.5);
     --secondary-axes-style: solid;
@@ -48,6 +48,29 @@
             &:nth-child(5) {
                 left     : 100%;
                 transform: translateX(-100%);
+            }
+        }
+    }
+
+    .chart-info {
+        display   : flex;
+        margin-top: 2rem;
+
+        &-item {
+            margin-right: 8rem;
+
+            small {
+                opacity: 0.75;
+                display    : block;
+            }
+
+            b {
+                line-height: 1.7;
+                font-size  : 1.05rem;
+                font-weight: 500;
+            }
+            span {
+                font-size: 0.85rem;
             }
         }
     }

@@ -12,6 +12,13 @@ exports.createPages = async function ({ actions, graphql }) {
           }
         }
       }
+      allStrapiPoints {
+        edges {
+          node {
+            slug
+          }
+        }
+      }
     }
   `)
   data.allStrapiRoutes.edges.forEach(edge => {
@@ -22,10 +29,21 @@ exports.createPages = async function ({ actions, graphql }) {
     actions.createPage({
       path: '/cesta/' + slug,
       component: path.resolve('./src/templates/cesta-detail.js'),
-      context: { 
+      context: {
         slug: slug,
         RouteLengthMax: RouteLengthMax,
         RouteLengthMin: RouteLengthMin
+      },
+    })
+  })
+
+  data.allStrapiPoints.edges.forEach(edge => {
+    const slug = edge.node.slug
+    actions.createPage({
+      path: '/bod/' + slug,
+      component: path.resolve('./src/templates/bod-detail.js'),
+      context: {
+        slug: slug
       },
     })
   })

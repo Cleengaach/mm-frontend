@@ -16,7 +16,7 @@ const variants = {
   center: {
     opacity: 1
   },
-  exit: (direction) => {
+  exit: () => {
     return {
       opacity: 0
     };
@@ -29,7 +29,7 @@ const tabs = [
   { title: "Body", body: "points" }
 ];
 
-export const Tabs = ({map,chart, length, points}) => {
+export const Tabs = ({mountain, region, map, chart, length, points}) => {
   const [[page, direction], setPage] = useState([0, 0]);
 
   // We only have 3 images, but we paginate them absolutely (ie 1, 2, 3, 4, 5...) and
@@ -79,7 +79,7 @@ export const Tabs = ({map,chart, length, points}) => {
               opacity: { duration: 0.2 }
             }}
             >
-            {tabs[page].body === "map" ? <MapWrap data={map}/> : null}
+            {tabs[page].body === "map" ? <MapWrap data={map} region={region} mountain={mountain}/> : null}
             {tabs[page].body === "chart" ? <DetailChartnew children={chart} length={length} /> : null}
             {tabs[page].body === "points" ? <DetailPoints data={points}/> : null}
           </motion.section>

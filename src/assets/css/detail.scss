@@ -139,6 +139,16 @@
     }
 }
 
+.tour_tips {
+    padding              : 1rem;
+    max-width            : 1200px;
+    margin               : auto;
+    margin-top           : 3rem;
+    gap                  : 4rem;
+    position             : relative;
+    z-index              : 4;
+}
+
 @media only screen and (max-width: 1300px) {
     .tour_detail_header_title {
         max-width: 1024px;

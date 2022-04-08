@@ -111,10 +111,53 @@
   right           : 1rem;
   background-color: rgba(0, 0, 0, 0.3);
   backdrop-filter : blur(2px);
-  border-radius   : 3px;
-  padding         : 0.25rem;
+  border-radius   : 9px;
   z-index         : 3;
   font-size       : 0.6rem;
-  font-weight     : 600;
+  width           : 2.65rem;
+  height          : 2.65rem;
+  display         : flex;
+  align-items     : center;
+  justify-content : center;
+
+  div {
+    text-align: center;
+
+    svg {
+      height: 20px;
+      width : 20px;
+    }
+
+    small {
+      margin     : auto;
+      margin-top : 0.15rem;
+      display    : block;
+      font-weight: 400;
+      opacity    : 0.75;
+    }
+  }
 }
 
+@media only screen and (max-width: 768px) {
+  .tourLevel {
+    top            : 0.5rem;
+    right          : 0.5rem;
+    border-radius  : 7px;
+    font-size      : 0.6rem;
+    width          : 2rem;
+    height         : 2rem;
+
+    div {
+      text-align: center;
+
+      svg {
+        height: 18px;
+        width : 18px;
+      }
+
+      small {
+        display: none;
+      }
+    }
+  }
+}

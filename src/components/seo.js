@@ -87,19 +87,6 @@ const SEO = ({ seo = {} }) => {
           href: "https://fonts.googleapis.com/css2?family=Epilogue:wght@300;400;500;600;700;800&display=swap",
         }
       ]}
-      script={[
-        {
-          src:
-            "https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit.min.js",
-        },
-        {
-          src:
-            "https://cdn.jsdelivr.net/npm/uikit@3.2.3/dist/js/uikit-icons.min.js",
-        },
-        {
-          src: "https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit.js",
-        },
-      ]}
       meta={metaTags}
     />
   );

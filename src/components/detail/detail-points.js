@@ -1,8 +1,9 @@
 import React from "react";
 import "../../assets/css/point-slider.scss";
 import { GatsbyImage } from "gatsby-plugin-image";
+import { Link } from "gatsby";
 
-import { FreeMode, Pagination } from 'swiper';
+import { Pagination, Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -14,37 +15,40 @@ const DetailPoints = ({ data }) => {
     return (
         <>
             <Swiper
-                slidesPerView={3}
-                freeMode={true}
+                slidesPerView={"auto"}
+                spaceBetween={10}
                 pagination={{
                     clickable: true,
                 }}
-                modules={[FreeMode, Pagination]}
+                navigation={true}
+                modules={[Pagination, Navigation]}
                 className="point-slider-wrap"
             >
                 {data.map((point, i) => {
                     return (
                         <SwiperSlide className="point-slider-item" key={i} style={{ zIndex: data.length - i }}>
-                            <div className="point-slider-image">
-                                <GatsbyImage
-                                    className="point-slider-image-inner"
-                                    image={point.point.image.localFile.childImageSharp.gatsbyImageData}
-                                    alt='asdfsa'
-                                    placeholder="blurred"
-                                />
-                            </div>
-                            <div className="point-slider-text">
-                                {point.point.title}
-
-                            </div>
-                            {(data.length - 1) !== i ?
-                                <div className="point-slider-time">
-                                    <span className={point.farba}>
-                                        {point.time.slice(0, 5)}
-                                    </span>
+                            <Link to={`/bod/${point.point.slug}`} className="point-slider-link">
+                                <div className="point-slider-image">
+                                    <GatsbyImage
+                                        className="point-slider-image-inner"
+                                        image={point.point.image.localFile.childImageSharp.gatsbyImageData}
+                                        alt='asdfsa'
+                                        placeholder="blurred"
+                                    />
                                 </div>
-                                : null}
-                            <div className="point-slider-overlay"></div>
+                                <div className="point-slider-text">
+                                    {point.point.title}
+
+                                </div>
+                                {(data.length - 1) !== i ?
+                                    <div className="point-slider-time">
+                                        <span className={point.farba}>
+                                            {point.time.slice(0, 5)}
+                                        </span>
+                                    </div>
+                                    : null}
+                                <div className="point-slider-overlay"></div>
+                            </Link>
                         </SwiperSlide>
                     );
                 })}

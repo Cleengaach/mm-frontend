@@ -2,7 +2,10 @@
     margin          : 0.5rem;
     background-color: rgba(255, 255, 255, 0.05);
     border-radius   : 6px;
-    padding         : 2rem;
+    height          : 100px;
+    display         : flex;
+    align-items     : center;
+    justify-content : center;
 
     small {
         display    : block;
@@ -20,9 +23,42 @@
     }
 
     span {
-        font-size: 2rem 1rem;
+        font-size: 1rem;
     }
 }
+
+.tour_basic_item_icon {
+    display: block;
+
+    span {
+        opacity: 0.75;
+    }
+
+    svg {
+        height: 30px;
+        width : 30px;
+        margin: 0.25rem;
+    }
+}
+
+.tour_level_easy {
+    path {
+        fill: grey;
+    }
+}
+
+.tour_level_medium {
+    path {
+        fill: orange;
+    }
+}
+
+.tour_level_hard {
+    path {
+        fill: black;
+    }
+}
+
 
 @media only screen and (max-width: 1024px) {
     .tour_basic_item {
@@ -32,7 +68,7 @@
         padding         : 0.9rem;
 
         small {
-            font-size  : 0.65rem;
+            font-size: 0.65rem;
         }
 
         b {
