@@ -138,14 +138,34 @@
   }
 }
 
+@media only screen and (max-width: 1024px) {
+  .tourTitle {
+    margin     : 0.5rem 0 0rem 0;
+    font-size  : 1.3rem;
+    line-height: 1.15;
+  }
+
+  .tourText small {
+    font-size  : 0.75rem;
+    opacity    : 0.75;
+    font-weight: 400;
+  }
+
+  .tourText span {
+    font-size     : 0.85rem;
+    line-height   : 1.25;
+    letter-spacing: 0.025rem;
+  }
+}
+
 @media only screen and (max-width: 768px) {
   .tourLevel {
-    top            : 0.5rem;
-    right          : 0.5rem;
-    border-radius  : 7px;
-    font-size      : 0.6rem;
-    width          : 2rem;
-    height         : 2rem;
+    top          : 0.5rem;
+    right        : 0.5rem;
+    border-radius: 7px;
+    font-size    : 0.6rem;
+    width        : 2rem;
+    height       : 2rem;
 
     div {
       text-align: center;
@@ -159,5 +179,21 @@
         display: none;
       }
     }
+  }
+
+  .tourTitle {
+    margin     : 0.5rem 0 0.05rem 0;
+    font-size  : 1.2rem;
+    line-height: 1.18;
+  }
+
+  .tourText small {
+    display: none;
+  }
+
+  .tourText span {
+    font-size     : 0.85rem;
+    line-height   : 1.25;
+    letter-spacing: 0.025rem;
   }
 }

@@ -184,6 +184,9 @@ const UsingDSG = ({ data }) => {
           <div className="tour_detail_content">
 
             <div className="tour_detail_content_column">
+              <h4>
+                Základné informácie
+              </h4>
               <div className="tour_basic">
 
                 <div className="tour_basic--collumn">

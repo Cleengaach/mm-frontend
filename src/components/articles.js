@@ -18,7 +18,7 @@ const Articles = ({ articles }) => {
     >
       {articles.map((article, i) => {
         return (
-          <SwiperSlide>
+          <SwiperSlide key={i}>
             <Card
               article={article}
               key={article.node.slug}
