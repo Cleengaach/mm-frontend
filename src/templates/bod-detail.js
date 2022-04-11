@@ -183,7 +183,7 @@ const UsingDSG = ({ data }) => {
                 Poloha bodu
               </h4>
               <div className="tour_detail_mapPoint">
-                <MapPoint north={data.strapiPoints.north} east={data.strapiPoints.east} mountain={data.strapiPoints.mountain} />
+                
               </div>
             </div>
           </div>
