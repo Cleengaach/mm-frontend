@@ -95,6 +95,7 @@
     position        : relative;
     z-index         : 1;
     width           : 100%;
+    min-height      : 300px;
     height          : 60vh;
     overflow        : hidden;
     background-color: var(--back-image);
@@ -120,7 +121,8 @@
     }
 
     &.point {
-        height: 30vh;
+        min-height: 200px;
+        height    : 30vh;
 
         &::after {
             opacity: 1;
