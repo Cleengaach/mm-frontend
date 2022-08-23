@@ -1,16 +1,14 @@
 import React from 'react';
-import { AnimatePresence } from 'framer-motion';
-import TopNav from "./src/components/topnav";
 import NavProvider from './src/context/NavProvider';
+import Layout from "./src/components/layout";
+import "@fontsource/roboto-condensed"; // Defaults to weight 400.
+import "@fontsource/roboto"
 
 export const wrapRootElement = NavProvider
-export const wrapPageElement = ({ element }) => (
-  <>
-    <TopNav />
-    <AnimatePresence exitBeforeEnter>
-      {element}
-    </AnimatePresence>
-  </>
+export const wrapPageElement = ({ element, props }) => (
+  <Layout {...props}>
+    {element}
+  </Layout>
 );
 
 

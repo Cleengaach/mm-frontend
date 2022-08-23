@@ -1,17 +1,14 @@
 .tour_basic_item {
-    margin          : 0.5rem;
-    background-color: rgba(255, 255, 255, 0.05);
     border-radius   : 6px;
-    height          : 100px;
     display         : flex;
     align-items     : center;
-    justify-content : center;
+    justify-content : flex-start;
 
     small {
         display    : block;
         margin     : 0 auto 0.5rem auto;
         font-size  : 0.75rem;
-        opacity    : 0.75;
+        opacity    : 0.5;
         font-weight: 300;
     }
 
@@ -43,44 +40,29 @@
 
 .tour_level_easy {
     path {
-        fill: grey;
+        fill: var(--green);
     }
 }
 
 .tour_level_medium {
     path {
-        fill: orange;
+        fill: var(--orange);
     }
 }
 
 .tour_level_hard {
     path {
-        fill: black;
+        fill: var(--red);
+    }
+}
+.tour_level_alert {
+    path {
+        fill: var(--black);
     }
 }
 
 
-@media only screen and (max-width: 1024px) {
-    .tour_basic_item {
-        margin          : 0.25rem;
-        background-color: rgba(255, 255, 255, 0.05);
-        border-radius   : 6px;
-        padding         : 0.9rem;
 
-        small {
-            font-size: 0.65rem;
-        }
-
-        b {
-            margin-right: 0.05rem;
-            font-size   : 1rem;
-        }
-
-        span {
-            font-size: 0.85rem;
-        }
-    }
-}
 
 @media only screen and (max-width: 1024px) {
     .tour_basic_item {

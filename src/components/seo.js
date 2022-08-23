@@ -84,7 +84,7 @@ const SEO = ({ seo = {} }) => {
         },
         {
           rel: "stylesheet",
-          href: "https://fonts.googleapis.com/css2?family=Epilogue:wght@300;400;500;600;700;800&display=swap",
+          href: "https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap",
         }
       ]}
       meta={metaTags}

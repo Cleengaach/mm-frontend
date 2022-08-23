@@ -1,9 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import "../assets/css/detail.scss";
-import ArticlesComponent from "../components/articles";
 import Photogallery from "../components/photogallery";
-import { motion } from "framer-motion"
 import { GatsbyImage } from "gatsby-plugin-image";
 import MapPoint from "../components/detail/mapPoint"
 import NextPoint from "../components/detail/nextPoint";
@@ -111,19 +109,8 @@ export const query = graphql`
 const UsingDSG = ({ data }) => {
 
   return (
-    <>
-      <motion.main
+      <section
         className="tour_detail_main"
-        initial={{
-          opacity: 0
-        }}
-        animate={
-          { opacity: 1 }
-        }
-        exit={
-          { opacity: 0 }
-        }
-        transition={{ duration: 0.25 }}
       >
         <div className="tour_detail">
           <div className="tour_detail_header point">
@@ -191,8 +178,7 @@ const UsingDSG = ({ data }) => {
         <div className="tour_tips">
 
         </div>
-      </motion.main>
-    </>
+      </section>
   )
 }
 

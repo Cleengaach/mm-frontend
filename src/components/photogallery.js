@@ -12,6 +12,7 @@ import 'lightgallery/scss/lg-zoom.scss';
 import 'lightgallery/css/lg-thumbnail.css';
 
 import "../assets/css/detail-gallery.scss";
+import { BsImages } from "react-icons/bs";
 
 
 const Photogallery = ({ data, thumb }) => {
@@ -37,16 +38,16 @@ const Photogallery = ({ data, thumb }) => {
 
     const Count = ({ loop, photo }) => {
 
-        const imgHide = data.length - 4;
+        const imgHide = data.length - 7;
         let showMore = false;
         if (imgHide > 0) {
             showMore = true;
         }
 
-        if (loop < 4) {
+        if (loop < 7) {
             return (
                 <div className="tour_mapWrap_gallery_item" key={loop} onClick={openGallery(loop)}>
-                    {loop === 3 && showMore === true ? <span className="showMore">+{imgHide}</span> : null}
+                    {loop === 6 && showMore === true ? <span className="showMore"><BsImages /></span> : null}
                     <GatsbyImage
                         image={photo.localFile.childImageSharp.gatsbyImageData}
                         alt={photo.name}

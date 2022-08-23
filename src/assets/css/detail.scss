@@ -1,32 +1,41 @@
 .tour_detail {
-    display: block;
-    width  : 100%;
+    width                : 100%;
+    position             : relative;
+    gap                  : 10px;
+    display              : grid;
+    align-items          : flex-start;
+    grid-template-columns: 1fr 1fr;
+
+    &--map {
+        gap                  : 0;
+        grid-template-columns: 0px 1fr;
+    }
 
     h1 {
         text-align: left;
 
         b {
+            color      : var(--textTitle);
             display    : block;
             width      : 100%;
-            font-size  : 3rem;
+            font-size  : 2.3rem;
             font-weight: 600;
         }
 
         span {
-            font-size  : 1.4rem;
+            font-size  : 1.35rem;
             font-weight: 400;
-            opacity    : 0.75;
         }
     }
 
-    h2 {
-        color      : #FFC01E;
-        font-size  : 1rem;
-        font-weight: 400;
-        text-align : center;
-        margin-top : 3rem;
-    }
 }
+
+.tour_detail_content_column {
+    width : clamp(520px, 50vw, 750px);
+    margin: 0 2rem 0 auto;
+}
+
+
 
 .tour_detail_main {
     max-width: 100%;
@@ -44,24 +53,43 @@
     position             : relative;
     z-index              : 4;
 
+    &_column {
+        padding-bottom: 2rem;
+        border-bottom : 1px dashed var(--borderColor);
 
-    h4 {
-        font-weight: 400;
-        opacity    : 0.5;
+        h4 {
+            font-size: 1.2rem;
+        }
     }
 }
 
+.tour_detail_content_map {
+    height        : 100vh;
+    grid-area     : 1 / 2 / span 6 / span 1;
+    position      : sticky;
+    top           : 0;
+    left          : 0;
+    width         : 100%;
+    z-index       : 100;
+    border-bottom : 0;
+    padding-bottom: 0;
+
+    .leaflet-left .leaflet-control {
+        margin-top: 100px;
+    }
+
+    h4 {
+        display: none;
+    }
+}
 
 .tour_basic {
     display              : grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(4, 1fr);
+    gap                  : 1rem;
 }
 
-.tour_basic--collumn {
-    text-align       : center;
-    display          : grid;
-    grid-auto-columns: 1fr;
-}
+
 
 .tour_mapWrap {
     display: block;
@@ -94,48 +122,30 @@
     align-items     : flex-end;
     position        : relative;
     z-index         : 1;
-    width           : 100%;
-    min-height      : 300px;
-    height          : 60vh;
     overflow        : hidden;
     background-color: var(--back-image);
+    padding-top     : 100px;
 
     &_title {
-        width          : 1200px;
-        margin         : auto;
-        margin-bottom  : 2rem;
-        display        : flex;
-        justify-content: space-between;
+        width                : 100%;
+        margin               : auto;
+        display              : grid;
+        grid-template-columns: 1fr;
+        justify-content      : space-between;
     }
 
     &::after {
         content         : "";
         position        : absolute;
         z-index         : -1;
-        top             : 50%;
+        top             : 30%;
         left            : 0;
         bottom          : 0;
         right           : 0;
-        opacity         : 0.75;
+        opacity         : 1;
         background-image: linear-gradient(to top, rgba(22, 22, 22, 1), rgba(22, 22, 22, 0));
     }
 
-    &.point {
-        min-height: 200px;
-        height    : 30vh;
-
-        &::after {
-            opacity: 1;
-        }
-
-        .tour_detail_header_back--mobile,
-        .tour_detail_header_back--desktop {
-            opacity: 0.3;
-        }
-    }
-
-
-    &_back--desktop,
     &_back--mobile {
         position  : absolute !important;
         z-index   : -2;
@@ -168,6 +178,34 @@
         background-image: rgba(0, 0, 0, 0.5);
     }
 
+    &_info {
+        display    : flex;
+        margin     : 1rem 0;
+        gap        : 2.5rem;
+        align-items: center;
+        font-size  : 1rem;
+
+        div {
+            display    : flex;
+            align-items: center;
+            gap        : 0.75rem;
+
+            icon,
+            triangle {
+                display         : grid;
+                place-items     : center;
+                width           : 1.7rem;
+                height          : 1.7rem;
+                border-radius   : 1.7rem;
+                background-color: var(--white-10);
+            }
+
+            span {
+                font-size: 1rem;
+            }
+        }
+    }
+
 }
 
 .tour_detail_mapPoint {
@@ -184,6 +222,28 @@
     z-index   : 1;
 }
 
+.tour_detail_tips {
+    display              : grid;
+    gap                  : 1rem;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+
+.nextPoints {
+    margin-bottom: 3rem;
+}
+
+@media only screen and (max-width: 1640px) {
+    .tour_detail_content_column {
+        width : clamp(520px, 50vw, 750px);
+        margin: 0 2rem;
+    }
+
+    .tour_detail_content_map {
+        margin: 0;
+    }
+}
+
 @media only screen and (max-width: 1300px) {
     .tour_detail_header_title {
         max-width: 1024px;
@@ -192,31 +252,29 @@
     .tour_detail_content {
         max-width: 1024px;
     }
+
+    .tour_detail_tips {
+        grid-template-columns: 1fr 1fr;
+    }
 }
 
-.nextPoints {
-    margin-bottom: 3rem;
+@media only screen and (max-width: 1200px) {
+    .tour_detail_content_column {
+        width: 50vw;
+    }
+
 }
 
-@media only screen and (max-width: 1024px) {
-    .tour_detail {
-        display              : grid;
-        width                : 100%;
-        grid-template-columns: 100%;
-        gap                  : 0rem;
-        position             : relative;
-        z-index              : 2;
-    }
-
-    .tour_mapWrap_mobile {
-        display: block;
-    }
-
-    .tour_mapWrap_desktop {
-        display: none;
+@media only screen and (max-width: 768px) {
+    .tour_detail_content_column {
+        width  : calc(100vw - 1rem);
+        margin : 0;
+        padding: 0.5rem;
     }
 
     .tour_detail_header {
+        padding-top: 40vh;
+
         &_back--desktop {
             display: none;
         }
@@ -244,10 +302,37 @@
         }
     }
 
-    .tour_detail_content {
-        width                : calc(100% - 2rem);
-        grid-template-rows   : auto;
+    .tour_detail_header_info {
+        justify-content: center;
+    }
+
+
+    .tour_detail {
         grid-template-columns: 1fr;
-        gap                  : 2rem;
+    }
+
+    .tour_detail_content_map {
+        height       : auto;
+        grid-area    : auto;
+        position     : relative;
+        top          : 0;
+        left         : 0;
+        margin       : 0px;
+        border-bottom: 1px dashed var(--borderColor);
+
+        .leaflet-left .leaflet-control {
+            margin-top: 1rem;
+        }
+    }
+
+    .tour_detail_tips {
+        gap                  : 0.5rem;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media only screen and (max-width: 560px) {
+    .tour_detail_tips {
+        grid-template-columns: 1fr 1fr;
     }
 }

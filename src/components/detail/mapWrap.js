@@ -1,7 +1,6 @@
 import React, { useState, useContext } from "react";
 import { MapContainer, TileLayer, GeoJSON } from 'react-leaflet'
 import * as mapStyles from "./mapWrap.module.scss";
-import { motion } from "framer-motion";
 import { NavContext } from "../../context/NavProvider";
 import { BsArrowsFullscreen, BsXSquare } from "react-icons/bs"
 
@@ -88,8 +87,8 @@ const MapWrap = ({ data, region, mountain }) => {
 
     return (
         <>
-            <motion.div layout transition={100}
-                className={isActive ? mapStyles.tour_detail_map_fullscreen : mapStyles.tour_detail_map}>
+            <div 
+                className={mapStyles.tour_detail_map}>
                 <FlyToButton text={isActive ? 'zatvorit' : 'zvacsit'} />
                 {useHasMounted && (
                     <MapContainer center={[center.y, center.x]} zoom={zoom} scrollWheelZoom={false} dragging={false} style={{ height: "100%", width: "100%" }} whenCreated={setMap}>
@@ -100,7 +99,7 @@ const MapWrap = ({ data, region, mountain }) => {
                         <GeoJSON key={newDate} data={data.features} />
                     </MapContainer>
                 )}
-            </motion.div>
+            </div>
             <div className={mapStyles.tour_detail_region_wrap}>
                 {region.length > 0 ? <div className={mapStyles.tour_detail_region}>
                     <small>kraj</small>

@@ -37,7 +37,14 @@ const DetailPoints = ({ data }) => {
                                     />
                                 </div>
                                 <div className="point-slider-text">
-                                    {point.point.title}
+                                    <b>
+                                        {point.point.title}
+                                    </b>
+                                    {point.point.altitude ?
+                                        <span>
+                                            {point.point.altitude} m.n.m
+                                        </span> : null
+                                    }
 
                                 </div>
                                 {(data.length - 1) !== i ?

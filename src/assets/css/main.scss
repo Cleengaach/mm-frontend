@@ -1,23 +1,31 @@
 body {
-  --bg        : white;
-  --textNormal: #262626;
-  --textTitle : #262626;
-  --textLink  : rgb(57, 136, 255);
-  --back-image: #161616;
-  --black-20  : rgba(22, 22, 22, 0.2);
-  --black-50  : rgba(22, 22, 22, 0.5);
-  --white-05  : rgba(255, 255, 255, 0.05);
-  --white-20  : rgba(255, 255, 255, 0.2);
-  --white-50  : rgba(255, 255, 255, 0.5);
-  --green     : rgb(0, 163, 68);
-  font-size   : 15px;
+  --bg         : white;
+  --textNormal : #262626;
+  --textInvert : #fff;
+  --textTitle  : #FFC01E;
+  --textLink   : rgb(57, 136, 255);
+  --borderColor: #eee;
+  --back-image : #161616;
+  --black      : rgba(22, 22, 22, 1);
+  --black-20   : rgba(22, 22, 22, 0.2);
+  --black-50   : rgba(22, 22, 22, 0.5);
+  --white-05   : rgba(255, 255, 255, 0.05);
+  --white-10   : rgba(255, 255, 255, 0.1);
+  --white-20   : rgba(255, 255, 255, 0.2);
+  --white-50   : rgba(255, 255, 255, 0.5);
+  --white      : #fff;
+  --green      : rgb(0, 163, 68);
+  --orange     : #FFC01E;
+  --red        : #FF6161;
+  font-size    : 15px;
 }
 
 body.dark {
-  --bg        : #161616;
-  --textNormal: white;
-  --textTitle : white;
-  --textLink  : rgb(57, 136, 255);
+  --bg         : #161616;
+  --textNormal : white;
+  --textTitle  : #FFC01E;
+  --textLink   : rgb(57, 136, 255);
+  --borderColor: rgba(255, 255, 255, 0.1);
 }
 
 body {
@@ -28,13 +36,13 @@ body {
   font-size  : 15px;
   position   : relative;
   margin     : 0;
-  font-family: 'Epilogue', sans-serif;
+  font-family: 'Roboto Condensed', sans-serif;
 
   transition: background-color 0.5s ease;
 }
 
 
-main {
+section {
   max-width: 1440px;
   margin   : auto;
 }

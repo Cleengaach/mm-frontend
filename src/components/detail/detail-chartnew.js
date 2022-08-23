@@ -69,7 +69,8 @@ const DetailChartnew = ({ children, length }) => {
     const metres = [0, (length * 0.25).toFixed(2), (length * 0.5).toFixed(2), (length * 0.75).toFixed(2), length];
 
     const options = {
-        maintainAspectRatio: false,
+        maintainAspectRatio: true,
+        aspectRatio: 3,
         plugins: {
             legend: {
                 display: false,
@@ -107,7 +108,7 @@ const DetailChartnew = ({ children, length }) => {
                 backgroundColor: 'rgba(255,255,255,0.07)',
                 fill: true,
                 borderWidth: 3,
-                borderColor: 'rgba(255,255,255,0)',
+                borderColor: '#FFC01E',
                 pointRadius: 0,
                 responsive: true
             },

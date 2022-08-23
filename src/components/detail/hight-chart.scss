@@ -1,9 +1,7 @@
 #hight-chart {
-    width    : 100%;
-    max-width: 800px;
-    height   : 250px;
-    margin   : 3rem auto;
-    --color  : linear-gradient(rgb(255, 166, 0), rgb(255, 208, 0));
+    width  : 100%;
+    margin : 3rem auto;
+    --color: linear-gradient(rgb(255, 166, 0), rgb(255, 208, 0));
 
     --secondary-axes-color: rgba(255, 255, 255, 0.5);
     --secondary-axes-style: solid;
@@ -55,13 +53,13 @@
     .chart-info {
         display   : flex;
         margin-top: 2rem;
+        gap       : 4rem;
 
         &-item {
-            margin-right: 8rem;
 
             small {
                 opacity: 0.75;
-                display    : block;
+                display: block;
             }
 
             b {
@@ -69,6 +67,7 @@
                 font-size  : 1.05rem;
                 font-weight: 500;
             }
+
             span {
                 font-size: 0.85rem;
             }
