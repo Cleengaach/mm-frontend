@@ -89,6 +89,12 @@
     gap                  : 1rem;
 }
 
+.point {
+    .tour_basic {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 
 
 .tour_mapWrap {
@@ -233,13 +239,20 @@
     margin-bottom: 3rem;
 }
 
+.nextPoints_wrap {
+    display              : grid;
+    grid-template-columns: 1fr 1fr;
+    gap                  : 1rem;
+}
+
 @media only screen and (max-width: 1640px) {
     .tour_detail_content_column {
-        width : clamp(520px, 50vw, 750px);
+        //width : clamp(520px, 50vw, 750px);
         margin: 0 2rem;
     }
 
     .tour_detail_content_map {
+        //width : clamp(520px, 50vw, 1000px);
         margin: 0;
     }
 }
@@ -256,13 +269,25 @@
     .tour_detail_tips {
         grid-template-columns: 1fr 1fr;
     }
+
+    .nextPoints_wrap {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media only screen and (max-width: 1200px) {
-    .tour_detail_content_column {
-        width: 50vw;
+    .tour_detail {
+        grid-template-columns: calc(50% - 5px) calc(50% - 5px);
     }
 
+    .tour_detail_content_column {
+        width : auto;
+        margin: 0 1rem;
+    }
+
+    .tour_detail_content_map {
+        margin: 0;
+    }
 }
 
 @media only screen and (max-width: 768px) {
@@ -329,10 +354,18 @@
         gap                  : 0.5rem;
         grid-template-columns: 1fr 1fr 1fr;
     }
+
+    .nextPoints_wrap {
+        gap                  : 0.5rem;
+        grid-template-columns: 1fr 1fr;
+    }
 }
 
 @media only screen and (max-width: 560px) {
     .tour_detail_tips {
         grid-template-columns: 1fr 1fr;
+    }
+    .nextPoints_wrap {
+        grid-template-columns: 1fr;
     }
 }

@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { MapContainer, TileLayer, GeoJSON } from 'react-leaflet'
-import * as mapStyles from "./mapWrap.module.scss";
+import "../../assets/css/mapWrap.scss";
 import { NavContext } from "../../context/NavProvider";
 import { BsArrowsFullscreen, BsXSquare } from "react-icons/bs"
 
@@ -76,7 +76,7 @@ const MapWrap = ({ data, region, mountain }) => {
                 }, 1);
         };
         return (
-            <button onClick={onClick} className={mapStyles.tour_detail_map_button} >
+            <button onClick={onClick} className="tour_detail_map_button" >
                 <span>
                     {children.text}
                 </span>
@@ -88,7 +88,7 @@ const MapWrap = ({ data, region, mountain }) => {
     return (
         <>
             <div 
-                className={mapStyles.tour_detail_map}>
+                className={show === true ? "tour_detail_map " : "tour_detail_map  fullscreen" }>
                 <FlyToButton text={isActive ? 'zatvorit' : 'zvacsit'} />
                 {useHasMounted && (
                     <MapContainer center={[center.y, center.x]} zoom={zoom} scrollWheelZoom={false} dragging={false} style={{ height: "100%", width: "100%" }} whenCreated={setMap}>
@@ -100,8 +100,8 @@ const MapWrap = ({ data, region, mountain }) => {
                     </MapContainer>
                 )}
             </div>
-            <div className={mapStyles.tour_detail_region_wrap}>
-                {region.length > 0 ? <div className={mapStyles.tour_detail_region}>
+            <div className="tour_detail_region_wrap">
+                {region.length > 0 ? <div className="tour_detail_region">
                     <small>kraj</small>
                     {region.map((kraj, i) => {
                         return (
@@ -111,7 +111,7 @@ const MapWrap = ({ data, region, mountain }) => {
                         )
                     })}
                 </div> : null}
-                {mountain && <div className={mapStyles.tour_detail_region}>
+                {mountain && <div className="tour_detail_region">
                     <small>pohorie</small>
                     <b>
                         {mountain.title}

@@ -47,7 +47,6 @@ const Photogallery = ({ data, thumb }) => {
         if (loop < 7) {
             return (
                 <div className="tour_mapWrap_gallery_item" key={loop} onClick={openGallery(loop)}>
-                    {loop === 6 && showMore === true ? <span className="showMore"><BsImages /></span> : null}
                     <GatsbyImage
                         image={photo.localFile.childImageSharp.gatsbyImageData}
                         alt={photo.name}

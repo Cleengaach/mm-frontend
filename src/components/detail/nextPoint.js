@@ -5,7 +5,7 @@ import { Link } from "gatsby";
 
 const NextPoint = ({ data }) => {
     return (
-        <Link to={`/bod/${data.point.slug}`} className="nextPoint_wrap">  
+        <Link to={`/bod/${data.point.slug}`} className="nextPoint_wrap">
             <div className="nextPoint_image">
                 <GatsbyImage
                     image={data.point.image.localFile.childImageSharp.gatsbyImageData}
@@ -19,13 +19,21 @@ const NextPoint = ({ data }) => {
                     <b>
                         {data.point.title}
                     </b>
-                    <small>
-                        {data.point.altitude && data.point.altitude + " m.n.m."}
-                    </small>
                 </div>
-            </div>
-            <div className="nextPoint_time">
-                <span className={data.farba}>{data.time.slice(0, 5)}</span>
+                <div className="nextPoint_info">
+                    <div className="nextPoint_time">
+                        <small>
+                            čas
+                        </small>
+                        <span>{data.time.slice(0, 5)}</span>
+                    </div>
+                    <div className="nextPoint_color">
+                        <small>
+                            farba
+                        </small>
+                        <span ><i className={data.farba}></i></span>
+                    </div>
+                </div>
             </div>
         </Link>
     );

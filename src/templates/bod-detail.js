@@ -1,11 +1,13 @@
-import React from "react"
+import React, { useContext } from "react"
 import { graphql } from "gatsby"
 import "../assets/css/detail.scss";
 import Photogallery from "../components/photogallery";
+import DetailItem from "../components/detail/detail-item";
 import { GatsbyImage } from "gatsby-plugin-image";
 import MapPoint from "../components/detail/mapPoint"
 import NextPoint from "../components/detail/nextPoint";
-import RouteInPoint from "../components/detail/routeInPoint";
+import Card from "../components/card";
+import { NavContext } from "../context/NavProvider";
 
 export const query = graphql`
   query BodQuery($slug: String!) {
@@ -72,6 +74,7 @@ export const query = graphql`
           TotalTime
           RouteLength
           level
+          tourType
           mountain {
             title
           }
@@ -107,78 +110,86 @@ export const query = graphql`
 `
 
 const UsingDSG = ({ data }) => {
+  const { show, setShow } = useContext(NavContext);
+
+  const poloha = "N - " + data.strapiPoints.north + " / E - " + data.strapiPoints.east;
 
   return (
-      <section
-        className="tour_detail_main"
-      >
-        <div className="tour_detail">
-          <div className="tour_detail_header point">
-            <div className="tour_detail_header_title">
-              <h1>
-                <b>
-                  {data.strapiPoints.title}
-                </b>
-                <span>
-                  {data.strapiPoints.altitude && data.strapiPoints.altitude + " m.n.m."}
-                </span>
-              </h1>
-              <Photogallery data={data.strapiPoints.photogallery} thumb={data.thumbnails.photogallery} />
+    <section className="tour_detail_main">
+      <div className={show === true ? "tour_detail point" : "tour_detail tour_detail--map point"}>
+        <div className="tour_detail_content_column tour_detail_header">
+          <div className="tour_detail_header_title">
+            <h1>
+              <b>
+                {data.strapiPoints.title}
+              </b>
 
-            </div>
-            <div className="tour_detail_header_gradient"></div>
+              {data.strapiPoints.mountain.title.length > 0 ?
+                <span>pohorie {data.strapiPoints.mountain.title}</span>
+                : null
+              }
 
-            <GatsbyImage
-              image={data.strapiPoints.image.localFile.childImageSharp.gatsbyImageData}
-              alt={`Hero image`}
-              className="tour_detail_header_back--mobile"
-              placeholder="blurred"
-            />
-            {data.strapiPoints.HeroImage ? <GatsbyImage
-              image={data.strapiPoints.HeroImage.localFile.childImageSharp.gatsbyImageData}
-              alt={`Hero image`}
-              className="tour_detail_header_back--desktop"
-              placeholder="blurred"
-            /> : null}
+            </h1>
+            <Photogallery data={data.strapiPoints.photogallery} thumb={data.thumbnails.photogallery} />
+
           </div>
-          <div className="tour_detail_content">
-            <div className="tour_detail_content_column">
 
-              <div className="nextPoints">
-                <h4>
-                  Najbližšie body
-                </h4>
-                {data.strapiPoints.nextPoint.map((point, i) => {
-                  return (
-                    <NextPoint data={point} key={i} />
-                  );
-                })}
-              </div>
-
-              <div className="pointTours">
-                <h4>Túry cez tento bod</h4>
-                {data.allStrapiRoutes.edges.map((route, i) => {
-                  return (
-                    <RouteInPoint data={route} key={i} />
-                  );
-                })}
-              </div>
-
-            </div>
-            <div className="tour_detail_content_column">
-              <h4>
-                Poloha bodu
-              </h4>
-              <div className="tour_detail_mapPoint">
-                <MapPoint north={data.strapiPoints.north} east={data.strapiPoints.east} mountain={data.strapiPoints.mountain} />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="tour_tips">
+          <GatsbyImage
+            image={data.strapiPoints.image.localFile.childImageSharp.gatsbyImageData}
+            alt={`Hero image`}
+            className="tour_detail_header_back--mobile"
+            placeholder="blurred"
+          />
 
         </div>
-      </section>
+        <div className="tour_detail_content_column">
+          <h4>
+            Základné informácie
+          </h4>
+
+          <div className="tour_basic">
+            <DetailItem label={'nadmorská výška'} data={data.strapiPoints.altitude} metric={'m.n.m.'} />
+            <DetailItem label={'poloha'} data={poloha} metric={''} />
+          </div>
+        </div>
+        <div className="tour_detail_content_column tour_detail_content_map">
+          <h4>
+            Poloha bodu
+          </h4>
+          <MapPoint north={data.strapiPoints.north} east={data.strapiPoints.east} mountain={data.strapiPoints.mountain} />
+        </div>
+
+        {data.strapiPoints.nextPoint.length > 0 ?
+          <div className="tour_detail_content_column nextPoints">
+            <h4>
+              Najbližšie body
+            </h4>
+            <div className="nextPoints_wrap">
+              {data.strapiPoints.nextPoint.map((point, i) => {
+                return (
+                  <NextPoint data={point} key={i} />
+                );
+              })}
+            </div>
+          </div>
+          : null}
+
+        {data.allStrapiRoutes.edges.length > 0 ?
+          <div className="tour_detail_content_column pointTours">
+            <h4>Túry cez tento bod</h4>
+            <div className="tour_detail_tips">
+              {data.allStrapiRoutes.edges.map((route, i) => {
+                return (
+                  <Card article={route} key={i} />
+                );
+              })}
+            </div>
+          </div>
+          : null}
+
+      </div>
+
+    </section>
   )
 }
 

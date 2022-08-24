@@ -1,12 +1,12 @@
 import React, { useState, useContext } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
-import * as mapStyles from "./mapWrap.module.scss";
+import "../../assets/css/mapWrap.scss";
 import { motion } from "framer-motion";
 import { NavContext } from "../../context/NavProvider";
 import { BsArrowsFullscreen, BsXSquare } from "react-icons/bs"
 
 import markerIconPng from "leaflet/dist/images/marker-icon.png"
-import {Icon} from 'leaflet'
+import { Icon } from 'leaflet'
 
 const MapPoint = ({ north, east, mountain }) => {
 
@@ -20,7 +20,7 @@ const MapPoint = ({ north, east, mountain }) => {
 
 
     //uniqe key leaflet map
-    let newDate = new Date().getTime()
+    let newDate = new Date().getTime() 
 
 
 
@@ -46,7 +46,7 @@ const MapPoint = ({ north, east, mountain }) => {
                 }, 1);
         };
         return (
-            <button onClick={onClick} className={mapStyles.tour_detail_map_button} >
+            <button onClick={onClick} className="tour_detail_map_button" >
                 <span>
                     {children.text}
                 </span>
@@ -57,8 +57,8 @@ const MapPoint = ({ north, east, mountain }) => {
 
     return (
         <>
-            <motion.div layout transition={100}
-                className={isActive ? mapStyles.tour_detail_map_fullscreen : mapStyles.tour_detail_map}>
+            <div 
+                className={show === true ? "tour_detail_map " : "tour_detail_map  fullscreen" }>
                 <FlyToButton text={isActive ? 'zatvorit' : 'zvacsit'} />
                 {useHasMounted && (
                     <MapContainer center={[north, east]} zoom={13} scrollWheelZoom={false} dragging={false} style={{ height: "100%", width: "100%" }} whenCreated={setMap}>
@@ -73,10 +73,10 @@ const MapPoint = ({ north, east, mountain }) => {
                         </Marker>
                     </MapContainer>
                 )}
-            </motion.div>
-            <div className={mapStyles.tour_detail_region_wrap}>
+            </div>
+            <div className="tour_detail_region_wrap">
 
-                {mountain && <div className={mapStyles.tour_detail_region}>
+                {mountain && <div className="tour_detail_region">
                     <small>pohorie</small>
                     <b>
                         {mountain.title}

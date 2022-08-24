@@ -1,31 +1,27 @@
 .nextPoint_wrap {
     width           : 100%;
+    max-width       : 560px;
     display         : flex;
     margin-bottom   : 1rem;
     border-radius   : 6px;
-    padding         : 0.5rem;
     background-color: var(--white-05);
-
-    color          : var(--textNormal);
-    text-decoration: none;
+    color           : var(--textNormal);
+    text-decoration : none;
 }
 
 .nextPoint_image {
-    margin-right : 1rem;
-    height       : 4rem;
-    width        : 4rem;
-    border-radius: 4px;
-    overflow     : hidden;
-    position     : relative;
-
-    &.big {
-        height: 6rem;
-        width : 6rem;
-    }
+    margin-right             : 1rem;
+    width                    : 25%;
+    max-width                : 100px;
+    aspect-ratio             : 1/1;
+    border-top-left-radius   : 6px;
+    border-bottom-left-radius: 6px;
+    overflow                 : hidden;
+    position                 : relative;
 }
 
 .nextPoint_image_inner {
-    position: absolute!important;
+    position: absolute !important;
     top     : 0;
     bottom  : 0;
     left    : 0;
@@ -37,65 +33,76 @@
 }
 
 .nextPoint_info {
-    margin-top: 1rem;
+    margin     : 0.5rem 0;
+    display    : flex;
+    align-items: center;
+    gap        : 4rem;
 
-    span {
-        margin-right: 1rem;
-        opacity     : 0.75;
-        font-size   : 0.85rem;
-    }
 }
 
 .nextPoint_title {
     b {
+        color      : var(--textTitle);
         margin-top : 0.5rem;
         font-weight: 600;
-        font-size  : 1.2rem;
+        font-size  : 1.4rem;
         line-height: 1.7;
         display    : block;
-    }
-
-    span {
-        font-size: 1rem;
-    }
-
-    small {
-        font-size: 0.85rem;
-        opacity  : 0.75;
     }
 }
 
 .nextPoint_time {
-    display         : flex;
-    align-items     : center;
-    text-align      : center;
-    width           : 3.5rem;
-    height          : 3.5rem;
-    background-color: white;
-    color           : black;
-    border-radius   : 6px;
-    margin          : auto;
-    margin-right    : 0.5rem;
+    display    : flex;
+    gap        : 1rem;
+    align-items: center;
+
+    small {
+        opacity: 0.5;
+    }
+}
+
+.nextPoint_color {
+    display    : flex;
+    gap        : 1rem;
+    align-items: center;
+
+    small {
+        opacity: 0.5;
+    }
 
     span {
-        width  : calc(100% - 1rem);
-        padding: 0.5rem;
-        color  : white;
+        display         : flex;
+        align-items     : center;
+        text-align      : center;
+        width           : 1.5rem;
+        height          : 1.5rem;
+        background-color: white;
+        color           : black;
+        border-radius   : 2px;
+        margin          : auto;
+        margin-right    : 0.5rem;
 
-        &.red {
-            background-color: rgb(209, 39, 39);
-        }
 
-        &.blue {
-            background-color: rgb(9, 68, 146);
-        }
+        i {
+            width  : 100%;
+            height : 33.33%;
+            display: block;
 
-        &.yellow {
-            background-color: rgb(235, 200, 6);
-        }
+            &.red {
+                background-color: rgb(209, 39, 39);
+            }
 
-        &.green {
-            background-color: rgb(19, 161, 62);
+            &.blue {
+                background-color: rgb(9, 68, 146);
+            }
+
+            &.yellow {
+                background-color: rgb(235, 200, 6);
+            }
+
+            &.green {
+                background-color: rgb(19, 161, 62);
+            }
         }
 
     }
@@ -146,50 +153,8 @@
 }
 
 
-@media only screen and (max-width: 1024px) {
-    .nextPoint_wrap {
-        width: calc(100% - 1rem);
-    }
-}
-@media only screen and (max-width: 768px) {
-    .nextPoint_title {
-        b {
-            margin-top : 0.35rem;
-            font-size  : 1rem;
-            line-height: 1.5;
-        }
+@media only screen and (max-width: 1024px) {}
 
-        span {
-            font-size: 0.9rem;
-        }
+@media only screen and (max-width: 768px) {}
 
-        small {
-            font-size: 0.75rem;
-            opacity  : 0.75;
-        }
-    }
-
-    .nextPoint_image {
-        margin-right: 1rem;
-        height      : 3rem;
-        width       : 3rem;
-
-        &.big {
-            height: 4.7rem;
-            width : 4.7rem;
-        }
-    }
-
-    .nextPoint_time {
-        width        : 3rem;
-        height       : 3rem;
-        border-radius: 6px;
-        margin-right : 0.5rem;
-    }
-}
-
-@media only screen and (max-width: 768px) {
-    .nextPoint_level {
-        display: none;
-    }
-}
+@media only screen and (max-width: 768px) {}
