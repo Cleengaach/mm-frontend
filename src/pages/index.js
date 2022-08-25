@@ -44,6 +44,7 @@ const query = graphql`
               title
               subtitle
               TotalTime
+              time
               RouteLength
               level
               tourType

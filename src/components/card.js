@@ -7,6 +7,19 @@ import Triangel from '../assets/images/level.inline.svg'
 import Levels from "./detail/levels";
 
 const Card = ({ article }) => {
+  let time;
+  if (article.node.TotalTime === "0" || article.node.TotalTime === "false") {
+    const checkNull = article.node.time.slice(0, 1);
+    if (checkNull === "0") {
+      time = article.node.time.slice(1, 5);
+    } else {
+      time = article.node.time.slice(0, 5);
+    }
+
+  } else {
+    time = article.node.TotalTime
+  }
+
   return (
     <Link
       to={`/cesta/${article.node.slug}`}
@@ -15,8 +28,8 @@ const Card = ({ article }) => {
     >
 
       <div className={cardStyles.tourTop}>
-          <Levels type="level" data={article.node.level} />
-          <Levels type="type" data={article.node.tourType} />
+        <Levels type="level" data={article.node.level} />
+        <Levels type="type" data={article.node.tourType} />
       </div>
       <div className={cardStyles.tourText}>
         <div className={cardStyles.tourTitle}>
@@ -36,7 +49,7 @@ const Card = ({ article }) => {
             <small>km</small>
           </div>
           <div className={cardStyles.infoItem}>
-            <b>{article.node.TotalTime} </b>
+            <b>{time} </b>
             <small>h</small>
           </div>
           <div className={cardStyles.infoItem}>

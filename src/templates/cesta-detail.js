@@ -6,7 +6,7 @@ import DetailItem from "../components/detail/detail-item";
 import Levels from "../components/detail/levels";
 import Photogallery from "../components/photogallery";
 import { GatsbyImage } from "gatsby-plugin-image";
-
+import Seo from "../components/seo";
 import MapWrap from "../components/detail/mapWrap";
 import DetailPoints from "../components/detail/detail-points";
 import DetailChartnew from "../components/detail/detail-chartnew";
@@ -69,6 +69,7 @@ export const query = graphql`
       description
       date
       TotalTime
+      time
       image {
         localFile {
           publicURL
@@ -80,6 +81,7 @@ export const query = graphql`
       HeroImage {
         localFile {
           publicURL
+          url
           childImageSharp {
               gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
           }
@@ -114,6 +116,7 @@ export const query = graphql`
           title
           subtitle
           TotalTime
+          time
           RouteLength
           level
           tourType
@@ -144,8 +147,17 @@ export const query = graphql`
 const UsingDSG = ({ data }) => {
 
   const { show, setShow } = useContext(NavContext);
-
+  console.log(data.strapiRoutes.image.localFile.publicURL);
+  const seo = {
+    metaTitle: data.strapiRoutes.title,
+    shareImage: data.strapiRoutes.image
+  }
   return (
+    <>
+
+      <Seo
+        seo={seo}
+      />
       <section className="tour_detail_main">
         <div className={show === true ? "tour_detail" : "tour_detail tour_detail--map"}>
           <div className="tour_detail_content_column tour_detail_header">
@@ -237,6 +249,7 @@ const UsingDSG = ({ data }) => {
 
         </div>
       </section>
+    </>
   )
 }
 
