@@ -73,7 +73,7 @@ const query = graphql`
           }
         }
         Author: allStrapiRoutes(
-          filter: {Author: {elemMatch: {authors: {elemMatch: {name: {eq: "Martin a Monika"}}}}}}
+          filter: {Author: {elemMatch: {authors: {elemMatch: {name: {eq: "Monika a Martin"}}}}}}
         ) {
           edges {
             node {
