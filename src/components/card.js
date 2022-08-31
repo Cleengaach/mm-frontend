@@ -2,24 +2,12 @@ import React from "react";
 import { GatsbyImage } from "gatsby-plugin-image";
 import * as cardStyles from "./card.module.scss";
 import { Link } from "gatsby";
-import * as detailStyles from "./detail/detail-item.module.scss";
-import Triangel from '../assets/images/level.inline.svg'
 import Levels from "./detail/levels";
+import GetTime from "./function/getTime";
 
-const Card = ({ article }) => {
-  let time;
-  if (article.node.TotalTime === "0" || article.node.TotalTime === "false") {
-    const checkNull = article.node.time.slice(0, 1);
-    if (checkNull === "0") {
-      time = article.node.time.slice(1, 5);
-    } else {
-      time = article.node.time.slice(0, 5);
-    }
-
-  } else {
-    time = article.node.TotalTime
-  }
-
+const Card = ({ article }) => { 
+  const time = GetTime(article.node.TotalTime,article.node.time);
+  
   return (
     <Link
       to={`/cesta/${article.node.slug}`}

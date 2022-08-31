@@ -37,6 +37,27 @@
 
 
 
+.tour_detail_user {
+    display    : flex;
+    align-items: center;
+    gap        : 0.5rem;
+
+    &_wrap {
+        display    : flex;
+        align-items: center;
+        gap        : 1rem;
+    }
+
+    &_label {
+        opacity: 0.5;
+    }
+
+    .gatsby-image-wrapper {
+        border-radius: 50px;
+        overflow     : hidden;
+    }
+}
+
 .tour_detail_main {
     max-width: 100%;
 }
@@ -365,6 +386,7 @@
     .tour_detail_tips {
         grid-template-columns: 1fr 1fr;
     }
+
     .nextPoints_wrap {
         grid-template-columns: 1fr;
     }

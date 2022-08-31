@@ -48,7 +48,7 @@
   width   : 100%;
 }
 
-.tourText b {
+.tourTitle b {
   color      : var(--textTitle);
   display    : block;
   margin     : 0.5rem 0 0.25rem 0;
@@ -56,13 +56,13 @@
   font-weight: 700;
 }
 
-.tourText small {
+.tourTitle small {
   font-size  : 0.85rem;
   opacity    : 0.65;
   font-weight: 400;
 }
 
-.tourText span {
+.tourTitle span {
   display       : block;
   font-weight   : 400;
   font-size     : 0.95rem;
@@ -76,7 +76,7 @@
   left            : 0;
   width           : 100%;
   height          : 70%;
-  min-height      : 200px; 
+  min-height      : 200px;
   background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75));
   background-image: -moz-linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
   z-index         : 2;
@@ -84,7 +84,7 @@
 
 .tourInfo {
   color          : var(--white);
-  width          : calc(100% - 1.5rem);
+  width          : calc(100% - 1rem);
   display        : flex;
   justify-content: space-around;
   align-items    : flex-start;
@@ -152,59 +152,83 @@
 }
 
 @media only screen and (max-width: 1024px) {
-  .tourTitle {
-    margin     : 0.5rem 0 0rem 0;
-    font-size  : 1.3rem;
+  .tourTitle b {
+    font-size: 1.35rem;
+  }
+
+  .tourTitle small {
+    font-size: 0.75rem;
+  }
+
+  .tourTitle span {
+    font-size  : 0.85rem;
     line-height: 1.15;
   }
 
-  .tourText small {
-    font-size  : 0.75rem;
-    opacity    : 0.75;
-    font-weight: 400;
-  }
-
-  .tourText span {
-    font-size     : 0.85rem;
-    line-height   : 1.25;
-    letter-spacing: 0.025rem;
-  }
 }
 
 @media only screen and (max-width: 768px) {
-  .tourLevel {
-    top          : 0.5rem;
-    right        : 0.5rem;
-    border-radius: 7px;
-    font-size    : 0.6rem;
-    width        : 2rem;
-    height       : 2rem;
+  .tourTop {
+    padding: 0.5rem;
+    width  : calc(100% - 1rem);
+  }
 
-    div {
-      text-align: center;
+  .tourTitle {
+    padding: 0.5rem;
+  }
 
-      svg {
-        height: 18px;
-        width : 18px;
-      }
+  .tourTitle b {
+    font-size: 1.25rem;
+  }
 
-      small {
-        display: none;
-      }
+  .tourTitle small {
+    display: none;
+  }
+
+  .tourTitle span {
+    font-size  : 0.75rem;
+    line-height: 1.05;
+  }
+}
+
+@media only screen and (max-width: 540px) {
+  .tourTop div {
+    gap: 0.35rem;
+
+    span {
+      font-size: 0.7rem;
     }
   }
 
   .tourTitle {
-    margin     : 0.5rem 0 0.05rem 0;
-    font-size  : 1.2rem;
-    line-height: 1.18;
+    padding: 0.5rem;
   }
 
+  .tourTitle b {
+    font-size: 1.05rem;
+  }
 
+  .tourTitle small {
+    display: none;
+  }
 
-  .tourText span {
-    font-size     : 0.85rem;
-    line-height   : 1.25;
-    letter-spacing: 0.025rem;
+  .tourTitle span {
+    font-size  : 0.75rem;
+    line-height: 1.05;
+  }
+
+  .tourInfo {
+    padding: 0.25rem 0.5rem;
+  }
+
+  .infoItem {
+    b {
+      font-size: 0.75rem;
+      font-weight: 400;
+    }
+
+    small {
+      font-size: 0.6rem;
+    }
   }
 }

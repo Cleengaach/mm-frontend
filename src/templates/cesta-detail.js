@@ -5,11 +5,12 @@ import Card from "../components/card";
 import DetailItem from "../components/detail/detail-item";
 import Levels from "../components/detail/levels";
 import Photogallery from "../components/photogallery";
-import { GatsbyImage } from "gatsby-plugin-image";
+import { GatsbyImage, StaticImage } from "gatsby-plugin-image";
 import Seo from "../components/seo";
 import MapWrap from "../components/detail/mapWrap";
 import DetailPoints from "../components/detail/detail-points";
 import DetailChartnew from "../components/detail/detail-chartnew";
+import GetTime from "../components/function/getTime";
 
 import { NavContext } from "../context/NavProvider";
 
@@ -19,7 +20,6 @@ export const query = graphql`
     strapiRoutes(slug: { eq: $slug }) {
       strapiId
       RouteLength
-      itineration
       level
       tourType
       route_path {
@@ -67,9 +67,21 @@ export const query = graphql`
       stupanie
       klesanie
       description
-      date
       TotalTime
       time
+      Author {
+        authors {
+          name
+          thumbnail {
+            localFile {
+              childImageSharp {
+                gatsbyImageData(width: 32, height: 32, placeholder: BLURRED)
+              }
+            }
+          }
+        }
+        date
+      }
       image {
         localFile {
           publicURL
@@ -147,11 +159,16 @@ export const query = graphql`
 const UsingDSG = ({ data }) => {
 
   const { show, setShow } = useContext(NavContext);
-  console.log(data.strapiRoutes.image.localFile.publicURL);
+
   const seo = {
-    metaTitle: data.strapiRoutes.title,
+    metaTitle: data.strapiRoutes.title + data.strapiRoutes.subtitle,
+    metaDescription: data.strapiRoutes.description,
     shareImage: data.strapiRoutes.image
   }
+  const time = GetTime(data.strapiRoutes.TotalTime, data.strapiRoutes.time);
+
+  console.log(data.strapiRoutes, 'author')
+
   return (
     <>
 
@@ -194,7 +211,7 @@ const UsingDSG = ({ data }) => {
 
             <div className="tour_basic">
               <DetailItem label={'dĺžka'} data={data.strapiRoutes.RouteLength} metric={'km'} />
-              <DetailItem label={'čas'} data={data.strapiRoutes.TotalTime} metric={'h'} />
+              <DetailItem label={'čas'} data={time} metric={'h'} />
               <DetailItem label={'stúpanie'} data={data.strapiRoutes.stupanie} metric={'m'} />
               <DetailItem label={'klesanie'} data={data.strapiRoutes.klesanie} metric={'m'} />
             </div>
@@ -218,6 +235,43 @@ const UsingDSG = ({ data }) => {
               <DetailChartnew children={data.strapiRoutes.mapJson.features} length={data.strapiRoutes.RouteLength} />
             </div>
             : null}
+
+          {data.strapiRoutes.description !== null ?
+            <div className="tour_detail_content_column">
+              <h4>
+                Popis trasy
+              </h4>
+              <p>
+                {data.strapiRoutes.description}
+              </p>
+              {data.strapiRoutes.Author.length > 0 ?
+                <p className="tour_detail_user_wrap">
+                  <span className="tour_detail_user_label">túru pridal:</span>
+                  {data.strapiRoutes.Author.map((authorData, i) => {
+                    return (
+                        authorData.authors.map((author, i) => {
+                          return (
+                            <span className="tour_detail_user">
+                              <GatsbyImage
+                                image={author.thumbnail.localFile.childImageSharp.gatsbyImageData}
+                                alt={`Hero image`}
+                              />
+                              <b>
+                                {author.name}
+                              </b>
+                            </span>
+                          );
+                        })
+                    );
+                  }
+                  )}
+                </p>
+
+                : null}
+
+            </div>
+            : null}
+
 
           {data.strapiRoutes.route_path.length > 0 ?
             <div className="tour_detail_content_column">
