@@ -69,19 +69,19 @@ export const query = graphql`
       description
       TotalTime
       time
-      #Author {
-      #  authors {
-      #    name
-      #    thumbnail {
-      #      localFile {
-      #        childImageSharp {
-      #          gatsbyImageData(width: 32, height: 32, placeholder: BLURRED)
-      #        }
-      #      }
-      #    }
-      #  }
-      #  date
-      #}
+      Author {
+        authors {
+          name
+          thumbnail {
+            localFile {
+              childImageSharp {
+                gatsbyImageData(width: 32, height: 32, placeholder: BLURRED)
+              }
+            }
+          }
+        }
+        date
+      }
       image {
         localFile {
           publicURL
@@ -235,7 +235,7 @@ const UsingDSG = ({ data }) => {
               <DetailChartnew children={data.strapiRoutes.mapJson.features} length={data.strapiRoutes.RouteLength} />
             </div>
             : null}
-{/*}
+
           {data.strapiRoutes.description !== null ?
             <div className="tour_detail_content_column">
               <h4>
@@ -271,7 +271,7 @@ const UsingDSG = ({ data }) => {
 
             </div>
             : null}
-                {*/}
+
 
           {data.strapiRoutes.route_path.length > 0 ?
             <div className="tour_detail_content_column">
