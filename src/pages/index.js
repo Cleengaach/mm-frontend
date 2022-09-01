@@ -9,9 +9,8 @@ import Card from "../components/card";
 
 const IndexPage = () => {
   const data = useStaticQuery(query);
-  console.log(data, 'sadf');
 
-  const metres = data.Author.sum * 1000;
+  //const metres = data.Author.sum * 1000;
 
   return (
     <>
@@ -19,10 +18,12 @@ const IndexPage = () => {
         seo={data.strapiHomepage.seo}
       />
       <main className="home_main" >
+        {/*}
         <h1>
           Ahoooj 😀
         </h1>
         <p>
+          
           sme Monika a Martin, máme radi hory <br />a chceme spolu prejsť milióny metrov
         </p>
         <div className="home_cont">
@@ -43,6 +44,7 @@ const IndexPage = () => {
             </b>
           </div>
         </div>
+  {*/}
         <div className="home_list">
           {data.allStrapiRoutes.edges.map((item, i) => {
             return (
@@ -72,17 +74,17 @@ const query = graphql`
             }
           }
         }
-        Author: allStrapiRoutes(
-          filter: {Author: {elemMatch: {authors: {elemMatch: {name: {eq: "Monika a Martin"}}}}}}
-        ) {
-          edges {
-            node {
-              id
-              RouteLength
-            }
-          }
-          sum(field: RouteLength)
-        }
+        #Author: allStrapiRoutes(
+        #  filter: {Author: {elemMatch: {authors: {elemMatch: {name: {eq: "Monika a Martin"}}}}}}
+        #) {
+        #  edges {
+        #    node {
+        #      id
+        #      RouteLength
+        #    }
+        #  }
+        #  sum(field: RouteLength)
+        #}
         allStrapiRoutes {
         edges {
           node {
