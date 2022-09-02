@@ -32,7 +32,7 @@ const IndexPage = () => {
               spolu sme už prešli
             </span>
             <b>
-              {metres} metrov
+              {metres.toLocaleString('fr')} metrov
             </b>
           </div>
           <div className="home_cont_item">

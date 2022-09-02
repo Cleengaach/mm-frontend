@@ -5,6 +5,7 @@ import { MdLightMode, MdDarkMode } from 'react-icons/md';
 import { IconContext } from "react-icons";
 import { ThemeToggler } from 'gatsby-plugin-dark-mode'
 import Logo from '../assets/images/mm-logo.inline.svg'
+import { FiSearch } from 'react-icons/fi'
 
 import { NavContext } from "../context/NavProvider";
 
@@ -23,6 +24,12 @@ const TopNav = () => {
         to="/"
       >
         <Logo className="logo" />
+      </Link>
+      <Link
+        to="/search/"
+        className="nav_icon"
+      >
+          <FiSearch />
       </Link>
 
       <ThemeToggler >
