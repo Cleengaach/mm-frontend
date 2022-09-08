@@ -1,0 +1,110 @@
+.nav {
+    display         : flex;
+    justify-content : space-between;
+    gap             : 1rem;
+    align-items     : center;
+    position        : fixed;
+    top             : 0;
+    left            : 0;
+    z-index         : 200;
+    padding         : 1rem 0.5rem;
+    width           : calc(100% - 1rem);
+    background-color: var(--black-20);
+    backdrop-filter : blur(10px);
+    border-bottom   : 1px solid rgba(255, 255, 255, 0.1);
+    will-change     : auto;
+    transition      : all 350ms ease-out;
+
+    &.hide {
+        transform : translateY(-100%);
+        transition: all 150ms ease-out;
+    }
+
+    .logo {
+        height: 32px;
+        fill  : white;
+    }
+}
+
+.themeToggle {
+    cursor          : pointer;
+    background-color: var(--black-50);
+    color           : var(--white);
+    border-radius   : 100%;
+    height          : 1.5rem;
+    width           : 1.5rem;
+    padding         : 0.5rem;
+    display         : flex;
+    justify-content : center;
+    align-items     : center;
+}
+
+.navItem {
+    display         : flex;
+    justify-content : left;
+    align-items     : center;
+    flex-wrap       : wrap;
+    text-align      : center;
+    width           : calc(100% - 2rem);
+    padding         : 1rem;
+    background-color: transparent;
+    color           : var(--white);
+    margin          : 0.5rem auto;
+    text-decoration : none;
+
+    div {
+        display        : flex;
+        justify-content: left;
+        align-items    : center;
+        flex-wrap      : wrap;
+
+        >div {
+            width: 24px;
+        }
+    }
+
+    div span {
+        margin-left: 1rem;
+        opacity    : 0.75;
+    }
+
+    &:hover {
+        text-decoration: none;
+
+        span {
+            opacity: 1;
+            color  : white;
+        }
+    }
+}
+
+.nav_icon {
+    cursor          : pointer;
+    background-color: var(--black-50);
+    color           : var(--white);
+    border-radius   : 100%;
+    height          : 1.5rem;
+    width           : 1.5rem;
+    padding         : 0.5rem;
+    display         : flex;
+    justify-content : center;
+    align-items     : center;
+    margin-left     : auto;
+}
+
+@media only screen and (max-width: 768px) {
+    .nav {
+        padding: 0.75rem 0.25rem;
+        width  : calc(100% - 0.5rem);
+
+        .logo {
+            height: 24px;
+        }
+    }
+
+    .themeToggle {
+        height : 1.35rem;
+        width  : 1.35rem;
+        padding: 0.3rem;
+    }
+}

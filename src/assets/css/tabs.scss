@@ -1,0 +1,52 @@
+section {
+    position: absolute;
+    width   : 100%;
+}
+
+.container {
+    position: relative;
+    width   : 100%;
+    height  : 500px;
+}
+
+.tabs-header {
+    display        : flex;
+    color          : var(--textNormal);
+    justify-content: space-between;
+    margin         : 0rem 1rem 1rem 1rem;
+    padding        : 0;
+    position       : relative;
+}
+
+.tabs-header li {
+    width     : 100%;
+    list-style: none;
+    text-align: center;
+}
+
+.tabs-header h4 {
+    margin     : 1rem;
+    font-weight: 400;
+    cursor     : pointer;
+}
+
+.active-header h4 {
+    color: white;
+}
+
+.underline {
+    width        : 100%;
+    height       : 3px;
+    border-radius: 4px;
+    background   : var(--green);
+    position: relative;
+    z-index : 1;
+}
+
+.underline-bg {
+    width        : 100%;
+    height       : 2px;
+    border-radius: 2px;
+    position     : absolute;
+    bottom       : 0px;
+}

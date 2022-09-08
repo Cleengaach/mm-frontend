@@ -1,0 +1,21 @@
+.search_input_wrap {
+    display        : flex;
+    align-items    : center;
+    justify-content: center;
+    margin         : 100px 1rem 1rem 1rem;
+}
+
+.search_input {
+    max-width       : 768px;
+    width           : 100%;
+    border          : 0;
+    padding         : 1rem 1.5rem;
+    font-size       : 1.2rem;
+    border-radius   : 6px;
+    background-color: var(--white-10);
+    color           : var(--white);
+
+    &:focus-visible {
+        outline: none;
+    }
+}

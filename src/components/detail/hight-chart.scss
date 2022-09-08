@@ -1,0 +1,76 @@
+#hight-chart {
+    width  : 100%;
+    margin : 3rem auto;
+    --color: linear-gradient(rgb(255, 166, 0), rgb(255, 208, 0));
+
+    --secondary-axes-color: rgba(255, 255, 255, 0.5);
+    --secondary-axes-style: solid;
+    --secondary-axes-width: 1px;
+
+    --primary-axis-color: rgb(255, 255, 255);
+    --primary-axis-style: solid;
+    --primary-axis-width: 1px;
+
+    border-spacing: 0;
+
+    ul.chart-label {
+        margin     : 0;
+        margin-left: 2.1rem;
+        padding    : 0;
+        position   : relative;
+        width      : calc(100% - 2.1rem);
+        white-space: nowrap;
+
+        li {
+            list-style-type: none;
+            font-size      : 0.75rem;
+            position       : absolute;
+            transform      : translateX(-50%);
+
+            &:nth-child(1) {
+                left: 0;
+            }
+
+            &:nth-child(2) {
+                left: 25%;
+            }
+
+            &:nth-child(3) {
+                left: 50%;
+            }
+
+            &:nth-child(4) {
+                left: 75%;
+            }
+
+            &:nth-child(5) {
+                left     : 100%;
+                transform: translateX(-100%);
+            }
+        }
+    }
+
+    .chart-info {
+        display   : flex;
+        margin-top: 2rem;
+        gap       : 4rem;
+
+        &-item {
+
+            small {
+                opacity: 0.75;
+                display: block;
+            }
+
+            b {
+                line-height: 1.7;
+                font-size  : 1.05rem;
+                font-weight: 500;
+            }
+
+            span {
+                font-size: 0.85rem;
+            }
+        }
+    }
+}

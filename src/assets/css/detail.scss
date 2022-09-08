@@ -1,0 +1,393 @@
+.tour_detail {
+    width                : 100%;
+    position             : relative;
+    gap                  : 10px;
+    display              : grid;
+    align-items          : flex-start;
+    grid-template-columns: 1fr 1fr;
+
+    &--map {
+        gap                  : 0;
+        grid-template-columns: 0px 1fr;
+    }
+
+    h1 {
+        text-align: left;
+
+        b {
+            color      : var(--textTitle);
+            display    : block;
+            width      : 100%;
+            font-size  : 2.3rem;
+            font-weight: 600;
+        }
+
+        span {
+            font-size  : 1.35rem;
+            font-weight: 400;
+        }
+    }
+
+}
+
+.tour_detail_content_column {
+    width : clamp(520px, 50vw, 750px);
+    margin: 0 2rem 0 auto;
+}
+
+
+
+.tour_detail_user {
+    display    : flex;
+    align-items: center;
+    gap        : 0.5rem;
+
+    &_wrap {
+        display    : flex;
+        align-items: center;
+        gap        : 1rem;
+    }
+
+    &_label {
+        opacity: 0.5;
+    }
+
+    .gatsby-image-wrapper {
+        border-radius: 50px;
+        overflow     : hidden;
+    }
+}
+
+.tour_detail_main {
+    max-width: 100%;
+}
+
+.tour_detail_content {
+    padding              : 1rem;
+    max-width            : 1200px;
+    margin               : auto;
+    margin-top           : 3rem;
+    display              : grid;
+    grid-template-rows   : auto;
+    grid-template-columns: 1fr 1fr;
+    gap                  : 4rem;
+    position             : relative;
+    z-index              : 4;
+
+    &_column {
+        padding-bottom: 2rem;
+        border-bottom : 1px dashed var(--borderColor);
+
+        h4 {
+            font-size: 1.2rem;
+        }
+    }
+}
+
+.tour_detail_content_map {
+    height        : 100vh;
+    grid-area     : 1 / 2 / span 6 / span 1;
+    position      : sticky;
+    top           : 0;
+    left          : 0;
+    width         : 100%;
+    z-index       : 100;
+    border-bottom : 0;
+    padding-bottom: 0;
+
+    .leaflet-left .leaflet-control {
+        margin-top: 100px;
+    }
+
+    h4 {
+        display: none;
+    }
+}
+
+.tour_basic {
+    display              : grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap                  : 1rem;
+}
+
+.point {
+    .tour_basic {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+
+.tour_mapWrap {
+    display: block;
+}
+
+.tour_back {
+    position: fixed;
+    top     : 0;
+    left    : 0;
+    bottom  : 0;
+    right   : 0;
+    z-index : 1;
+
+    .gatsby-image-wrapper {
+        position: absolute;
+        width   : 100%;
+        height  : 100%;
+        display : block;
+
+        img {
+            object-fit     : cover;
+            object-position: center;
+            filter         : blur(30px);
+        }
+    }
+}
+
+.tour_detail_header {
+    display         : flex;
+    align-items     : flex-end;
+    position        : relative;
+    z-index         : 1;
+    overflow        : hidden;
+    background-color: var(--back-image);
+    padding-top     : 100px;
+
+    &_title {
+        width                : 100%;
+        margin               : auto;
+        display              : grid;
+        grid-template-columns: 1fr;
+        justify-content      : space-between;
+    }
+
+    &::after {
+        content         : "";
+        position        : absolute;
+        z-index         : -1;
+        top             : 30%;
+        left            : 0;
+        bottom          : 0;
+        right           : 0;
+        opacity         : 1;
+        background-image: linear-gradient(to top, rgba(22, 22, 22, 1), rgba(22, 22, 22, 0));
+    }
+
+    &_back--mobile {
+        position  : absolute !important;
+        z-index   : -2;
+        top       : 0;
+        left      : 0;
+        bottom    : 0;
+        right     : 0;
+        //opacity : 0.5;
+
+        .gatsby-image-wrapper {
+            height: 100%;
+
+            img {
+                object-fit     : cover;
+                object-position: center;
+            }
+        }
+    }
+
+    &_back--mobile {
+        display: none;
+    }
+
+    &_gradient {
+        position        : absolute !important;
+        z-index         : -1;
+        width           : 100%;
+        height          : 100%;
+        backdrop-filter : blur(10px);
+        background-image: rgba(0, 0, 0, 0.5);
+    }
+
+    &_info {
+        display    : flex;
+        margin     : 1rem 0;
+        gap        : 2.5rem;
+        align-items: center;
+        font-size  : 1rem;
+
+        div {
+            display    : flex;
+            align-items: center;
+            gap        : 0.75rem;
+
+            icon,
+            triangle {
+                display         : grid;
+                place-items     : center;
+                width           : 1.7rem;
+                height          : 1.7rem;
+                border-radius   : 1.7rem;
+                background-color: var(--white-10);
+            }
+
+            span {
+                font-size: 1rem;
+            }
+        }
+    }
+
+}
+
+.tour_detail_mapPoint {
+    position: relative;
+}
+
+.tour_tips {
+    padding   : 1rem;
+    max-width : 1200px;
+    margin    : auto;
+    margin-top: 3rem;
+    gap       : 4rem;
+    position  : relative;
+    z-index   : 1;
+}
+
+.tour_detail_tips {
+    display              : grid;
+    gap                  : 1rem;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+
+.nextPoints {
+    margin-bottom: 3rem;
+}
+
+.nextPoints_wrap {
+    display              : grid;
+    grid-template-columns: 1fr 1fr;
+    gap                  : 1rem;
+}
+
+@media only screen and (max-width: 1640px) {
+    .tour_detail_content_column {
+        //width : clamp(520px, 50vw, 750px);
+        margin: 0 2rem;
+    }
+
+    .tour_detail_content_map {
+        //width : clamp(520px, 50vw, 1000px);
+        margin: 0;
+    }
+}
+
+@media only screen and (max-width: 1300px) {
+    .tour_detail_header_title {
+        max-width: 1024px;
+    }
+
+    .tour_detail_content {
+        max-width: 1024px;
+    }
+
+    .tour_detail_tips {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .nextPoints_wrap {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .tour_detail {
+        grid-template-columns: calc(50% - 5px) calc(50% - 5px);
+    }
+
+    .tour_detail_content_column {
+        width : auto;
+        margin: 0 1rem;
+    }
+
+    .tour_detail_content_map {
+        margin: 0;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .tour_detail_content_column {
+        width  : calc(100vw - 1rem);
+        margin : 0;
+        padding: 0.5rem;
+    }
+
+    .tour_detail_header {
+        padding-top: 40vh;
+
+        &_back--desktop {
+            display: none;
+        }
+
+        &_back--mobile {
+            display: block;
+        }
+    }
+
+    .tour_detail_header_title {
+        width                : calc(100% - 2rem);
+        display              : grid;
+        grid-template-columns: 1fr;
+
+        h1 {
+            text-align: center;
+
+            b {
+                font-size: 2rem;
+            }
+
+            span {
+                font-size: 1rem;
+            }
+        }
+    }
+
+    .tour_detail_header_info {
+        justify-content: center;
+    }
+
+
+    .tour_detail {
+        grid-template-columns: 1fr;
+    }
+
+    .tour_detail_content_map {
+        height       : auto;
+        grid-area    : auto;
+        position     : relative;
+        top          : 0;
+        left         : 0;
+        margin       : 0px;
+        border-bottom: 1px dashed var(--borderColor);
+
+        .leaflet-left .leaflet-control {
+            margin-top: 1rem;
+        }
+    }
+
+    .tour_detail_tips {
+        gap                  : 0.5rem;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .nextPoints_wrap {
+        gap                  : 0.5rem;
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media only screen and (max-width: 560px) {
+    .tour_detail_tips {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .nextPoints_wrap {
+        grid-template-columns: 1fr;
+    }
+}

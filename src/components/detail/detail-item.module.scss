@@ -1,0 +1,91 @@
+.tour_basic_item {
+    border-radius   : 6px;
+    display         : flex;
+    align-items     : center;
+    justify-content : flex-start;
+
+    small {
+        display    : block;
+        margin     : 0 auto 0.5rem auto;
+        font-size  : 0.75rem;
+        opacity    : 0.5;
+        font-weight: 300;
+    }
+
+    b {
+        font-size   : 1.2rem;
+        font-weight : 500;
+        display     : inline-block;
+        margin-right: 0.25rem;
+    }
+
+    span {
+        font-size: 1rem;
+    }
+}
+
+.tour_basic_item_icon {
+    display: block;
+
+    span {
+        opacity: 0.75;
+    }
+
+    svg {
+        height: 30px;
+        width : 30px;
+        margin: 0.25rem;
+    }
+}
+
+.tour_level_easy {
+    path {
+        fill: var(--green);
+    }
+}
+
+.tour_level_medium {
+    path {
+        fill: var(--orange);
+    }
+}
+
+.tour_level_hard {
+    path {
+        fill: var(--red);
+    }
+}
+.tour_level_alert {
+    path {
+        fill: var(--black);
+    }
+}
+
+
+
+
+@media only screen and (max-width: 1024px) {
+    .tour_basic_item {
+        b {
+            font-size   : 1.1rem;
+
+        }
+    
+        span {
+            font-size: 1rem;
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .tour_basic_item {
+        b {
+            font-size   : 1rem;
+
+        }
+    
+        span {
+            font-size: 0.85rem;
+        }
+    }
+}
