@@ -4,7 +4,7 @@ require('dotenv').config({
 });
 
 const strapiConfig = {
-  apiURL: process.env.API_URL ? "https://milionmetrov.up.railway.app" : "http://localhost:1337",
+  apiURL: "https://milionmetrov.up.railway.app",
   accessToken: process.env.STRAPI_TOKEN,
   collectionTypes: ['author',
     {
