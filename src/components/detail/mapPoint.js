@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
+import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet'
 import "../../assets/css/mapWrap.scss";
 import { motion } from "framer-motion";
 import { NavContext } from "../../context/NavProvider";
@@ -25,10 +25,11 @@ const MapPoint = ({ north, east, mountain }) => {
 
 
     const [isActive, setActive] = useState(false);
-    const [map, setMap] = useState(null);
     const { show, setShow } = useContext(NavContext);
 
     function FlyToButton(children) {
+        const map = useMap()
+
         const onClick = () => {
             if (!isActive) {
                 map.scrollWheelZoom.enable();
@@ -57,11 +58,10 @@ const MapPoint = ({ north, east, mountain }) => {
 
     return (
         <>
-            <div 
-                className={show === true ? "tour_detail_map " : "tour_detail_map  fullscreen" }>
-                <FlyToButton text={isActive ? 'zatvorit' : 'zvacsit'} />
+            <div className={show === true ? "tour_detail_map " : "tour_detail_map  fullscreen" }>
                 {useHasMounted && (
-                    <MapContainer center={[north, east]} zoom={13} scrollWheelZoom={false} dragging={false} style={{ height: "100%", width: "100%" }} whenCreated={setMap}>
+                    <MapContainer center={[north, east]} zoom={13} scrollWheelZoom={false} dragging={false} style={{ height: "100%", width: "100%" }}>
+                         <FlyToButton text={isActive ? 'zatvorit' : 'zvacsit'} />
                         <TileLayer
                             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

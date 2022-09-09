@@ -78,10 +78,11 @@ const MapWrap = ({ data, region, mountain }) => {
                 }, 1);
         };
         return (
-            <button onClick={onClick}  >
+            <button onClick={onClick} className="tour_detail_map_button" >
                 <span>
                     {children.text}
                 </span>
+                {children.text === 'zvacsit' ? <BsArrowsFullscreen /> : <BsXSquare />}
             </button>
         );
     }
