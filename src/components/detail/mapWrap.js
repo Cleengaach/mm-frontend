@@ -57,41 +57,13 @@ const MapWrap = ({ data, region, mountain }) => {
     const [isActive, setActive] = useState(false);
     const { show, setShow } = useContext(NavContext);
 
-    function FlyToButton(children) {
-        const map = useMap()
 
-        const onClick = () => {
-            console.log(map,'map');
-            if (!isActive) {
-                map.scrollWheelZoom.enable();
-                map.dragging.enable();
-            } else {
-                map.scrollWheelZoom.disable();
-                map.dragging.disable();
-            }
-            setActive(!isActive);
-            setShow(!show);
-            setTimeout(
-                function () {
-                    map.invalidateSize();
-
-                }, 1);
-        };
-        return (
-            <button onClick={onClick}  >
-                <span>
-                    {children.text}
-                </span>
-            </button>
-        );
-    }
 
     return (
         <>
             <div className={show === true ? "tour_detail_map " : "tour_detail_map  fullscreen"}>
                 {useHasMounted && (
                     <MapContainer center={[center.y, center.x]} zoom={zoom} scrollWheelZoom={false} dragging={false} style={{ height: "100%", width: "100%" }}>
-                         <FlyToButton text={isActive ? 'zatvorit' : 'zvacsit'} />
                         <TileLayer
                             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
