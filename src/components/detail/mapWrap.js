@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect, useRef  } from "react";
 import { MapContainer, TileLayer, GeoJSON, useMap } from 'react-leaflet'
 import "../../assets/css/mapWrap.scss";
 import { NavContext } from "../../context/NavProvider";
@@ -13,6 +13,8 @@ const MapWrap = ({ data, region, mountain }) => {
         }, []);
         return hasMounted;
     }
+
+    const buttonRef = useRef()
 
 
     //uniqe key leaflet map
@@ -57,11 +59,11 @@ const MapWrap = ({ data, region, mountain }) => {
     const [isActive, setActive] = useState(false);
     const { show, setShow } = useContext(NavContext);
 
-    function FlyToButton(children) {
+    function FlyToButton ({buttonRef, text}) {
         const map = useMap()
 
         const onClick = () => {
-            console.log(map,'map');
+
             if (!isActive) {
                 map.scrollWheelZoom.enable();
                 map.dragging.enable();
@@ -80,9 +82,9 @@ const MapWrap = ({ data, region, mountain }) => {
         return (
             <button onClick={onClick} className="tour_detail_map_button" >
                 <span>
-                    {children.text}
+                    {text}
                 </span>
-                {children.text === 'zvacsit' ? <BsArrowsFullscreen /> : <BsXSquare />}
+                {text === 'zvacsit' ? <BsArrowsFullscreen /> : <BsXSquare />}
             </button>
         );
     }
@@ -92,7 +94,7 @@ const MapWrap = ({ data, region, mountain }) => {
             <div className={show === true ? "tour_detail_map " : "tour_detail_map  fullscreen"}>
                 {useHasMounted && (
                     <MapContainer center={[center.y, center.x]} zoom={zoom} scrollWheelZoom={false} dragging={false} style={{ height: "100%", width: "100%" }}>
-                         <FlyToButton text={isActive ? 'zatvorit' : 'zvacsit'} />
+                         <FlyToButton buttonRef={buttonRef} text={isActive ? 'zatvorit' : 'zvacsit'} />
                         <TileLayer
                             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

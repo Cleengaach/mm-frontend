@@ -24,7 +24,7 @@ const variants = {
   },
 }
 
-const Layout = ({ children, location }) => (
+const Layout = ({ children, location="" }) => (
   <StaticQuery
     query={graphql`
       query {
