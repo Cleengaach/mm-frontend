@@ -105,7 +105,9 @@ const UsingDSG = ({ data }) => {
               }
 
             </h1>
-            <Photogallery data={data.strapiPoint.photogallery} thumb={data.thumbnails.photogallery} />
+            {data.strapiPoint.photogallery ?
+              <Photogallery data={data.strapiPoint.photogallery} thumb={data.thumbnails.photogallery} />
+              : null}
 
           </div>
 
@@ -133,7 +135,7 @@ const UsingDSG = ({ data }) => {
           </h4>
           <MapPoint north={data.strapiPoint.north} east={data.strapiPoint.east} mountain={data.strapiPoint.mountain} />
         </div>
-{/*}
+        {/*}
         {data.strapiPoint.nextPoint.length > 0 ?
           <div className="tour_detail_content_column nextPoints">
             <h4>
@@ -171,16 +173,16 @@ const UsingDSG = ({ data }) => {
 export default UsingDSG
 
 export const Head = ({ data }) => {
-  
+
   const seo = {
     metaTitle: data.strapiPoint.title,
-    metaDescription: data.strapiPoint.description.data.description,
+    metaDescription: data.strapiPoint.description,
     shareImage: data.strapiPoint.image
   }
-  console.log(seo,'seo')
-  return(
+  console.log(seo, 'seo')
+  return (
     <Seo title={seo.metaTitle} description={seo.metaDescription}>
-      <meta property="og:image" content={seo.shareImage}/>
+      <meta property="og:image" content={seo.shareImage} />
     </Seo>
   );
 }
