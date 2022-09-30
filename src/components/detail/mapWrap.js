@@ -1,10 +1,10 @@
-import React, { useState, useContext, useEffect, useRef  } from "react";
+import React, { useState, useContext, useEffect, useRef } from "react";
 import { MapContainer, TileLayer, GeoJSON, useMap } from 'react-leaflet'
 import "../../assets/css/mapWrap.scss";
 import { NavContext } from "../../context/NavProvider";
 import { BsArrowsFullscreen, BsXSquare } from "react-icons/bs"
 
-const MapWrap = ({ data, region, mountain }) => {
+const MapWrap = ({ data, region, mountain, url }) => {
 
     function useHasMounted() {
         const [hasMounted, setHasMounted] = useState(false);
@@ -14,11 +14,10 @@ const MapWrap = ({ data, region, mountain }) => {
         return hasMounted;
     }
 
-    const buttonRef = useRef()
-
+    const buttonRef = useRef();
 
     //uniqe key leaflet map
-    let newDate = new Date().getTime()
+    let newDate = new Date().getTime();
 
     //hladanie stredu z jsonu
     var x1 = 10000000;
@@ -59,7 +58,7 @@ const MapWrap = ({ data, region, mountain }) => {
     const [isActive, setActive] = useState(false);
     const { show, setShow } = useContext(NavContext);
 
-    function FlyToButton ({buttonRef, text}) {
+    function FlyToButton({ buttonRef, text }) {
         const map = useMap()
 
         const onClick = () => {
@@ -94,7 +93,7 @@ const MapWrap = ({ data, region, mountain }) => {
             <div className={show === true ? "tour_detail_map " : "tour_detail_map  fullscreen"}>
                 {useHasMounted && (
                     <MapContainer center={[center.y, center.x]} zoom={zoom} scrollWheelZoom={false} dragging={false} style={{ height: "100%", width: "100%" }}>
-                         <FlyToButton buttonRef={buttonRef} text={isActive ? 'zatvorit' : 'zvacsit'} />
+                        <FlyToButton buttonRef={buttonRef} text={isActive ? 'zatvorit' : 'zvacsit'} />
                         <TileLayer
                             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -109,7 +108,7 @@ const MapWrap = ({ data, region, mountain }) => {
                     <b>
                         {region}
                     </b>
-                   
+
                 </div> : null}
                 {mountain && <div className="tour_detail_region">
                     <small>pohorie</small>

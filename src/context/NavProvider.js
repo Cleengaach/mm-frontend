@@ -10,7 +10,6 @@ export const NavContext = React.createContext({
 const NavProvider = props => {
     const [show, setShow] = React.useState(true)
     const value = { show, setShow }
-    console.log({ show })
     return (
         <NavContext.Provider value={value}>
             {props.children}

@@ -27,7 +27,7 @@ const DetailPoints = ({ data }) => {
                 {data.map((point, i) => {
                     return (
                         <SwiperSlide className="point-slider-item" key={i} style={{ zIndex: data.length - i }}>
-                            <Link to={`/bod/${point.point.slug}`} className="point-slider-link">
+                            <Link to={`/bod/${point.point.strapi_id}/${point.point.slug}`} className="point-slider-link">
                                 <div className="point-slider-image">
                                     <GatsbyImage
                                         className="point-slider-image-inner"

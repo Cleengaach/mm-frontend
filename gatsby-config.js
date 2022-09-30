@@ -2,7 +2,11 @@
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 });
+{/*}
 
+  apiURL: "https://milionmetrov.up.railway.app",
+  accessToken: "730d86e9c0ad5508b50ad0efa710a0bc03fc77cb16eea7a8e188f11f08aa0a7e9aee3a3588b2bf65760726d0ce6c1808d294131dfd00d0aaee0f1a111a7aa8559e6c08591e00f76bad430064f9f69f8e308c3b71388420ee8e359ddec02e2c7511a11a4b848fa0c1083ee1329ea520b5fe205f9a5aee959e1b1d1a30da871db",
+{*/}
 const strapiConfig = {
   apiURL: process.env.STRAPI_API_URL ? "https://milionmetrov.up.railway.app" : "http://localhost:1337",
   accessToken: process.env.STRAPI_TOKEN,
@@ -52,37 +56,37 @@ const strapiConfig = {
   ],
   singleTypes: [
     {
-    singularName: 'homepage',
-    queryParams: {
-      // Populate media and relations
-      // Make sure to not specify the fields key so the api always returns the updatedAt
-      populate: {
-        hero: '*',
-        seo: {
-          populate: {
-            shareImage: '*',
-          },
-        }
+      singularName: 'homepage',
+      queryParams: {
+        // Populate media and relations
+        // Make sure to not specify the fields key so the api always returns the updatedAt
+        populate: {
+          hero: '*',
+          seo: {
+            populate: {
+              shareImage: '*',
+            },
+          }
+        },
       },
     },
-  },
     {
-    singularName: 'global',
-    queryParams: {
-      // Populate media and relations
-      // Make sure to not specify the fields key so the api always returns the updatedAt
-      populate: {
-        siteName: '*',
-        favicon: '*',
-        defaultSeo: {
-          populate: {
-            shareImage: '*',
-          },
-        }
+      singularName: 'global',
+      queryParams: {
+        // Populate media and relations
+        // Make sure to not specify the fields key so the api always returns the updatedAt
+        populate: {
+          siteName: '*',
+          favicon: '*',
+          defaultSeo: {
+            populate: {
+              shareImage: '*',
+            },
+          }
+        },
       },
     },
-  },
-],
+  ],
 };
 
 module.exports = {

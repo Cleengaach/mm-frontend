@@ -11,10 +11,8 @@ import { useStaticQuery, graphql } from "gatsby"
 
 function Seo({ description, title, children }) {
   const site = useStaticQuery(query);
-  console.log(site, 'sadf');
   const metaDescription = description || site.strapiGlobal.defaultSeo.metaDescription
   const defaultTitle = site.strapiGlobal?.siteName
-  console.log(defaultTitle, 'defaultTitle');
 
   return (
     <>
