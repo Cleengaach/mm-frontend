@@ -52,7 +52,7 @@ exports.createPages = async function ({ actions, graphql }) {
     const slug = edge.node.slug
     const id = edge.node.strapi_id
     actions.createPage({
-      path: '/bod/'+ id + '/' + slug,
+      path: '/bod/' + slug,
       component: path.resolve('./src/templates/bod-detail.js'),
       context: {
         slug: slug
