@@ -37,6 +37,7 @@ exports.createPages = async function ({ actions, graphql }) {
       },
     })
   })
+  {/*
   data.allStrapiRoute.edges.forEach(edge => {
     const slug = edge.node.slug
     actions.createPage({
@@ -47,6 +48,7 @@ exports.createPages = async function ({ actions, graphql }) {
       },
     })
   })
+*/}
 
   data.allStrapiPoint.edges.forEach(edge => {
     const slug = edge.node.slug
