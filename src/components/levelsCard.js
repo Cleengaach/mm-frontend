@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import * as detailStyles from "./detail-item.module.scss";
-import Modal from "../modal";
+import * as detailStyles from "./detail/detail-item.module.scss";
+import Modal from "./modal";
 import { AnimatePresence } from "framer-motion";
 import { BsArrowClockwise, BsFillTriangleFill } from 'react-icons/bs';
 import { VscArrowSwap } from 'react-icons/vsc';
@@ -11,7 +11,6 @@ const Easy = () => {
             <triangle>
                 <BsFillTriangleFill className={detailStyles.tour_level_easy} />
             </triangle>
-            <span>ľahká</span>
         </div>
     )
 }
@@ -21,7 +20,6 @@ const Medium = () => {
             <triangle>
                 <BsFillTriangleFill className={detailStyles.tour_level_medium} />
             </triangle>
-            <span>stredná</span>
         </div>
     )
 }
@@ -31,7 +29,6 @@ const Hard = () => {
             <triangle>
                 <BsFillTriangleFill className={detailStyles.tour_level_hard} />
             </triangle>
-            <span>ťažká</span>
         </div>
     )
 }
@@ -41,7 +38,6 @@ const Ferrata = () => {
             <triangle>
                 <BsFillTriangleFill className={detailStyles.tour_level_alert} />
             </triangle>
-            <span>ferata</span>
         </div>
     )
 }
@@ -51,7 +47,6 @@ const Guided = () => {
             <triangle>
                 <BsFillTriangleFill className={detailStyles.tour_level_alert} />
             </triangle>
-            <span>s vodcom</span>
         </div>
     )
 }
@@ -61,15 +56,12 @@ const Level = ({ data }) => {
 
     return (
         <>
-            <div onClick={() => setIsOpen(true)}>
-                <small>
+            <div>
                     {data === 'easy' ? <Easy /> : null}
                     {data === 'medium' ? <Medium /> : null}
                     {data === 'hard' ? <Hard /> : null}
                     {data === 'ferrata' ? <Ferrata /> : null}
                     {data === 'guided' ? <Guided /> : null}
-                </small>
-
             </div>
             <AnimatePresence>
                 {isOpen &&
@@ -87,7 +79,6 @@ const Okruh = () => {
             <icon>
                 <BsArrowClockwise />
             </icon>
-            <span>okruh</span>
         </>
     )
 }
@@ -97,7 +88,6 @@ const TamSpat = () => {
             <icon>
                 <VscArrowSwap />
             </icon>
-            <span>tam a späť</span>
         </>
     )
 }
@@ -106,7 +96,6 @@ const Prechod = () => {
         <>
             <icon>
             </icon>
-            <span>prechod</span>
         </>
     )
 }
@@ -121,7 +110,7 @@ const Type = ({ data }) => {
     )
 }
 
-const Levels = ({ type, data }) => {
+const LevelsCard = ({ type, data }) => {
     return (
         <>
             {type === 'level' ? <Level data={data} /> : null}
@@ -130,4 +119,4 @@ const Levels = ({ type, data }) => {
     );
 };
 
-export default Levels;
+export default LevelsCard;

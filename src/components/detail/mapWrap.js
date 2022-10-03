@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect, useRef } from "react";
 import { MapContainer, TileLayer, GeoJSON, useMap } from 'react-leaflet'
 import "../../assets/css/mapWrap.scss";
 import { NavContext } from "../../context/NavProvider";
-import { BsArrowsFullscreen, BsXSquare } from "react-icons/bs"
+import { IoHandRightOutline, IoClose } from "react-icons/io5";
 
 const MapWrap = ({ data, region, mountain, url }) => {
 
@@ -80,10 +80,12 @@ const MapWrap = ({ data, region, mountain, url }) => {
         };
         return (
             <button onClick={onClick} className="tour_detail_map_button" >
-                <span>
-                    {text}
-                </span>
-                {text === 'zvacsit' ? <BsArrowsFullscreen /> : <BsXSquare />}
+                {text === 'zvačšiť a ovládať' ? <IoHandRightOutline /> : <IoClose />}
+                {text === 'zvačšiť a ovládať' ?
+                    <span>
+                        {text}
+                    </span>
+                    : null}
             </button>
         );
     }
@@ -93,7 +95,7 @@ const MapWrap = ({ data, region, mountain, url }) => {
             <div className={show === true ? "tour_detail_map " : "tour_detail_map  fullscreen"}>
                 {useHasMounted && (
                     <MapContainer center={[center.y, center.x]} zoom={zoom} scrollWheelZoom={false} dragging={false} style={{ height: "100%", width: "100%" }}>
-                        <FlyToButton buttonRef={buttonRef} text={isActive ? 'zatvorit' : 'zvacsit'} />
+                        <FlyToButton buttonRef={buttonRef} text={isActive ? 'zatvorit' : 'zvačšiť a ovládať'} />
                         <TileLayer
                             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

@@ -29,9 +29,10 @@ const TopNav = () => {
         to="/search/"
         className="nav_icon"
       >
-          <FiSearch />
+        <FiSearch />
       </Link>
 
+      {/*
       <ThemeToggler >
         {({ theme, toggleTheme }) => {
           return (
@@ -49,6 +50,7 @@ const TopNav = () => {
           )
         }}
       </ThemeToggler>
+      */}
     </nav >
   );
 };

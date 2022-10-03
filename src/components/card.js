@@ -2,7 +2,7 @@ import React from "react";
 import { GatsbyImage } from "gatsby-plugin-image";
 import * as cardStyles from "./card.module.scss";
 import { Link } from "gatsby";
-import Levels from "./detail/levels";
+import LevelsCard from "./levelsCard";
 import GetTime from "./function/getTime";
 
 const Card = ({ article }) => { 
@@ -15,8 +15,8 @@ const Card = ({ article }) => {
     >
 
       <div className={cardStyles.tourTop}>
-        <Levels type="level" data={article.node.level} />
-        <Levels type="type" data={article.node.tourType} />
+        <LevelsCard type="level" data={article.node.level} />
+        <LevelsCard type="type" data={article.node.tourType} />
       </div>
       <div className={cardStyles.tourText}>
         <div className={cardStyles.tourTitle}>
