@@ -204,7 +204,7 @@ console.log({data})
           : null}
 
 
-        {data.strapiRoute.mapJson > 0 ?
+        {data.strapiRoute.mapJson ?
           <div className="tour_detail_content_column">
             <h4>
               Výškový profil
