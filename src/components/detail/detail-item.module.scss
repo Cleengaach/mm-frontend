@@ -1,12 +1,13 @@
 .tour_basic_item {
-    border-radius   : 6px;
-    display         : flex;
-    align-items     : center;
-    justify-content : flex-start;
+    border-radius  : 6px;
+    display        : flex;
+    align-items    : center;
+    justify-content: flex-start;
+    margin-bottom  : 0.5rem;
 
     small {
         display    : block;
-        margin     : 0 auto 0.5rem auto;
+        margin     : 0 auto 0.25rem auto;
         font-size  : 0.75rem;
         opacity    : 0.5;
         font-weight: 300;
@@ -55,6 +56,7 @@
         fill: var(--red);
     }
 }
+
 .tour_level_alert {
     path {
         fill: var(--black);
@@ -67,10 +69,10 @@
 @media only screen and (max-width: 1024px) {
     .tour_basic_item {
         b {
-            font-size   : 1.1rem;
+            font-size: 1.1rem;
 
         }
-    
+
         span {
             font-size: 1rem;
         }
@@ -80,10 +82,10 @@
 @media only screen and (max-width: 768px) {
     .tour_basic_item {
         b {
-            font-size   : 1rem;
+            font-size: 1rem;
 
         }
-    
+
         span {
             font-size: 0.85rem;
         }

@@ -146,10 +146,38 @@ export const query = graphql`
   }
 `
 
+function getTourtype(data) {
+  switch (data) {
+    case 'okruh':
+      return 'okruh';
+    case 'tamSpat':
+      return 'tam a späť';
+    case 'prechod':
+      return 'prechod';
+  }
+}
+function getLevel(data) {
+  switch (data) {
+    case 'easy':
+      return 'ľahká';
+    case 'medium':
+      return 'stredná';
+    case 'hard':
+      return 'ťažká';
+    case 'ferrata':
+      return 'ferrata';
+    case 'guided':
+      return 's vodcom';
+    case 'kids':
+      return 's deťmi';
+  }
+}
+
+
 const UsingDSG = ({ data }) => {
 
   const { show, setShow } = useContext(NavContext);
-console.log({data})
+  console.log({ data })
 
   return (
     <section className="tour_detail_main">
@@ -165,13 +193,17 @@ console.log({data})
               </span>
             </h1>
 
+            {/*
             <div className="tour_detail_header_info">
               <Levels type="type" data={data.strapiRoute.tourType} />
               <Levels type="level" data={data.strapiRoute.level} />
             </div>
-            {data.strapiRoute.photogallery ?
-              <Photogallery data={data.strapiRoute.photogallery} thumb={data.thumbnails.photogallery} />
-              : null}
+          */}
+            {
+              data.strapiRoute.photogallery ?
+                <Photogallery data={data.strapiRoute.photogallery} thumb={data.thumbnails.photogallery} />
+                : null
+            }
           </div>
 
           <GatsbyImage
@@ -191,6 +223,8 @@ console.log({data})
             <DetailItem label={'čas'} data={data.strapiRoute.time} metric={'h'} />
             <DetailItem label={'stúpanie'} data={data.strapiRoute.stupanie} metric={'m'} />
             <DetailItem label={'klesanie'} data={data.strapiRoute.klesanie} metric={'m'} />
+            <DetailItem label={'typ'} data={getTourtype(data.strapiRoute.tourType)} metric={''} />
+            <DetailItem label={'obtiažnosť'} data={getLevel(data.strapiRoute.level)} metric={''} />
           </div>
         </div>
 
