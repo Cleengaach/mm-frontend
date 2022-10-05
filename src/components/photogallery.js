@@ -12,7 +12,6 @@ import 'lightgallery/scss/lg-zoom.scss';
 import 'lightgallery/css/lg-thumbnail.css';
 
 import "../assets/css/detail-gallery.scss";
-import { BsImages } from "react-icons/bs";
 
 
 const Photogallery = ({ data, thumb }) => {

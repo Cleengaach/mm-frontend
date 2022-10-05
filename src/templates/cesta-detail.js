@@ -223,7 +223,7 @@ const UsingDSG = ({ data }) => {
             <DetailItem label={'čas'} data={data.strapiRoute.time} metric={'h'} />
             <DetailItem label={'stúpanie'} data={data.strapiRoute.stupanie} metric={'m'} />
             <DetailItem label={'klesanie'} data={data.strapiRoute.klesanie} metric={'m'} />
-            <DetailItem label={'typ'} data={getTourtype(data.strapiRoute.tourType)} metric={''} />
+            <DetailItem label={'typ túry'} data={getTourtype(data.strapiRoute.tourType)} metric={''} />
             <DetailItem label={'obtiažnosť'} data={getLevel(data.strapiRoute.level)} metric={''} />
           </div>
         </div>

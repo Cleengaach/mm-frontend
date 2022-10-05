@@ -47,7 +47,9 @@ const IndexPage = () => {
             );
           })}
         </div>
+        {/*
         <ArticlesComponent articles={data.allStrapiRoute.edges} />
+        */}
       </main>
     </>
   );

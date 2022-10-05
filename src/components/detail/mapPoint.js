@@ -1,9 +1,8 @@
 import React, { useState, useContext, useEffect } from "react";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet'
 import "../../assets/css/mapWrap.scss";
-import { motion } from "framer-motion";
 import { NavContext } from "../../context/NavProvider";
-import { BsArrowsFullscreen, BsXSquare } from "react-icons/bs"
+import { IoHandRightOutline, IoClose } from "react-icons/io5";
 
 import markerIconPng from "leaflet/dist/images/marker-icon.png"
 import { Icon } from 'leaflet'
@@ -20,14 +19,12 @@ const MapPoint = ({ north, east, mountain }) => {
 
 
     //uniqe key leaflet map
-    let newDate = new Date().getTime() 
-
-
+    let newDate = new Date().getTime()
 
     const [isActive, setActive] = useState(false);
     const { show, setShow } = useContext(NavContext);
 
-    function FlyToButton(children) {
+    function FlyToButton({text}) {
         const map = useMap()
 
         const onClick = () => {
@@ -46,23 +43,25 @@ const MapPoint = ({ north, east, mountain }) => {
 
                 }, 1);
         };
-        
+
         return (
             <button onClick={onClick} className="tour_detail_map_button" >
-                <span>
-                    {children.text}
-                </span>
-                {children.text === 'zvacsit' ? <BsArrowsFullscreen /> : <BsXSquare />}
+                {text === 'zvačšiť a ovládať' ? <IoHandRightOutline /> : <IoClose />}
+                {text === 'zvačšiť a ovládať' ?
+                    <span>
+                        {text}
+                    </span>
+                    : null}
             </button>
         );
     }
-
+ 
     return (
         <>
-            <div className={show === true ? "tour_detail_map " : "tour_detail_map  fullscreen" }>
+            <div className={show === true ? "tour_detail_map " : "tour_detail_map  fullscreen"}>
                 {useHasMounted && (
                     <MapContainer center={[north, east]} zoom={13} scrollWheelZoom={false} dragging={false} style={{ height: "100%", width: "100%" }}>
-                         <FlyToButton text={isActive ? 'zatvorit' : 'zvacsit'} />
+                        <FlyToButton text={isActive ? '' : 'zvačšiť a ovládať'} />
                         <TileLayer
                             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

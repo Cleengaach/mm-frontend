@@ -1,7 +1,8 @@
 #hight-chart {
-    width  : 100%;
-    margin : 3rem auto;
-    --color: linear-gradient(rgb(255, 166, 0), rgb(255, 208, 0));
+    width        : 100%;
+    margin       : 2rem auto;
+    margin-bottom: 0;
+    --color      : linear-gradient(rgb(255, 166, 0), rgb(255, 208, 0));
 
     --secondary-axes-color: rgba(255, 255, 255, 0.5);
     --secondary-axes-style: solid;

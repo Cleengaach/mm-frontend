@@ -95,7 +95,7 @@ const MapWrap = ({ data, region, mountain, url }) => {
             <div className={show === true ? "tour_detail_map " : "tour_detail_map  fullscreen"}>
                 {useHasMounted && (
                     <MapContainer center={[center.y, center.x]} zoom={zoom} scrollWheelZoom={false} dragging={false} style={{ height: "100%", width: "100%" }}>
-                        <FlyToButton buttonRef={buttonRef} text={isActive ? 'zatvorit' : 'zvačšiť a ovládať'} />
+                        <FlyToButton buttonRef={buttonRef} text={isActive ? '' : 'zvačšiť a ovládať'} />
                         <TileLayer
                             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

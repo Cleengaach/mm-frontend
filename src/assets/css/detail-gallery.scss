@@ -121,17 +121,17 @@
 
 @media only screen and (max-width: 460px) {
     .tour_mapWrap_gallery {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(4, 1fr);
     }
 
     .tour_mapWrap_gallery_item {
-        width: 70px;
+        width: 60px;
 
-        &:nth-of-type(n+5) {
+        &:nth-of-type(n+6) {
             display: none;
         }
 
-        &:nth-of-type(4) {
+        &:nth-of-type(5) {
             &::after {
                 content            : "";
                 position           : absolute;

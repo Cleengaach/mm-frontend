@@ -106,6 +106,7 @@
     display              : grid;
     grid-template-columns: repeat(6, 1fr);
     gap                  : 1rem;
+    align-items          : flex-start;
 }
 
 .point {
@@ -326,9 +327,14 @@
         margin        : 0;
         padding       : 1rem;
         padding-bottom: 1.5rem;
+        padding-top   : 0rem;
 
         &:first-of-type {
             border-bottom: 0px;
+        }
+
+        h4 {
+            text-align: center;
         }
     }
 
