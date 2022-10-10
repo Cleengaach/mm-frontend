@@ -208,7 +208,7 @@ const UsingDSG = ({ data }) => {
         </div>
         {
           data.strapiRoute.photogallery ?
-            <div className="tour_detail_content_column">
+            <div className="tour_detail_content_column photogallery">
               <Photogallery data={data.strapiRoute.photogallery} thumb={data.thumbnails.photogallery} />
             </div>
             : null

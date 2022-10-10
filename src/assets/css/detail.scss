@@ -121,7 +121,7 @@
 
 .point {
     .tour_basic {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
@@ -343,6 +343,12 @@
         padding-bottom: 1.5rem;
         padding-top   : 0rem;
 
+        &.photogallery {
+            padding : 1rem 0;
+            width   : 100%;
+            overflow: hidden;
+        }
+
         &:first-of-type {
             border-bottom: 0px;
         }
@@ -452,6 +458,10 @@
                 display: none;
             }
         }
+    }
+
+    .point .tour_basic>div:last-of-type {
+        display: flex;
     }
 
     .tour_basic_level {

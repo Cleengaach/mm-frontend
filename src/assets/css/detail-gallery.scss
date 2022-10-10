@@ -84,48 +84,12 @@
     .tour_mapWrap_gallery {
         justify-content: left;
         overflow       : auto;
+        padding-left   : 1rem;
     }
 
     .tour_mapWrap_gallery_item {
         width: 110px;
         flex : none;
     }
-}
 
-@media only screen and (max-width: 460px) {
-    .tour_mapWrap_gallery {
-        grid-template-columns: repeat(4, 1fr);
-    }
-
-    .tour_mapWrap_gallery_item {
-        width: 60px;
-
-        &:nth-of-type(n+6) {
-            display: none;
-        }
-
-        &:nth-of-type(5) {
-            &::after {
-                content            : "";
-                position           : absolute;
-                top                : 0;
-                left               : 0;
-                display            : block;
-                width              : 100%;
-                height             : 100%;
-                background-color   : var(--black-50);
-                background-image   : url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-images" viewBox="0 0 16 16"><path d="M4.502 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/><path d="M14.002 13a2 2 0 0 1-2 2h-10a2 2 0 0 1-2-2V5A2 2 0 0 1 2 3a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v8a2 2 0 0 1-1.998 2zM14 2H4a1 1 0 0 0-1 1h9.002a2 2 0 0 1 2 2v7A1 1 0 0 0 15 11V3a1 1 0 0 0-1-1zM2.002 4a1 1 0 0 0-1 1v8l2.646-2.354a.5.5 0 0 1 .63-.062l2.66 1.773 3.71-3.71a.5.5 0 0 1 .577-.094l1.777 1.947V5a1 1 0 0 0-1-1h-10z"/></svg>');
-                background-repeat  : no-repeat;
-                background-position: center center;
-                background-size    : 1.5rem 1.5rem;
-                z-index            : 100;
-            }
-        }
-
-        &:nth-of-type(-n+3) {
-            &::after {
-                display: none;
-            }
-        }
-    }
 }
