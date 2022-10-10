@@ -25,17 +25,28 @@
     }
 }
 
-.tour_basic_item_icon {
-    display: block;
-
-    span {
-        opacity: 0.75;
-    }
+.tour_basic_item_help {
+    margin-left: 1rem;
 
     svg {
-        height: 30px;
-        width : 30px;
-        margin: 0.25rem;
+        height : 24px;
+        width  : 24px;
+        opacity: 0.5;
+    }
+}
+
+.tour_basic_item_icon {
+    background-color: var(--borderColor);
+    display         : flex;
+    align-items     : center;
+    gap             : 0.25rem;
+    border-radius   : 3px;
+    margin-left     : 1rem;
+    padding         : 0.5rem;
+
+    svg {
+        height: 18px;
+        width : 18px;
     }
 }
 
@@ -57,13 +68,40 @@
     }
 }
 
-.tour_level_alert {
+.tour_level_top {
     path {
         fill: var(--black);
     }
 }
 
+.tour_level_empty {
+    path {
+        fill: var(--white-10);
+    }
+}
 
+
+.card_icon,
+.card_triangle {
+  background-color: var(--white-20);
+  backdrop-filter : blur(4px);
+  display         : flex;
+  align-items     : center;
+  justify-content : center;
+  border-radius   : 100px;
+  width           : 2rem;
+  height          : 2rem;
+
+  svg {
+    fill: var(--black-75);
+  }
+}
+
+.card_icon {
+  display  : flex;
+  order    : 2;
+  font-size: 1rem;
+}
 
 
 @media only screen and (max-width: 1024px) {
@@ -82,7 +120,7 @@
 @media only screen and (max-width: 768px) {
     .tour_basic_item {
         justify-content: center;
-        text-align: center;
+        text-align     : center;
 
         b {
             font-size: 1rem;

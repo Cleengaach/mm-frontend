@@ -4,9 +4,6 @@ import "../../assets/css/mapWrap.scss";
 import { NavContext } from "../../context/NavProvider";
 import { IoHandRightOutline, IoClose } from "react-icons/io5";
 
-import markerIconPng from "leaflet/dist/images/marker-icon.png"
-import { Icon } from 'leaflet'
-
 const MapPoint = ({ north, east, mountain }) => {
 
     function useHasMounted() {

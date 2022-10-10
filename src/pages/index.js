@@ -3,7 +3,6 @@ import { graphql, useStaticQuery } from "gatsby";
 import ArticlesComponent from "../components/articles";
 import "../assets/css/main.scss";
 import "../assets/css/homemain.scss";
-import "../assets/leaflet/leaflet.css";
 import Seo from '../components/seo';
 import Card from "../components/card";
 

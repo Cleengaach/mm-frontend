@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 import "../assets/css/detail.scss";
 import Card from "../components/card";
 import DetailItem from "../components/detail/detail-item";
-import Levels from "../components/detail/levels";
+import TourLevel from "../components/detail/tour-level";
 import Photogallery from "../components/photogallery";
 import { GatsbyImage } from "gatsby-plugin-image";
 import Seo from "../components/seo";
@@ -156,22 +156,6 @@ function getTourtype(data) {
       return 'prechod';
   }
 }
-function getLevel(data) {
-  switch (data) {
-    case 'easy':
-      return 'ľahká';
-    case 'medium':
-      return 'stredná';
-    case 'hard':
-      return 'ťažká';
-    case 'ferrata':
-      return 'ferrata';
-    case 'guided':
-      return 's vodcom';
-    case 'kids':
-      return 's deťmi';
-  }
-}
 
 
 const UsingDSG = ({ data }) => {
@@ -184,26 +168,22 @@ const UsingDSG = ({ data }) => {
       <div className={show === true ? "tour_detail" : "tour_detail tour_detail--map"}>
         <div className="tour_detail_content_column tour_detail_header">
           <div className="tour_detail_header_title">
+            <div className="tour_detail_header_title_type">
+              {getTourtype(data.strapiRoute.tourType)}
+            </div>
             <h1>
               <b>
                 {data.strapiRoute.title}
-              </b>
-              <span>
+              </b> <span>
                 {data.strapiRoute.subtitle}
               </span>
             </h1>
-
-            {/*
-            <div className="tour_detail_header_info">
-              <Levels type="type" data={data.strapiRoute.tourType} />
-              <Levels type="level" data={data.strapiRoute.level} />
+            <div className="tour_detail_header_title_location">
+              {data.strapiRoute.mountain ? data.strapiRoute.mountain.title + ", " : null}
+              {data.strapiRoute.region.title ? data.strapiRoute.region.title : null}
             </div>
-          */}
-            {
-              data.strapiRoute.photogallery ?
-                <Photogallery data={data.strapiRoute.photogallery} thumb={data.thumbnails.photogallery} />
-                : null
-            }
+
+
           </div>
 
           <GatsbyImage
@@ -214,26 +194,32 @@ const UsingDSG = ({ data }) => {
           />
         </div>
         <div className="tour_detail_content_column">
-          <h4>
-            Základné informácie
-          </h4>
 
           <div className="tour_basic">
             <DetailItem label={'dĺžka'} data={data.strapiRoute.length} metric={'km'} />
             <DetailItem label={'čas'} data={data.strapiRoute.time} metric={'h'} />
             <DetailItem label={'stúpanie'} data={data.strapiRoute.stupanie} metric={'m'} />
             <DetailItem label={'klesanie'} data={data.strapiRoute.klesanie} metric={'m'} />
-            <DetailItem label={'typ túry'} data={getTourtype(data.strapiRoute.tourType)} metric={''} />
-            <DetailItem label={'obtiažnosť'} data={getLevel(data.strapiRoute.level)} metric={''} />
+            <TourLevel label={'obtiažnosť'} data={data.strapiRoute.level} />
           </div>
         </div>
+        <div className="tour_detail_content_column tour_basic_level">
+          <TourLevel label={'obtiažnosť'} data={data.strapiRoute.level} />
+        </div>
+        {
+          data.strapiRoute.photogallery ?
+            <div className="tour_detail_content_column">
+              <Photogallery data={data.strapiRoute.photogallery} thumb={data.thumbnails.photogallery} />
+            </div>
+            : null
+        }
 
         {data.strapiRoute.mapJson ?
           <div className="tour_detail_content_column tour_detail_content_map">
             <h4>
               Mapa trasy
             </h4>
-            <MapWrap data={data.strapiRoute.mapJson} region={data.strapiRoute.region.title} mountain={data.strapiRoute.mountain} url={data.strapiRoute.map[0].url} />
+            <MapWrap data={data.strapiRoute.mapJson} url={data.strapiRoute.map[0].url} />
           </div>
           : null}
 

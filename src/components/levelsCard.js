@@ -3,50 +3,50 @@ import * as detailStyles from "./detail/detail-item.module.scss";
 import Modal from "./modal";
 import { AnimatePresence } from "framer-motion";
 import { BsArrowClockwise, BsFillTriangleFill } from 'react-icons/bs';
-import { VscArrowSwap } from 'react-icons/vsc';
+import { VscArrowSwap, VscArrowRight } from 'react-icons/vsc';
 
 const Easy = () => {
     return (
         <div>
-            <triangle>
+            <div className={detailStyles.card_triangle}>
                 <BsFillTriangleFill className={detailStyles.tour_level_easy} />
-            </triangle>
+            </div>
         </div>
     )
 }
 const Medium = () => {
     return (
         <div>
-            <triangle>
+            <div className={detailStyles.card_triangle}>
                 <BsFillTriangleFill className={detailStyles.tour_level_medium} />
-            </triangle>
+            </div>
         </div>
     )
 }
 const Hard = () => {
     return (
         <div>
-            <triangle>
+            <div className={detailStyles.card_triangle}>
                 <BsFillTriangleFill className={detailStyles.tour_level_hard} />
-            </triangle>
+            </div>
         </div>
     )
 }
 const Ferrata = () => {
     return (
         <div>
-            <triangle>
+            <div className={detailStyles.card_triangle}>
                 <BsFillTriangleFill className={detailStyles.tour_level_alert} />
-            </triangle>
+                </div>
         </div>
     )
 }
 const Guided = () => {
     return (
         <div>
-            <triangle>
+            <div className={detailStyles.card_triangle}>
                 <BsFillTriangleFill className={detailStyles.tour_level_alert} />
-            </triangle>
+                </div>
         </div>
     )
 }
@@ -57,11 +57,11 @@ const Level = ({ data }) => {
     return (
         <>
             <div>
-                    {data === 'easy' ? <Easy /> : null}
-                    {data === 'medium' ? <Medium /> : null}
-                    {data === 'hard' ? <Hard /> : null}
-                    {data === 'ferrata' ? <Ferrata /> : null}
-                    {data === 'guided' ? <Guided /> : null}
+                {data === 'easy' ? <Easy /> : null}
+                {data === 'medium' ? <Medium /> : null}
+                {data === 'hard' ? <Hard /> : null}
+                {data === 'ferrata' ? <Ferrata /> : null}
+                {data === 'guided' ? <Guided /> : null}
             </div>
             <AnimatePresence>
                 {isOpen &&
@@ -76,26 +76,27 @@ const Level = ({ data }) => {
 const Okruh = () => {
     return (
         <>
-            <icon>
+            <div className={detailStyles.card_icon}>
                 <BsArrowClockwise />
-            </icon>
+            </div>
         </>
     )
 }
 const TamSpat = () => {
     return (
         <>
-            <icon>
+            <div className={detailStyles.card_icon}>
                 <VscArrowSwap />
-            </icon>
+            </div>
         </>
     )
 }
 const Prechod = () => {
     return (
         <>
-            <icon>
-            </icon>
+            <div className={detailStyles.card_icon}>
+                <VscArrowRight />
+            </div>
         </>
     )
 }

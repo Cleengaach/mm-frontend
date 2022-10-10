@@ -3,7 +3,6 @@ import { GatsbyImage } from "gatsby-plugin-image";
 import * as cardStyles from "./card.module.scss";
 import { Link } from "gatsby";
 import LevelsCard from "./levelsCard";
-import GetTime from "./function/getTime";
 
 const Card = ({ article }) => { 
   

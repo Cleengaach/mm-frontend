@@ -11,14 +11,14 @@ export const wrapPageElement = ({ element, props }) => (
   </Layout>
 );
 
-
+{/*
 export const shouldUpdateScroll = ({
   routerProps: { location },
   getSavedScrollPosition
 }) => {
   // transition duration from `layout.js` * 1000 to get time in ms
   // * 2 for exit + enter animation
-  const TRANSITION_DELAY = 0.5 * 1000
+  const TRANSITION_DELAY = 0.5 * 1000 * 2
 
   // if it's a "normal" route
   if (location.action === "PUSH") {
@@ -34,3 +34,4 @@ export const shouldUpdateScroll = ({
 
   return false
 }
+*/}

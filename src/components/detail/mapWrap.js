@@ -4,7 +4,7 @@ import "../../assets/css/mapWrap.scss";
 import { NavContext } from "../../context/NavProvider";
 import { IoHandRightOutline, IoClose } from "react-icons/io5";
 
-const MapWrap = ({ data, region, mountain, url }) => {
+const MapWrap = ({ data, url }) => {
 
     function useHasMounted() {
         const [hasMounted, setHasMounted] = useState(false);
@@ -104,21 +104,7 @@ const MapWrap = ({ data, region, mountain, url }) => {
                     </MapContainer>
                 )}
             </div>
-            <div className="tour_detail_region_wrap">
-                {region.length > 0 ? <div className="tour_detail_region">
-                    <small>kraj</small>
-                    <b>
-                        {region}
-                    </b>
-
-                </div> : null}
-                {mountain && <div className="tour_detail_region">
-                    <small>pohorie</small>
-                    <b>
-                        {mountain.title}
-                    </b>
-                </div>}
-            </div>
+            
         </>
     );
 

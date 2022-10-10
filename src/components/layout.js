@@ -24,7 +24,7 @@ const variants = {
   },
 }
 
-const Layout = ({ children, location="" }) => (
+const Layout = ({ children, location = "" }) => (
   <StaticQuery
     query={graphql`
       query {
@@ -44,18 +44,10 @@ const Layout = ({ children, location="" }) => (
 
     render={(data) => (
       <>
-        <TopNav />
-        <AnimatePresence>
-          <motion.main
-            key={location.pathname}
-            variants={variants}
-            initial="initial"
-            animate="enter"
-            exit="exit"
-          >
-            {children}
-          </motion.main>
-        </AnimatePresence>
+        <TopNav location={location} />
+        <main>
+          {children}
+        </main>
       </>
     )}
   />
