@@ -137,6 +137,10 @@ const DetailChartnew = ({ children, length }) => {
                     <small>najvyšší bod</small>
                     <b>{max}</b><span> m.n.m.</span>
                 </div>
+                <div className='chart-info-item'>
+                    <small>prevýšenie</small>
+                    <b>{max - min}</b><span> m</span>
+                </div>
             </div>
         </div >
     );

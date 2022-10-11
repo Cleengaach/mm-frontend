@@ -1,24 +1,43 @@
 body {
-  --bg         : white;
-  --textNormal : #262626;
-  --textInvert : #fff;
-  --textTitle  : #FFC01E;
-  --textLink   : rgb(57, 136, 255);
-  --borderColor: #eee;
-  --back-image : #161616;
-  --black      : rgba(22, 22, 22, 1);
-  --black-20   : rgba(22, 22, 22, 0.2);
-  --black-50   : rgba(22, 22, 22, 0.5);
-  --black-75   : rgba(22, 22, 22, 0.75);
-  --white-05   : rgba(255, 255, 255, 0.05);
-  --white-10   : rgba(255, 255, 255, 0.1);
-  --white-20   : rgba(255, 255, 255, 0.2);
-  --white-50   : rgba(255, 255, 255, 0.5);
-  --white      : #fff;
-  --green      : rgb(0, 163, 68);
-  --orange     : #FFC01E;
-  --red        : #FF6161;
-  font-size    : 15px;
+  --bg          : white;
+  --textNormal  : #262626;
+  --textInvert  : #fff;
+  --textTitle   : #FFC01E;
+  --textLink    : rgb(57, 136, 255);
+  --borderColor : #eee;
+  --back-image  : #161616;
+  --black       : rgba(22, 22, 22, 1);
+  --black-20    : rgba(22, 22, 22, 0.2);
+  --black-50    : rgba(22, 22, 22, 0.5);
+  --black-75    : rgba(22, 22, 22, 0.75);
+  --white-05    : rgba(255, 255, 255, 0.05);
+  --white-10    : rgba(255, 255, 255, 0.1);
+  --white-20    : rgba(255, 255, 255, 0.2);
+  --white-50    : rgba(255, 255, 255, 0.5);
+  --white       : #fff;
+  --green       : rgb(0, 163, 68);
+  --orange      : #FFC01E;
+  --red         : #FF6161;
+  font-size     : 15px;
+  --shadow-color: 0deg 0% 63%;
+  --shadow-elevation-low:
+    0.3px 0.5px 0.7px hsl(var(--shadow-color) / 0.22),
+    0.4px 0.8px 1.1px -1px hsl(var(--shadow-color) / 0.25),
+    0.9px 1.8px 2.4px -2px hsl(var(--shadow-color) / 0.29);
+  --shadow-elevation-medium:
+    0.3px 0.5px 0.7px hsl(var(--shadow-color) / 0.23),
+    0.8px 1.7px 2.3px -0.7px hsl(var(--shadow-color) / 0.26),
+    1.9px 3.9px 5.2px -1.3px hsl(var(--shadow-color) / 0.29),
+    4.5px 9px 12.1px -2px hsl(var(--shadow-color) / 0.32);
+  --shadow-elevation-high:
+    0.3px 0.5px 0.7px hsl(var(--shadow-color) / 0.21),
+    1.4px 2.8px 3.8px -0.3px hsl(var(--shadow-color) / 0.23),
+    2.5px 5px 6.7px -0.6px hsl(var(--shadow-color) / 0.24),
+    4px 8px 10.7px -0.9px hsl(var(--shadow-color) / 0.25),
+    6.1px 12.2px 16.4px -1.1px hsl(var(--shadow-color) / 0.27),
+    9.3px 18.5px 24.8px -1.4px hsl(var(--shadow-color) / 0.28),
+    13.8px 27.6px 37px -1.7px hsl(var(--shadow-color) / 0.29),
+    20px 40px 53.7px -2px hsl(var(--shadow-color) / 0.31);
 }
 
 body.dark {
@@ -27,6 +46,7 @@ body.dark {
   --textTitle  : #FFC01E;
   --textLink   : rgb(57, 136, 255);
   --borderColor: rgba(255, 255, 255, 0.1);
+  --shadow-color: 0deg 0% 1%;
 }
 
 body {

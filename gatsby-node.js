@@ -24,7 +24,7 @@ exports.createPages = async function ({ actions, graphql }) {
   `)
   data.allStrapiRoute.edges.forEach(edge => {
     const slug = edge.node.slug
-    const range = edge.node.length * 0.15
+    const range = edge.node.length * 10.15
     const lengthMax = edge.node.length + range
     const lengthMin = edge.node.length - range
     actions.createPage({

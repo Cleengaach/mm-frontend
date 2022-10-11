@@ -36,7 +36,7 @@ const TopNav = ({ location }) => {
       <ThemeToggler >
         {({ theme, toggleTheme }) => {
           return (
-            <div className="themeToggle">
+            <div className={theme === "dark" ? "themeToggle dark" : "themeToggle light"}>
               <div className={theme === "light" ? "active" : null}>
                 <MdLightMode onClick={() => theme === "dark" ? toggleTheme('light') : toggleTheme('dark')} />
               </div>

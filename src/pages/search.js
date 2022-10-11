@@ -112,12 +112,10 @@ const Search = props => {
     function logElevation(value) {
         setRangeElevation(value)
     }
-
+    console.log(rangeElevation)
     return (
         <main className="home_main" >
             <div className="search_input_wrap">
-
-
 
                 <input
                     className="search_input"
@@ -127,16 +125,28 @@ const Search = props => {
                     onChange={handleInputChange}
                 />
             </div>
-            <div style={{ maxWidth: '768px', margin: 'auto' }}>
+            <div className="search_input_cont">
                 <h4>cas</h4>
+                <div className="search_input_labels">
+                    <span>{getTime(rangeTime[0])} h</span>
+                    <span>{getTime(rangeTime[1])} h</span>
+                </div>
                 <Slider range allowCross={false} defaultValue={[minTime, maxTime]} min={minTime} max={maxTime} onChange={logTime} />
             </div>
-            <div style={{ maxWidth: '768px', margin: 'auto' }}>
+            <div className="search_input_cont">
                 <h4>dlzka</h4>
+                <div className="search_input_labels">
+                    <span>{rangeLength[0]} km</span>
+                    <span>{rangeLength[1]} km</span>
+                </div>
                 <Slider range allowCross={false} defaultValue={[minLength, maxLength]} min={minLength} max={maxLength} onChange={logLength} />
             </div>
-            <div style={{ maxWidth: '768px', margin: 'auto' }}>
+            <div className="search_input_cont">
                 <h4>prevysenie</h4>
+                <div className="search_input_labels">
+                    <span>{rangeElevation[0]} m</span>
+                    <span>{rangeElevation[1]} m</span>
+                </div>
                 <Slider range allowCross={false} defaultValue={[minElevation, maxElevation]} min={minElevation} max={maxElevation} onChange={logElevation} />
             </div>
             <div className="home_list">

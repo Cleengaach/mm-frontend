@@ -36,6 +36,7 @@
     position     : relative;
     display      : flex;
     align-items  : flex-end;
+    box-shadow: var( --shadow-elevation-low);
 }
 
 .point-slider-overlay {

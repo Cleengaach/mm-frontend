@@ -5,6 +5,24 @@
     margin         : 100px 1rem 1rem 1rem;
 }
 
+.search_input_cont {
+    display   : block;
+    max-width : 768px;
+    width     : calc(100% - 2rem);
+    padding   : 1rem;
+    margin-top: auto;
+    margin    : 0 0 0.5rem 0;
+
+    h4 {
+        margin: 0 0 0.5rem 0;
+    }
+}
+
+.search_input_labels {
+    display        : flex;
+    justify-content: space-between;
+}
+
 .search_input {
     max-width       : 768px;
     width           : 100%;
@@ -12,6 +30,7 @@
     padding         : 1rem 1.5rem;
     font-size       : 1.2rem;
     border-radius   : 6px;
+    border          : 1px solid var(--borderColor);
     background-color: var(--white-10);
     color           : var(--white);
 

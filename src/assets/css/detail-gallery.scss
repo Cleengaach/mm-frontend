@@ -90,6 +90,10 @@
     .tour_mapWrap_gallery_item {
         width: 110px;
         flex : none;
+
+        &:nth-of-type(n+1) {
+            display: block;
+        }
     }
 
 }

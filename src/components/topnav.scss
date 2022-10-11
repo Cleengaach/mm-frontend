@@ -27,6 +27,7 @@
 }
 
 .themeToggle {
+    position        : relative;
     cursor          : pointer;
     background-color: var(--black-20);
     color           : var(--white);
@@ -34,6 +35,29 @@
     display         : flex;
     align-items     : center;
     justify-content : space-between;
+
+    &::after {
+        content         : "";
+        position        : absolute;
+        top             : 0;
+        height          : 2.5rem;
+        width           : 2.5rem;
+        border-radius   : 10px;
+        background-color: var(--white-05);
+        transition: all 250ms ease;
+    }
+
+    &.dark {
+        &::after {
+            left: 50%;
+        }
+    }
+
+    &.light {
+        &::after {
+            left: 0%;
+        }
+    }
 
     div {
         display        : flex;
@@ -49,7 +73,6 @@
     }
 
     .active {
-        background-color: var(--white-05);
 
         svg {
             opacity: 1;
